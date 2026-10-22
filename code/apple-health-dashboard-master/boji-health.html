@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f5f4ef">
+  <meta name="description" content="本地优先的健康、饮食、训练与生活记录工具">
+  <title>Boji Health · 个人健康仪表盘</title>
+  <link rel="stylesheet" href="assets/app.css">
+  <link rel="stylesheet" href="assets/expense.css">
+  <link rel="stylesheet" href="assets/auth.css">
+  <link rel="stylesheet" href="assets/agent.css">
+  <link rel="stylesheet" href="assets/profile.css">
+  <link rel="stylesheet" href="assets/food-tracking.css">
+  <link rel="stylesheet" href="assets/training.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <section class="auth-gate" id="authGate" aria-labelledby="authTitle">
+    <div class="auth-card">
+      <div class="auth-brand"><span class="brand-mark">B</span><span><strong>Boji</strong><small>Health OS</small></span></div>
+      <span class="section-kicker">本地健康账户</span>
+      <h1 id="authTitle">欢迎回来</h1>
+      <p id="authSubtitle">登录后读取保存在本机数据库中的个人记录。</p>
+      <div class="auth-tabs" role="tablist">
+        <button class="active" type="button" data-auth-mode="login">登录</button>
+        <button type="button" data-auth-mode="register">注册</button>
+      </div>
+      <form id="authForm">
+        <label>用户名<input name="username" autocomplete="username" minlength="2" maxlength="32" placeholder="请输入用户名" required></label>
+        <label>密码<input name="password" type="password" autocomplete="current-password" minlength="6" maxlength="128" placeholder="至少 6 位" required></label>
+        <label class="hidden" id="confirmPasswordRow">确认密码<input name="confirmPassword" type="password" autocomplete="new-password" minlength="6" maxlength="128" placeholder="再次输入密码"></label>
+        <p class="auth-message" id="authMessage" role="alert"></p>
+        <button class="primary-btn full" id="authSubmit" type="submit">登录</button>
+      </form>
+      <div class="auth-local-note"><span class="privacy-dot"></span><div><strong>账号与数据只保存在这台电脑</strong><p>用户名是唯一标识。密码以加盐哈希保存，系统不会保存密码明文。</p></div></div>
+    </div>
+  </section>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="主导航">
+      <a class="brand" href="#today" aria-label="Boji Health 首页">
+        <span class="brand-mark">B</span>
+        <span><strong>Boji</strong><small>Health OS</small></span>
+      </a>
+
+      <nav class="nav-list">
+        <button class="nav-item active" data-view="today"><span>⌂</span>今日概览</button>
+        <button class="nav-item" data-view="food"><span>◒</span>饮食记录</button>
+        <button class="nav-item" data-view="training"><span>⌁</span>训练记录</button>
+        <button class="nav-item" data-view="expense"><span>¥</span>每日花销</button>
+        <button class="nav-item" data-view="agent"><span>✦</span>智能助理</button>
+      </nav>
+
+      <div class="sidebar-note">
+        <span class="privacy-dot"></span>
+        <strong>本机数据库已连接</strong>
+        <p id="syncStatus">记录按用户名隔离保存在 SQLite 数据库中，健康导出文件仍只在当前设备处理。</p>
+      </div>
+
+      <button class="profile-chip" id="openProfile" type="button" aria-label="打开个人资料">
+        <span class="avatar" id="profileAvatar">W</span>
+        <span><strong id="profileName">设置个人资料</strong><small id="profileMeta">计算每日目标</small></span>
+        <span>›</span>
+      </button>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="打开菜单">☰</button>
+        <div>
+          <p class="eyebrow" id="dateLabel"></p>
+          <h1 id="viewTitle">早上好，准备记录今天了吗？</h1>
+        </div>
+        <div class="top-actions">
+          <button class="ghost-btn" id="exportData">导出记录</button>
+        </div>
+      </header>
+
+      <section class="view active" id="view-today">
+        <div class="hero-grid single">
+          <article class="hero-card nutrition-hero">
+            <div class="card-heading">
+            <div><span class="section-kicker">长期目标的每日计划</span><h2>今日营养建议</h2></div>
+              <span class="status-pill" id="goalLabel">等待设置</span>
+            </div>
+            <div class="energy-layout">
+              <div class="energy-ring" id="energyRing">
+                <div><strong id="energyRemaining">—</strong><span>千卡剩余</span></div>
+              </div>
+              <div class="macro-list">
+                <div class="macro-row carb"><div><span>碳水</span><b id="carbText">0 / — g</b></div><div class="track"><i id="carbBar"></i></div></div>
+                <div class="macro-row protein"><div><span>蛋白质</span><b id="proteinText">0 / — g</b></div><div class="track"><i id="proteinBar"></i></div></div>
+                <div class="macro-row fat"><div><span>脂肪</span><b id="fatText">0 / — g</b></div><div class="track"><i id="fatBar"></i></div></div>
+              </div>
+            </div>
+            <div class="hero-footer"><span id="energyDetail">请先完成个人资料</span><button data-go="food">记录一餐 →</button></div>
+          </article>
+
+        </div>
+
+        <div class="metric-grid">
+          <article class="metric-card"><div class="metric-icon green">餐</div><div><span>今日饮食</span><strong id="mealsToday">0</strong><small>条记录</small></div></article>
+          <article class="metric-card"><div class="metric-icon orange">周</div><div><span>近 7 天饮食</span><strong id="foodDaysWeekly">0</strong><small>天有记录</small></div></article>
+          <article class="metric-card"><div class="metric-icon blue">训</div><div><span>本周训练</span><strong id="weeklyWorkouts">0</strong><small id="workoutMinutes">0 kg 训练容量</small></div></article>
+          <article class="metric-card"><div class="metric-icon plum">秤</div><div><span>当前体重</span><strong id="weightToday">—</strong><small id="bmiToday">BMI —</small></div></article>
+        </div>
+
+        <div class="content-grid">
+          <article class="panel">
+            <div class="card-heading"><div><span class="section-kicker">最近 7 天</span><h2>饮食摄入趋势</h2></div><div class="legend"><span class="orange-dot">摄入</span><span class="green-dot">每日建议</span></div></div>
+            <div class="chart-wrap"><canvas id="weekChart"></canvas></div>
+          </article>
+          <article class="panel day-log">
+            <div class="card-heading"><div><span class="section-kicker">时间线</span><h2>今天的记录</h2></div><button class="text-btn" data-go="food">查看全部</button></div>
+            <div id="todayTimeline" class="timeline"></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="view" id="view-food">
+        <div class="section-header food-section-header"><div><span class="section-kicker">长期饮食跟踪</span><h2 id="foodPageTitle">记录今天吃了什么</h2><p>选择日期查看或补记饮食；每日建议用于服务长期目标，不代表目标只持续一天。</p></div><div class="food-header-actions"><label>记录日期<input type="date" id="foodDate" aria-label="饮食记录日期"></label><button class="ghost-btn" id="foodToday" type="button">今天</button><button class="primary-btn" id="addFoodTop">＋ 添加食物</button></div></div>
+        <div class="summary-strip" id="foodSummary"></div>
+        <div class="meal-grid" id="mealGrid"></div>
+        <article class="panel food-history-panel">
+          <div class="card-heading"><div><span class="section-kicker">连续跟踪</span><h2>截至所选日期的 7 天趋势</h2></div><div class="legend"><span class="orange-dot">摄入热量</span><span class="green-dot">每日建议</span></div></div>
+          <div class="food-history-layout"><div class="chart-wrap"><canvas id="foodHistoryChart"></canvas></div><div class="food-history-stats" id="foodHistoryStats"></div></div>
+        </article>
+        <article class="panel knowledge-panel">
+          <div><span class="section-kicker">知识库提示</span><h2>本周饮食观察</h2></div>
+          <div class="knowledge-cards" id="foodInsights"></div>
+        </article>
+      </section>
+
+      <section class="view" id="view-training">
+        <div class="section-header"><div><span class="section-kicker">力量训练</span><h2>把每组训练变成可见的进步</h2><p>记录动作、重量、组次与主观强度，系统会结合个人体重推算训练消耗。</p></div><button class="primary-btn" id="addWorkoutTop">＋ 记录训练</button></div>
+        <div class="training-grid">
+          <article class="panel"><div class="card-heading"><div><span class="section-kicker">本周</span><h2>训练负荷</h2></div><span class="status-pill" id="trainingStatus">尚未记录</span></div><div class="training-stats" id="trainingStats"></div></article>
+          <article class="panel one-rm"><div><span class="section-kicker">参考表公式</span><h2>1RM 估算</h2><p>使用 Brzycki 公式，根据某组重量与接近力竭的次数估算最大力量。</p></div><div class="one-rm-form"><label>重量 kg<input type="number" id="rmWeight" value="50" min="1"></label><label>次数<input type="number" id="rmReps" value="8" min="1" max="15"></label><div><span>估算 1RM</span><strong id="rmResult">—</strong></div></div></article>
+        </div>
+        <article class="panel"><div class="card-heading"><div><span class="section-kicker">历史</span><h2>力量训练记录</h2></div></div><div class="table-wrap"><table><thead><tr><th>日期</th><th>训练内容</th><th>容量</th><th>预计消耗</th><th>强度</th><th></th></tr></thead><tbody id="workoutTable"></tbody></table></div></article>
+      </section>
+
+      <section class="view" id="view-expense">
+        <div class="section-header"><div><span class="section-kicker">记账</span><h2>看清每天的钱花在哪里</h2><p>记录金额、分类和支付方式。数据保存在当前用户的本机数据库中，不连接银行卡或第三方账户。</p></div><button class="primary-btn" id="addExpenseTop">＋ 记一笔</button></div>
+        <div class="summary-strip expense-summary" id="expenseSummary"></div>
+        <div class="expense-grid">
+          <article class="panel">
+            <div class="card-heading"><div><span class="section-kicker">按日统计</span><h2>本月花销趋势</h2></div><input class="month-picker" type="month" id="expenseMonth" aria-label="记账月份"></div>
+            <div class="chart-wrap"><canvas id="expenseTrendChart"></canvas></div>
+          </article>
+          <article class="panel budget-panel">
+            <div><span class="section-kicker">月度控制</span><h2>预算与分类</h2></div>
+            <form class="budget-form" id="budgetForm"><label>本月预算（元）<input type="number" id="monthlyBudget" min="0" step="100" placeholder="例如 5000"></label><button class="ghost-btn" type="submit">保存预算</button></form>
+            <div class="budget-meter"><div><span id="budgetCaption">尚未设置预算</span><b id="budgetPercent">—</b></div><div class="track"><i id="budgetBar"></i></div></div>
+            <div class="category-list" id="expenseCategories"></div>
+          </article>
+        </div>
+        <article class="panel expense-ledger">
+          <div class="card-heading"><div><span class="section-kicker">流水</span><h2>支出明细</h2></div><span class="status-pill" id="expenseCount">0 笔</span></div>
+          <div class="table-wrap"><table><thead><tr><th>日期</th><th>分类</th><th>用途</th><th>支付方式</th><th>金额</th><th></th></tr></thead><tbody id="expenseTable"></tbody></table></div>
+        </article>
+      </section>
+
+      <section class="view" id="view-agent">
+        <div class="section-header"><div><span class="section-kicker">BOJI CHAT AGENT</span><h2>问问你的私人健康助理</h2><p>Agent 会结合当前账户的健康、饮食、训练和花销数据提供建议。个人数据仅由本地后端按需发送给 DeepSeek。</p></div><span class="status-pill" id="agentStatus">检查连接中</span></div>
+        <div class="agent-layout">
+          <aside class="panel agent-context">
+            <span class="section-kicker">可参考的数据</span><h2>你的生活上下文</h2>
+            <div class="agent-context-list">
+              <div><span>营</span><p><strong>营养与饮食</strong><small>近期摄入、宏量营养素和目标</small></p></div>
+              <div><span>训</span><p><strong>训练与习惯</strong><small>手动训练记录、频率和主观强度</small></p></div>
+              <div><span>¥</span><p><strong>日常花销</strong><small>近期支出分类和月度预算</small></p></div>
+            </div>
+            <div class="agent-toolbox"><span class="section-kicker">工具列表</span><div id="agentTools"><div class="tool-card"><strong>食物卡路里查询</strong><small>知识库优先 · AI 兜底估算</small></div></div><form id="foodToolForm"><input name="name" placeholder="食物，如牛肉面" required><div><input name="amount" type="number" min="0.1" max="5000" step="0.1" value="100" required><span>克</span><button type="submit">查询</button></div></form><div class="tool-result hidden" id="foodToolResult"></div></div>
+            <p class="agent-disclaimer">AI 建议仅用于个人参考，不替代医生、营养师或财务专业人士的判断。</p>
+          </aside>
+          <article class="panel agent-chat">
+            <div class="agent-chat-head"><div><span class="agent-orb">✦</span><div><strong>Boji Agent</strong><small id="agentModel">DeepSeek</small></div></div><button class="text-btn" id="clearAgentChat" type="button">清空对话</button></div>
+            <div class="agent-messages" id="agentMessages"></div>
+            <div class="agent-prompts" id="agentPrompts">
+              <button type="button" data-agent-prompt="根据我最近的饮食记录，今天应该重点补充什么？">今天怎么吃？</button>
+              <button type="button" data-agent-prompt="结合我最近的手动训练记录，给我一个今天的训练建议。">训练建议</button>
+              <button type="button" data-agent-prompt="分析我这个月的花销结构，有哪些可以优化？">花销分析</button>
+            </div>
+            <form class="agent-composer" id="agentForm"><textarea name="message" rows="2" maxlength="4000" placeholder="例如：结合最近一周的数据，我今天适合训练吗？" required></textarea><button class="primary-btn" type="submit" aria-label="发送消息">发送</button></form>
+          </article>
+        </div>
+      </section>
+
+
+    </main>
+  </div>
+
+  <div class="modal-backdrop hidden" id="profileModal" role="dialog" aria-modal="true" aria-labelledby="profileTitle">
+    <form class="modal profile-modal" id="profileForm">
+      <button type="button" class="modal-close" data-close="profileModal">×</button>
+      <div class="profile-account-head">
+        <span class="profile-avatar-large" id="profileModalAvatar">W</span>
+        <div><span class="section-kicker">个人账户</span><h2 id="profileTitle">个人资料</h2><p><strong id="currentUsername">—</strong> · 用户名是不可重复的账户标识</p></div>
+        <button class="profile-logout" id="logoutBtn" type="button">退出登录</button>
+      </div>
+      <div class="profile-section-title"><span>基本信息</span><small>用于个性化页面称呼和健康建议</small></div>
+      <div class="form-grid">
+        <label>昵称<input name="name" maxlength="30" placeholder="怎么称呼你" required></label>
+        <label>所在地区<input name="location" maxlength="40" placeholder="例如：上海"></label>
+        <label>职业 / 身份<input name="occupation" maxlength="40" placeholder="例如：产品经理、学生"></label>
+        <label>生理性别<select name="sex"><option value="male">男性</option><option value="female">女性</option></select></label>
+        <label>年龄<input name="age" type="number" min="16" max="90" placeholder="30" required></label>
+        <label>每日步数目标<input name="stepGoal" type="number" min="1000" max="50000" step="500" value="8000"></label>
+      </div>
+      <div class="profile-section-title"><span>身体与长期目标</span><small>每日营养建议会随长期目标调整</small></div>
+      <div class="form-grid profile-health-grid">
+        <label>身高 cm<input name="height" type="number" min="120" max="230" placeholder="175" required></label>
+        <label>体重 kg<input name="weight" type="number" min="30" max="250" step="0.1" placeholder="70" required></label>
+        <label>每周力量训练<select name="trainingDays"><option value="0">0 次</option><option value="2">1–2 次</option><option value="4" selected>3–4 次</option><option value="5">5 次以上</option></select></label>
+        <label>长期目标<select name="goal"><option value="lose">稳健减脂</option><option value="maintain">维持体重</option><option value="gain">干净增肌</option></select></label>
+        <label>目标体重 kg<input name="targetWeight" type="number" min="30" max="250" step="0.1" placeholder="选填"></label>
+        <label>计划日期<input name="goalDeadline" type="date"></label>
+      </div>
+      <div class="calc-preview" id="calcPreview"></div>
+      <div class="profile-form-footer"><p>长期目标会持续保存；系统据此生成阶段性的每日营养建议。估算结果不替代医生或营养师建议。</p><button class="primary-btn" type="submit">保存个人资料</button></div>
+    </form>
+  </div>
+
+  <div class="modal-backdrop hidden" id="foodModal" role="dialog" aria-modal="true">
+    <form class="modal compact" id="foodForm">
+      <button type="button" class="modal-close" data-close="foodModal">×</button><span class="section-kicker">饮食记录</span><h2>添加食物</h2><p class="food-record-date">记录到 <strong id="foodRecordDate">今天</strong></p>
+      <div class="form-grid">
+        <label class="wide">餐次<select name="meal"><option>早餐</option><option>午餐</option><option>晚餐</option><option>加餐</option></select></label>
+        <label class="wide">食物名称<input name="foodName" id="foodName" list="foodSuggestions" maxlength="120" placeholder="可选知识库食物，也可输入新食物" autocomplete="off" required><datalist id="foodSuggestions"></datalist></label>
+        <label>重量 / 份数<input type="number" name="amount" min="0.1" step="0.1" value="50" required></label>
+        <label>单位<select name="unit" id="foodUnit"><option value="g">克 / 毫升</option><option value="serving">份 / 个</option></select></label>
+        <label class="wide">组成 / 备注（选填）<input name="description" maxlength="1000" placeholder="多道食物可写：馒头50g、鸡蛋1个"></label>
+      </div>
+      <div class="food-preview" id="foodPreview" aria-live="polite">填写食物后查询营养；优先本地知识库，未命中时由 AI 估算。</div>
+      <button class="ghost-btn full" id="foodLookupButton" type="button">查询营养</button>
+      <button class="primary-btn full" id="foodSaveButton" type="submit" disabled>确认保存饮食</button>
+    </form>
+  </div>
+
+  <div class="modal-backdrop hidden" id="workoutModal" role="dialog" aria-modal="true">
+    <form class="modal training-modal" id="workoutForm">
+      <button type="button" class="modal-close" data-close="workoutModal">×</button><span class="section-kicker">训练记录</span><h2>记录一次力量训练</h2>
+      <p class="training-today-hint">保存后自动记录为今天，无需选择日期。</p>
+      <div class="training-meta">
+        <label class="training-rpe">主观强度 RPE<select name="rpe" id="workoutRpe"><option value="4">4 · 轻松</option><option value="6">6 · 适中</option><option value="7" selected>7 · 有挑战</option><option value="8">8 · 很吃力</option><option value="9">9 · 接近极限</option></select></label>
+        <div class="training-estimate"><span>本次预计消耗</span><strong id="trainingCalories">0 kcal</strong><small id="trainingEstimateNote">根据动作、组次、RPE 和个人体重估算</small></div>
+      </div>
+      <section class="exercise-builder" id="exerciseBuilder">
+        <div class="exercise-builder-head"><div><span class="section-kicker">动作模块</span><h3>本次力量训练</h3><p>选择动作，填写重量、组数和每组次数。</p></div><button class="ghost-btn" id="addExercise" type="button">＋ 添加动作</button></div>
+        <div class="exercise-presets" aria-label="常用动作"><button type="button" data-exercise-preset="深蹲">深蹲</button><button type="button" data-exercise-preset="高位下拉">高位下拉</button><button type="button" data-exercise-preset="卧推">卧推</button><button type="button" data-exercise-preset="硬拉">硬拉</button><button type="button" data-exercise-preset="坐姿划船">坐姿划船</button></div>
+        <div class="exercise-rows" id="exerciseRows"></div>
+        <div class="training-volume"><span>预计训练容量</span><strong id="trainingVolume">0 kg</strong><small>重量 × 组数 × 每组次数</small></div>
+      </section>
+      <label class="workout-note">训练备注<input name="note" placeholder="例如：最后一组接近力竭，动作状态良好"></label>
+      <button class="primary-btn full" type="submit">保存训练</button>
+    </form>
+  </div>
+
+  <div class="modal-backdrop hidden" id="expenseModal" role="dialog" aria-modal="true">
+    <form class="modal compact" id="expenseForm">
+      <button type="button" class="modal-close" data-close="expenseModal">×</button><span class="section-kicker">每日花销</span><h2>记录一笔支出</h2>
+      <div class="form-grid">
+        <label>日期<input name="date" type="date" required></label>
+        <label>金额（元）<input name="amount" type="number" min="0.01" step="0.01" placeholder="0.00" required></label>
+        <label>分类<select name="category"><option>餐饮</option><option>交通</option><option>购物</option><option>住房</option><option>运动健康</option><option>娱乐</option><option>学习</option><option>人情往来</option><option>其他</option></select></label>
+        <label>支付方式<select name="payment"><option>微信</option><option>支付宝</option><option>银行卡</option><option>现金</option><option>其他</option></select></label>
+        <label class="wide">用途 / 商户<input name="title" placeholder="例如：午餐、地铁、健身房" required></label>
+        <label class="wide">备注<input name="note" placeholder="例如：馒头50g、鸡蛋1个、纯牛奶250ml"></label>
+        <label class="wide consent expense-food-toggle"><input type="checkbox" name="syncFood"> 这笔消费是食物，同时加入饮食记录</label>
+        <div class="wide food-sync-fields hidden" id="expenseFoodFields">
+          <label>食物名称<input name="foodName" placeholder="例如：馒头、牛肉面"></label>
+          <label>食用重量（克）<input name="foodWeight" type="number" min="0.1" max="5000" step="0.1" value="100"></label>
+          <label>餐次<select name="foodMeal"><option>早餐</option><option selected>午餐</option><option>晚餐</option><option>加餐</option></select></label>
+          <div class="food-preview" id="expenseFoodPreview">备注中有多道食物时，用“、”或逗号分隔。系统会逐项查询知识库，无法完整匹配时由 AI 拆分估算。</div>
+        </div>
+      </div>
+      <button class="primary-btn full" type="submit">保存支出</button>
+    </form>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script src="/knowledge-base/browser-bundle.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

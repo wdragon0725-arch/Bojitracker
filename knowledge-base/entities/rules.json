@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0.0",
+  "rules": [
+    {
+      "id": "bmr-mifflin-st-jeor",
+      "topic": "energy",
+      "description": "男性基础代谢=体重kg×9.99+身高cm×6.25-年龄×4.92+5；女性将常数项改为-161。",
+      "source": {
+        "sheet": "1减脂-早饭后练（早起版）",
+        "cell": "G13"
+      }
+    },
+    {
+      "id": "non-exercise-energy",
+      "topic": "energy",
+      "description": "原表以基础代谢约占无运动总消耗70%估算无运动总消耗。",
+      "source": {
+        "sheet": "1减脂-早饭后练（早起版）",
+        "cell": "D14:G14"
+      }
+    },
+    {
+      "id": "fat-loss-rate",
+      "topic": "weight",
+      "description": "原表建议以至少两周趋势评估减重，单日体重容易受食物与水分影响。",
+      "source": {
+        "sheet": "1减脂-早饭后练（早起版）",
+        "cell": "B9:C9"
+      }
+    },
+    {
+      "id": "strength-frequency-fat-loss",
+      "topic": "training",
+      "description": "减脂期为减少肌肉损失，原表建议每周力量训练3–5次。",
+      "source": {
+        "sheet": "1减脂-早饭后练（早起版）",
+        "cell": "C24:E24"
+      }
+    },
+    {
+      "id": "strength-frequency-gain",
+      "topic": "training",
+      "description": "增肌需要稳定力量训练，原表建议每周3–5次。",
+      "source": {
+        "sheet": "9增肌-早饭后练（早起版）",
+        "cell": "C24:E24"
+      }
+    },
+    {
+      "id": "aerobic-weekly-average",
+      "topic": "training",
+      "description": "饮食方案中的每日有氧消耗=每小时消耗×每周小时数÷7。",
+      "source": {
+        "sheet": "16有氧热量消耗",
+        "cell": "B6:F7"
+      }
+    },
+    {
+      "id": "fruit-counts-as-carbs",
+      "topic": "nutrition",
+      "description": "水果中的糖属于碳水，应计入碳水配额。",
+      "source": {
+        "sheet": "1减脂-早饭后练（早起版）",
+        "cell": "N46:N53"
+      }
+    },
+    {
+      "id": "vegetables-not-overtracked",
+      "topic": "nutrition",
+      "description": "原表认为普通蔬菜碳水率较低，不必过度定量。",
+      "source": {
+        "sheet": "1减脂-早饭后练（早起版）",
+        "cell": "N31:N34"
+      }
+    }
+  ],
+  "medical_disclaimer": "该知识库来自作者提供的健身经验表格，仅用于产品参考与自我记录，不构成医疗诊断、治疗或个体化营养处方。"
+}

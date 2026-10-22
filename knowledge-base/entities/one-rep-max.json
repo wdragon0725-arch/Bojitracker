@@ -1,0 +1,116 @@
+{
+  "source_sheet": "25最大力量预测公式",
+  "title": "预测卧推/深蹲的最大力量",
+  "instructions": "使用说明：适用于自由卧推/深蹲，输入你做组的配重，和该配重的力竭次数（动作全程接近完全标准），只输数字，不要输入单位，自动出结果",
+  "literature_source": "资料来源：Accuracy of 1RM Prediction Equations Before and After Resistance Training in Three Different Lifts",
+  "formulas": [
+    {
+      "author": "Adams",
+      "description": "最大力量=配重/(1-0.02×力竭次数)",
+      "input_weight_example_kg": 50,
+      "input_repetitions_example": 10,
+      "excel_formula": "=D7/(1-0.02*E7)",
+      "accuracy_note": null,
+      "source": {
+        "sheet": "25最大力量预测公式",
+        "cell": "B7:G7"
+      }
+    },
+    {
+      "author": "Brown",
+      "description": "最大力量=(力竭次数×0.0328+0.9849)×配重",
+      "input_weight_example_kg": null,
+      "input_repetitions_example": null,
+      "excel_formula": "=(E7*0.0328+0.9849)*D7",
+      "accuracy_note": "对女性较准确",
+      "source": {
+        "sheet": "25最大力量预测公式",
+        "cell": "B8:G8"
+      }
+    },
+    {
+      "author": "Brzycki",
+      "description": "最大力量=配重/(1.0278-0.0278×力竭次数)",
+      "input_weight_example_kg": null,
+      "input_repetitions_example": null,
+      "excel_formula": "=D7/(1.0278-0.0278*E7)",
+      "accuracy_note": "对女性较准确",
+      "source": {
+        "sheet": "25最大力量预测公式",
+        "cell": "B9:G9"
+      }
+    },
+    {
+      "author": "Lander",
+      "description": "最大力量=配重/(1.013-0.0267123×力竭次数)",
+      "input_weight_example_kg": null,
+      "input_repetitions_example": null,
+      "excel_formula": "=D7/(1.013-0.0267123*E7)",
+      "accuracy_note": "对女性较准确",
+      "source": {
+        "sheet": "25最大力量预测公式",
+        "cell": "B10:G10"
+      }
+    },
+    {
+      "author": "Lombardi",
+      "description": "最大力量=力竭次数^0.1×配重",
+      "input_weight_example_kg": null,
+      "input_repetitions_example": null,
+      "excel_formula": "=E7^0.1*D7",
+      "accuracy_note": "对男性较准确",
+      "source": {
+        "sheet": "25最大力量预测公式",
+        "cell": "B11:G11"
+      }
+    },
+    {
+      "author": "Mayhew",
+      "description": "最大力量=配重/(0.522+0.419×e^(-0.055×力竭次数))",
+      "input_weight_example_kg": null,
+      "input_repetitions_example": null,
+      "excel_formula": "=D7/(0.522+0.419*EXP(-0.055*E7))",
+      "accuracy_note": null,
+      "source": {
+        "sheet": "25最大力量预测公式",
+        "cell": "B12:G12"
+      }
+    },
+    {
+      "author": "O’Connor",
+      "description": "最大力量=0.025×(配重×力竭次数)+配重",
+      "input_weight_example_kg": null,
+      "input_repetitions_example": null,
+      "excel_formula": "=0.025*D7*E7+D7",
+      "accuracy_note": null,
+      "source": {
+        "sheet": "25最大力量预测公式",
+        "cell": "B13:G13"
+      }
+    },
+    {
+      "author": "Wathen",
+      "description": "最大力量=配重/(0.488+0.538×e^(-0.075×力竭次数))",
+      "input_weight_example_kg": null,
+      "input_repetitions_example": null,
+      "excel_formula": "=D7/(0.488+0.538*EXP(-0.075*E7))",
+      "accuracy_note": null,
+      "source": {
+        "sheet": "25最大力量预测公式",
+        "cell": "B14:G14"
+      }
+    },
+    {
+      "author": "Welday",
+      "description": "最大力量=(力竭次数×0.0333)×配重+配重",
+      "input_weight_example_kg": null,
+      "input_repetitions_example": null,
+      "excel_formula": "=(E7*0.0333)*D7+D7",
+      "accuracy_note": null,
+      "source": {
+        "sheet": "25最大力量预测公式",
+        "cell": "B15:G15"
+      }
+    }
+  ]
+}

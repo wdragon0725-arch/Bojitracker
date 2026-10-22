@@ -1,0 +1,1859 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<script>if(!new URLSearchParams(location.search).has('legacy')) location.replace('boji-health.html');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a0e14">
+<meta name="description" content="Local-first Apple Health data dashboard. Import your Health export and visualize, compare, and analyze your data — all in your browser.">
+<title>Apple Health Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js" crossorigin="anonymous"></script>
+<style>
+:root{
+  --bg:#0a0e14;
+  --panel:#121821;
+  --panel2:#1a212d;
+  --border:#222b3a;
+  --text:#e6edf3;
+  --muted:#8b98a9;
+  --accent:#ff3b30;
+  --accent2:#30d158;
+  --accent3:#0a84ff;
+  --accent4:#ff9f0a;
+  --accent5:#bf5af2;
+  --accent6:#64d2ff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,sans-serif;font-size:14px;line-height:1.5}
+.container{max-width:1600px;margin:0 auto;padding:24px}
+header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:16px}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-icon{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#ff3b30,#ff9f0a);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+h1{font-size:22px;font-weight:600}
+.subtitle{color:var(--muted);font-size:12px}
+
+@media (max-width:640px){
+  .container{padding:14px}
+  h1{font-size:18px}
+  .subtitle{font-size:11px}
+  .logo-icon{width:34px;height:34px;font-size:18px}
+  header{margin-bottom:16px}
+}
+
+.import-zone{background:var(--panel);border:2px dashed var(--border);border-radius:14px;padding:48px 24px;text-align:center;cursor:pointer;transition:all .2s}
+.import-zone:hover{border-color:var(--accent3);background:var(--panel2)}
+.import-zone.drag{border-color:var(--accent2);background:rgba(48,209,88,.05)}
+.import-zone h2{font-size:18px;margin-bottom:8px}
+.import-zone p{color:var(--muted);font-size:13px;margin-bottom:16px}
+.import-zone .icon{font-size:48px;margin-bottom:16px;opacity:.6}
+@media (max-width:640px){
+  .import-zone{padding:32px 16px}
+  .import-zone h2{font-size:16px}
+  .import-zone p{font-size:12px}
+  .import-zone .icon{font-size:40px}
+}
+.btn{background:var(--accent3);color:white;border:none;padding:10px 20px;border-radius:8px;font-size:14px;font-weight:500;cursor:pointer;transition:all .15s;font-family:inherit}
+.btn:hover{background:#0070dd}
+.btn-secondary{background:var(--panel2);border:1px solid var(--border);color:var(--text)}
+.btn-secondary:hover{background:var(--panel);border-color:var(--accent3)}
+.export-btn{padding:8px 14px;font-size:12px;display:inline-flex;align-items:center}
+
+#progress{display:none;margin-top:20px;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:16px}
+#progressBar{height:6px;background:var(--border);border-radius:3px;overflow:hidden;margin-top:8px}
+#progressFill{height:100%;background:linear-gradient(90deg,var(--accent3),var(--accent2));width:0%;transition:width .2s}
+#progressText{font-size:12px;color:var(--muted);margin-top:6px}
+
+#dashboard{display:none}
+
+.toolbar{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:20px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.toolbar label{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.5px;margin-right:6px}
+.toolbar select,.toolbar input{background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:8px 12px;font-size:13px;font-family:inherit}
+.toolbar select:focus,.toolbar input:focus{outline:none;border-color:var(--accent3)}
+
+@media (max-width:640px){
+  .toolbar{padding:12px;gap:8px}
+  .toolbar > div{flex:1;min-width:140px}
+  .toolbar label{display:block;margin-bottom:4px}
+  .toolbar select{width:100%}
+  #dataInfo{flex-basis:100%;text-align:center;margin-left:0!important;padding-top:6px;border-top:1px solid var(--border)}
+}
+
+.tabs{display:flex;gap:4px;margin-bottom:20px;border-bottom:1px solid var(--border);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+.tabs::-webkit-scrollbar{height:4px}
+.tabs::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.tab{padding:12px 20px;background:none;border:none;color:var(--muted);cursor:pointer;font-size:14px;font-weight:500;border-bottom:2px solid transparent;white-space:nowrap;font-family:inherit}
+.tab:hover{color:var(--text)}
+.tab.active{color:var(--text);border-bottom-color:var(--accent3)}
+
+@media (max-width:640px){
+  .tab{padding:10px 14px;font-size:13px}
+}
+
+.tab-content{display:none}
+.tab-content.active{display:block}
+
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:24px}
+@media (max-width:640px){
+  .kpi-grid{grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:18px}
+  .kpi{padding:14px}
+  .kpi-value{font-size:20px}
+  .kpi-label{font-size:10px}
+}
+.kpi{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:18px;position:relative;overflow:hidden}
+.kpi::before{content:"";position:absolute;top:0;left:0;width:3px;height:100%;background:var(--accent3)}
+.kpi.steps::before{background:var(--accent2)}
+.kpi.energy::before{background:var(--accent4)}
+.kpi.heart::before{background:var(--accent)}
+.kpi.distance::before{background:var(--accent6)}
+.kpi.sleep::before{background:var(--accent5)}
+.kpi-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px}
+.kpi-value{font-size:26px;font-weight:600;line-height:1.2}
+.kpi-unit{font-size:12px;color:var(--muted);margin-left:4px;font-weight:400}
+.kpi-sub{font-size:11px;color:var(--muted);margin-top:6px}
+
+.card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px}
+.card-header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:12px}
+.card-header-text{flex:1;min-width:0}
+.card h3{font-size:15px;font-weight:600;margin-bottom:4px}
+.card .desc{font-size:12px;color:var(--muted);margin-bottom:0}
+.card-actions{display:flex;gap:6px;flex-shrink:0}
+.icon-btn{background:var(--panel2);border:1px solid var(--border);color:var(--muted);width:32px;height:32px;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;transition:all .15s;padding:0}
+.icon-btn:hover{color:var(--text);border-color:var(--accent3);background:var(--panel)}
+.icon-btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.chart-wrapper{position:relative;height:320px}
+.chart-wrapper.tall{height:400px}
+.chart-wrapper.short{height:240px}
+
+@media (max-width:640px){
+  .card{padding:14px;border-radius:10px}
+  .card h3{font-size:14px}
+  .card .desc{font-size:11px}
+  .chart-wrapper{height:260px}
+  .chart-wrapper.tall{height:300px}
+  .chart-wrapper.short{height:200px}
+}
+
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:900px){.grid-2{grid-template-columns:1fr}}
+
+.compare-controls{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px;padding:14px;background:var(--panel2);border-radius:8px}
+.compare-controls > div{flex:1;min-width:160px}
+.compare-controls select{width:100%;background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:8px 10px;font-size:13px;font-family:inherit}
+.compare-controls label{display:block;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+
+@media (max-width:640px){
+  .compare-controls{padding:10px;gap:8px}
+  .compare-controls > div{min-width:100%}
+}
+
+/* PRINT STYLES — when printing a single chart, hide everything else */
+@media print {
+  body { background: white !important; color: black !important; }
+  body.printing-chart * { visibility: hidden !important; }
+  body.printing-chart .print-target,
+  body.printing-chart .print-target * { visibility: visible !important; }
+  body.printing-chart .print-target {
+    position: absolute !important;
+    left: 0 !important; top: 0 !important;
+    width: 100% !important;
+    background: white !important;
+    color: black !important;
+    border: none !important;
+    padding: 20px !important;
+    margin: 0 !important;
+  }
+  body.printing-chart .print-target h3,
+  body.printing-chart .print-target .desc { color: black !important; }
+  body.printing-chart .print-target .card-actions { display: none !important; }
+  body.printing-chart .print-target .chart-wrapper {
+    height: 500px !important;
+    page-break-inside: avoid;
+  }
+  body.printing-chart .print-meta {
+    visibility: visible !important;
+    position: absolute;
+    bottom: 20px; left: 20px; right: 20px;
+    font-size: 10px; color: #666;
+    border-top: 1px solid #ccc;
+    padding-top: 8px;
+    text-align: center;
+  }
+  @page { margin: 1.5cm; size: landscape; }
+}
+
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--border)}
+th{color:var(--muted);font-weight:500;font-size:11px;text-transform:uppercase;letter-spacing:.5px}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+tr:hover td{background:var(--panel2)}
+
+.badge{display:inline-block;padding:3px 8px;border-radius:4px;font-size:11px;font-weight:500;background:var(--panel2);border:1px solid var(--border)}
+.badge.green{background:rgba(48,209,88,.15);color:var(--accent2);border-color:rgba(48,209,88,.3)}
+.badge.red{background:rgba(255,59,48,.15);color:var(--accent);border-color:rgba(255,59,48,.3)}
+.badge.blue{background:rgba(10,132,255,.15);color:var(--accent3);border-color:rgba(10,132,255,.3)}
+
+.empty{text-align:center;padding:40px;color:var(--muted);font-size:13px}
+.warning{background:rgba(255,159,10,.1);border:1px solid rgba(255,159,10,.3);color:var(--accent4);padding:12px 16px;border-radius:8px;font-size:12px;margin-bottom:16px}
+.info{background:rgba(10,132,255,.08);border:1px solid rgba(10,132,255,.2);color:var(--accent6);padding:12px 16px;border-radius:8px;font-size:12px;margin-bottom:16px}
+
+.types-list{max-height:300px;overflow-y:auto;background:var(--panel2);border-radius:8px;padding:12px}
+.types-list div{padding:6px 8px;font-size:12px;color:var(--muted);font-family:"SF Mono",Menlo,monospace;border-bottom:1px solid var(--border);word-break:break-all}
+.types-list div:last-child{border-bottom:none}
+.types-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:640px){.types-grid{grid-template-columns:1fr}}
+
+footer{margin-top:40px;padding:20px;text-align:center;color:var(--muted);font-size:11px;border-top:1px solid var(--border)}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <div class="logo">
+    <div class="logo-icon">❤</div>
+    <div>
+      <h1>Apple Health Dashboard</h1>
+      <div class="subtitle">Lokale Analyse — keine Daten verlassen deinen Browser</div>
+    </div>
+  </div>
+  <div id="headerActions" style="display:none">
+    <button class="btn btn-secondary" onclick="resetAll()">Neue Datei laden</button>
+  </div>
+</header>
+
+<div id="importSection">
+  <div class="info">
+    <strong>So exportierst du deine Daten:</strong> iPhone → Health App → Profilbild oben rechts → „Daten exportieren" → ZIP-Datei wird erstellt → diese ZIP hier hochladen.
+    Alternativ kannst du auch die entpackte <code>export.xml</code> direkt laden.
+  </div>
+  <div class="import-zone" id="dropZone" onclick="document.getElementById('fileInput').click()">
+    <div class="icon">📁</div>
+    <h2>ZIP- oder XML-Datei hier ablegen</h2>
+    <p>oder klicken zum Auswählen — verarbeitet auch große Exporte (&gt;500 MB)</p>
+    <button class="btn">Datei auswählen</button>
+    <input type="file" id="fileInput" accept=".zip,.xml" style="display:none">
+  </div>
+  <div id="progress">
+    <div id="progressText">Starte…</div>
+    <div id="progressBar"><div id="progressFill"></div></div>
+  </div>
+</div>
+
+<div id="dashboard">
+  <div class="toolbar">
+    <div>
+      <label>Zeitraum</label>
+      <select id="rangeSelect">
+        <option value="30">Letzte 30 Tage</option>
+        <option value="90">Letzte 90 Tage</option>
+        <option value="180">Letzte 6 Monate</option>
+        <option value="365" selected>Letztes Jahr</option>
+        <option value="730">Letzte 2 Jahre</option>
+        <option value="all">Alle Daten</option>
+      </select>
+    </div>
+    <div>
+      <label>Gruppierung</label>
+      <select id="groupSelect">
+        <option value="day">Täglich</option>
+        <option value="week" selected>Wöchentlich</option>
+        <option value="month">Monatlich</option>
+      </select>
+    </div>
+    <div style="margin-left:auto;display:flex;gap:8px;align-items:center">
+      <button class="btn btn-secondary export-btn" onclick="openExportDialog()" title="Für Claude/ChatGPT exportieren">
+        <svg viewBox="0 0 24 24" width="14" height="14" style="vertical-align:-2px;margin-right:4px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Export für KI
+      </button>
+    </div>
+    <div style="color:var(--muted);font-size:12px;flex-basis:100%;text-align:right" id="dataInfo"></div>
+  </div>
+
+  <!-- Export Dialog -->
+  <div id="exportModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;align-items:center;justify-content:center;padding:16px">
+    <div style="background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:24px;max-width:560px;width:100%;max-height:90vh;overflow-y:auto">
+      <h2 style="margin-bottom:8px;font-size:18px">Export für KI-Analyse</h2>
+      <p style="color:var(--muted);font-size:13px;margin-bottom:18px">
+        Erstellt eine kompakte Datei, die du in Claude, ChatGPT o. Ä. hochladen kannst um dir deine Daten analysieren zu lassen. Optimiert für kleine Dateigrößen.
+      </p>
+
+      <div style="margin-bottom:14px">
+        <label style="display:block;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Zeitraum</label>
+        <select id="exportRange" style="width:100%;background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:10px;font-size:13px;font-family:inherit">
+          <option value="90">Letzte 90 Tage (sehr kompakt)</option>
+          <option value="180">Letzte 6 Monate</option>
+          <option value="365" selected>Letzte 12 Monate (empfohlen)</option>
+          <option value="730">Letzte 2 Jahre</option>
+          <option value="all">Alle Daten (kann groß werden)</option>
+        </select>
+      </div>
+
+      <div style="margin-bottom:14px">
+        <label style="display:block;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Format</label>
+        <select id="exportFormat" style="width:100%;background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:10px;font-size:13px;font-family:inherit">
+          <option value="json" selected>JSON (empfohlen für Claude — strukturiert &amp; kompakt)</option>
+          <option value="csv">CSV (Tabellenform, für Excel/Sheets)</option>
+          <option value="markdown">Markdown-Report (bereits vor-analysiert)</option>
+        </select>
+      </div>
+
+      <div style="margin-bottom:14px">
+        <label style="display:block;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Detailgrad</label>
+        <select id="exportDetail" style="width:100%;background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:10px;font-size:13px;font-family:inherit">
+          <option value="daily" selected>Tageswerte (max. Detail)</option>
+          <option value="weekly">Wochenmittel (kleiner)</option>
+          <option value="monthly">Monatsmittel (sehr klein)</option>
+        </select>
+      </div>
+
+      <div id="exportPreview" style="background:var(--panel2);border:1px solid var(--border);border-radius:8px;padding:12px;font-size:12px;margin-bottom:18px;font-family:'SF Mono',Menlo,monospace">
+        Berechne Größe…
+      </div>
+
+      <div style="display:flex;gap:10px;justify-content:flex-end">
+        <button class="btn btn-secondary" onclick="closeExportDialog()">Abbrechen</button>
+        <button class="btn" onclick="doExport()">Datei herunterladen</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('overview')">Übersicht</button>
+    <button class="tab" onclick="switchTab('activity')">Aktivität</button>
+    <button class="tab" onclick="switchTab('heart')">Herz &amp; Kreislauf</button>
+    <button class="tab" onclick="switchTab('body')">Körper</button>
+    <button class="tab" onclick="switchTab('sleep')">Schlaf</button>
+    <button class="tab" onclick="switchTab('compare')">Vergleich</button>
+    <button class="tab" onclick="switchTab('correlation')">Korrelation</button>
+    <button class="tab" onclick="switchTab('raw')">Rohdaten</button>
+  </div>
+
+  <div id="tab-overview" class="tab-content active">
+    <div class="kpi-grid" id="kpiGrid"></div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Schritte</h3>
+        <div class="desc">Tagessumme über den gewählten Zeitraum</div>
+        <div class="chart-wrapper"><canvas id="chartSteps"></canvas></div>
+      </div>
+      <div class="card">
+        <h3>Aktive Energie</h3>
+        <div class="desc">Verbrannte aktive Kalorien (kcal)</div>
+        <div class="chart-wrapper"><canvas id="chartEnergy"></canvas></div>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Ruheherzfrequenz</h3>
+        <div class="desc">Tagesmittelwert in bpm</div>
+        <div class="chart-wrapper"><canvas id="chartRHR"></canvas></div>
+      </div>
+      <div class="card">
+        <h3>Distanz beim Gehen/Laufen</h3>
+        <div class="desc">Tagessumme in Kilometern</div>
+        <div class="chart-wrapper"><canvas id="chartDistance"></canvas></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-activity" class="tab-content">
+    <div class="card">
+      <h3>Schritte (detailliert)</h3>
+      <div class="desc">Inkl. 7-Tage gleitender Durchschnitt</div>
+      <div class="chart-wrapper tall"><canvas id="chartStepsDetail"></canvas></div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Stockwerke (Stairs)</h3>
+        <div class="desc">FlightsClimbed pro Tag</div>
+        <div class="chart-wrapper"><canvas id="chartFlights"></canvas></div>
+      </div>
+      <div class="card">
+        <h3>Trainings-Energie vs. Basis-Energie</h3>
+        <div class="desc">Aktive Kalorien (orange) vs. Grundumsatz (blau)</div>
+        <div class="chart-wrapper"><canvas id="chartEnergyCompare"></canvas></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Workouts</h3>
+      <div class="desc">Alle erfassten Trainingseinheiten</div>
+      <div id="workoutsTable"></div>
+    </div>
+  </div>
+
+  <div id="tab-heart" class="tab-content">
+    <div class="grid-2">
+      <div class="card">
+        <h3>Herzfrequenz — Min/Mittel/Max</h3>
+        <div class="desc">Tageswerte in bpm</div>
+        <div class="chart-wrapper tall"><canvas id="chartHRRange"></canvas></div>
+      </div>
+      <div class="card">
+        <h3>Ruheherzfrequenz — Trend</h3>
+        <div class="desc">Inkl. 30-Tage Mittel</div>
+        <div class="chart-wrapper tall"><canvas id="chartRHRTrend"></canvas></div>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Herzfrequenzvariabilität (HRV / SDNN)</h3>
+        <div class="desc">In Millisekunden</div>
+        <div class="chart-wrapper"><canvas id="chartHRV"></canvas></div>
+      </div>
+      <div class="card">
+        <h3>VO₂ Max</h3>
+        <div class="desc">Geschätzte kardiorespiratorische Fitness</div>
+        <div class="chart-wrapper"><canvas id="chartVO2"></canvas></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Blutdruck</h3>
+      <div class="desc">Systolisch &amp; Diastolisch (mmHg)</div>
+      <div class="chart-wrapper"><canvas id="chartBP"></canvas></div>
+    </div>
+  </div>
+
+  <div id="tab-body" class="tab-content">
+    <div class="grid-2">
+      <div class="card">
+        <h3>Körpergewicht</h3>
+        <div class="desc">In Kilogramm</div>
+        <div class="chart-wrapper tall"><canvas id="chartWeight"></canvas></div>
+      </div>
+      <div class="card">
+        <h3>Body Mass Index (BMI)</h3>
+        <div class="desc">Berechnet oder importiert</div>
+        <div class="chart-wrapper tall"><canvas id="chartBMI"></canvas></div>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Körperfettanteil</h3>
+        <div class="desc">In Prozent</div>
+        <div class="chart-wrapper"><canvas id="chartBodyFat"></canvas></div>
+      </div>
+      <div class="card">
+        <h3>Magere Körpermasse</h3>
+        <div class="desc">Lean Body Mass (kg)</div>
+        <div class="chart-wrapper"><canvas id="chartLBM"></canvas></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-sleep" class="tab-content">
+    <div class="card">
+      <h3>Schlafdauer pro Nacht</h3>
+      <div class="desc">In Stunden — aufgeschlüsselt nach Phasen wenn verfügbar</div>
+      <div class="chart-wrapper tall"><canvas id="chartSleep"></canvas></div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Durchschnittliche Schlafdauer</h3>
+        <div class="desc">Wochenmittel</div>
+        <div class="chart-wrapper"><canvas id="chartSleepAvg"></canvas></div>
+      </div>
+      <div class="card">
+        <h3>Atemfrequenz im Schlaf</h3>
+        <div class="desc">Atemzüge pro Minute</div>
+        <div class="chart-wrapper"><canvas id="chartRespRate"></canvas></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-compare" class="tab-content">
+    <div class="card">
+      <h3>Beliebige Metriken vergleichen</h3>
+      <div class="desc">Wähle bis zu 4 Metriken zum direkten Vergleich auf einer Zeitachse</div>
+      <div class="compare-controls">
+        <div>
+          <label>Metrik 1</label>
+          <select id="cmp1" class="cmp-select"></select>
+        </div>
+        <div>
+          <label>Metrik 2</label>
+          <select id="cmp2" class="cmp-select"></select>
+        </div>
+        <div>
+          <label>Metrik 3</label>
+          <select id="cmp3" class="cmp-select"></select>
+        </div>
+        <div>
+          <label>Metrik 4</label>
+          <select id="cmp4" class="cmp-select"></select>
+        </div>
+      </div>
+      <div class="chart-wrapper tall"><canvas id="chartCompare"></canvas></div>
+    </div>
+  </div>
+
+  <div id="tab-correlation" class="tab-content">
+    <div class="card">
+      <h3>Korrelationsanalyse</h3>
+      <div class="desc">Pearson-Korrelationskoeffizient zwischen zwei Metriken (Tageswerte). 1 = perfekt positiv, -1 = perfekt negativ, 0 = keine Korrelation.</div>
+      <div class="compare-controls">
+        <div>
+          <label>X-Achse</label>
+          <select id="corrX" class="cmp-select"></select>
+        </div>
+        <div>
+          <label>Y-Achse</label>
+          <select id="corrY" class="cmp-select"></select>
+        </div>
+      </div>
+      <div id="corrResult" style="font-size:14px;margin-bottom:12px"></div>
+      <div class="chart-wrapper tall"><canvas id="chartCorr"></canvas></div>
+    </div>
+  </div>
+
+  <div id="tab-raw" class="tab-content">
+    <div class="card">
+      <h3>Datenquellen &amp; verfügbare Metriken</h3>
+      <div class="desc">Alle gefundenen Messwert-Typen aus deinem Export</div>
+      <div id="typesList"></div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Apple Health Dashboard • Alle Berechnungen erfolgen lokal in deinem Browser • Keine Daten werden hochgeladen
+</footer>
+
+</div>
+
+<script>
+// =====================================================================
+// APPLE HEALTH DATA PARSER & DASHBOARD
+// =====================================================================
+// Strategy: stream the XML in chunks, extract <Record> elements via regex
+// (DOMParser would OOM on large exports), aggregate to daily buckets,
+// then deduplicate by source priority (Watch > iPhone > others) for
+// cumulative metrics like steps/distance/energy.
+// =====================================================================
+
+const STATE = {
+  daily: {},        // { 'YYYY-MM-DD': { type: { sum, count, min, max, sources:{} } } }
+  workouts: [],
+  types: new Set(),
+  sources: new Set(),
+  minDate: null,
+  maxDate: null,
+  charts: {},
+};
+
+// Apple HealthKit type identifiers we care about (and human-friendly names + aggregation strategy)
+// agg: 'sum' = cumulative (steps, distance, energy), 'avg' = mean (HR, weight), 'last' = latest reading
+const METRICS = {
+  'HKQuantityTypeIdentifierStepCount':              {label:'Schritte',                    unit:'Schritte', agg:'sum',  color:'#30d158'},
+  'HKQuantityTypeIdentifierDistanceWalkingRunning': {label:'Distanz Gehen/Laufen',        unit:'km',       agg:'sum',  color:'#64d2ff', factor:1},
+  'HKQuantityTypeIdentifierDistanceCycling':        {label:'Distanz Radfahren',           unit:'km',       agg:'sum',  color:'#0a84ff', factor:1},
+  'HKQuantityTypeIdentifierActiveEnergyBurned':     {label:'Aktive Energie',              unit:'kcal',     agg:'sum',  color:'#ff9f0a'},
+  'HKQuantityTypeIdentifierBasalEnergyBurned':      {label:'Grundumsatz',                 unit:'kcal',     agg:'sum',  color:'#ff453a'},
+  'HKQuantityTypeIdentifierFlightsClimbed':         {label:'Stockwerke',                  unit:'',         agg:'sum',  color:'#bf5af2'},
+  'HKQuantityTypeIdentifierAppleExerciseTime':      {label:'Trainingsminuten',            unit:'min',      agg:'sum',  color:'#32d74b'},
+  'HKQuantityTypeIdentifierAppleStandTime':         {label:'Stehzeit',                    unit:'min',      agg:'sum',  color:'#5e5ce6'},
+  'HKQuantityTypeIdentifierHeartRate':              {label:'Herzfrequenz',                unit:'bpm',      agg:'avg',  color:'#ff3b30'},
+  'HKQuantityTypeIdentifierRestingHeartRate':       {label:'Ruheherzfrequenz',            unit:'bpm',      agg:'avg',  color:'#ff453a'},
+  'HKQuantityTypeIdentifierWalkingHeartRateAverage':{label:'Geh-Herzfrequenz',            unit:'bpm',      agg:'avg',  color:'#ff6961'},
+  'HKQuantityTypeIdentifierHeartRateVariabilitySDNN':{label:'HRV (SDNN)',                  unit:'ms',       agg:'avg',  color:'#bf5af2'},
+  'HKQuantityTypeIdentifierVO2Max':                 {label:'VO₂ Max',                     unit:'ml/kg/min',agg:'avg',  color:'#5ac8fa'},
+  'HKQuantityTypeIdentifierBloodPressureSystolic':  {label:'Blutdruck systolisch',        unit:'mmHg',     agg:'avg',  color:'#ff3b30'},
+  'HKQuantityTypeIdentifierBloodPressureDiastolic': {label:'Blutdruck diastolisch',       unit:'mmHg',     agg:'avg',  color:'#ff9f0a'},
+  'HKQuantityTypeIdentifierOxygenSaturation':       {label:'Sauerstoffsättigung',         unit:'%',        agg:'avg',  color:'#64d2ff', factor:100},
+  'HKQuantityTypeIdentifierRespiratoryRate':        {label:'Atemfrequenz',                unit:'/min',     agg:'avg',  color:'#5ac8fa'},
+  'HKQuantityTypeIdentifierBodyMass':               {label:'Körpergewicht',               unit:'kg',       agg:'last', color:'#ff9f0a'},
+  'HKQuantityTypeIdentifierBodyMassIndex':          {label:'BMI',                         unit:'',         agg:'last', color:'#ff9500'},
+  'HKQuantityTypeIdentifierBodyFatPercentage':      {label:'Körperfett',                  unit:'%',        agg:'last', color:'#ff6961', factor:100},
+  'HKQuantityTypeIdentifierLeanBodyMass':           {label:'Magere Körpermasse',          unit:'kg',       agg:'last', color:'#30d158'},
+  'HKQuantityTypeIdentifierHeight':                 {label:'Körpergröße',                 unit:'cm',       agg:'last', color:'#5ac8fa', factor:100},
+  'HKCategoryTypeIdentifierSleepAnalysis':          {label:'Schlaf',                      unit:'h',        agg:'sum',  color:'#bf5af2'},
+  'HKQuantityTypeIdentifierBloodGlucose':           {label:'Blutzucker',                  unit:'mg/dL',    agg:'avg',  color:'#ff3b30'},
+  'HKQuantityTypeIdentifierBodyTemperature':        {label:'Körpertemperatur',            unit:'°C',       agg:'avg',  color:'#ff9f0a'},
+  'HKQuantityTypeIdentifierDietaryEnergyConsumed':  {label:'Aufgenommene Energie',        unit:'kcal',     agg:'sum',  color:'#32d74b'},
+  'HKQuantityTypeIdentifierDietaryWater':           {label:'Wasser',                      unit:'l',        agg:'sum',  color:'#64d2ff', factor:0.001},
+  'HKQuantityTypeIdentifierMindfulSession':         {label:'Achtsamkeit',                 unit:'min',      agg:'sum',  color:'#5e5ce6'},
+  'HKQuantityTypeIdentifierEnvironmentalAudioExposure':{label:'Umgebungslärm',             unit:'dB',       agg:'avg',  color:'#ff9f0a'},
+  'HKQuantityTypeIdentifierHeadphoneAudioExposure': {label:'Kopfhörerlärm',               unit:'dB',       agg:'avg',  color:'#ffcc00'},
+  'HKQuantityTypeIdentifierWalkingSpeed':           {label:'Gehgeschwindigkeit',          unit:'km/h',     agg:'avg',  color:'#30d158'},
+  'HKQuantityTypeIdentifierWalkingStepLength':      {label:'Schrittlänge',                unit:'cm',       agg:'avg',  color:'#5ac8fa'},
+  'HKQuantityTypeIdentifierSixMinuteWalkTestDistance':{label:'6-Min Gehtest',              unit:'m',        agg:'last', color:'#0a84ff'},
+};
+
+// Source priority for deduplication. Lower index = higher priority.
+// Apple Health does this: prefers Watch over iPhone for overlapping cumulative data.
+const SOURCE_PRIORITY = ['Watch','watch','iPhone','iphone'];
+
+function sourceRank(name){
+  if(!name) return 99;
+  for(let i=0;i<SOURCE_PRIORITY.length;i++){
+    if(name.includes(SOURCE_PRIORITY[i])) return i;
+  }
+  return 50;
+}
+
+// =====================================================================
+// FILE LOADING
+// =====================================================================
+const fileInput = document.getElementById('fileInput');
+const dropZone = document.getElementById('dropZone');
+const progressEl = document.getElementById('progress');
+const progressFill = document.getElementById('progressFill');
+const progressText = document.getElementById('progressText');
+
+fileInput.addEventListener('change', e => { if(e.target.files[0]) handleFile(e.target.files[0]); });
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault();
+  dropZone.classList.remove('drag');
+  if(e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]);
+});
+
+async function handleFile(file){
+  progressEl.style.display = 'block';
+  progressText.textContent = 'Lese Datei…';
+  progressFill.style.width = '2%';
+
+  try {
+    if(file.name.toLowerCase().endsWith('.zip')){
+      progressText.textContent = 'Entpacke ZIP…';
+      const zip = await JSZip.loadAsync(file);
+      let xmlFile = null;
+      zip.forEach((path, entry) => {
+        const lower = path.toLowerCase();
+        if(lower.endsWith('export.xml') && !lower.includes('cda')) xmlFile = entry;
+      });
+      if(!xmlFile){
+        zip.forEach((path, entry) => { if(path.toLowerCase().endsWith('.xml') && !xmlFile && !path.toLowerCase().includes('cda')) xmlFile = entry; });
+      }
+      if(!xmlFile) throw new Error('Keine export.xml in der ZIP gefunden');
+
+      progressText.textContent = 'Streame XML aus ZIP…';
+      progressFill.style.width = '8%';
+      await parseXMLStream(xmlFile);
+    } else {
+      // Plain XML file - stream via File.stream() to avoid loading whole thing as one string
+      progressText.textContent = 'Streame XML-Datei…';
+      progressFill.style.width = '8%';
+      await parseFileStream(file);
+    }
+
+    progressText.textContent = 'Aggregiere Tageswerte…';
+    progressFill.style.width = '90%';
+    await new Promise(r => setTimeout(r, 50));
+
+    finalizeData();
+
+    progressFill.style.width = '100%';
+    progressText.textContent = 'Fertig!';
+
+    setTimeout(() => {
+      document.getElementById('importSection').style.display = 'none';
+      document.getElementById('dashboard').style.display = 'block';
+      document.getElementById('headerActions').style.display = 'block';
+      renderAll();
+    }, 300);
+
+  } catch(err){
+    progressText.textContent = 'Fehler: ' + err.message;
+    progressFill.style.background = 'var(--accent)';
+    console.error(err);
+  }
+}
+
+// =====================================================================
+// STREAMING XML PARSER
+// =====================================================================
+// We never hold the whole XML as a single string. Instead we receive chunks
+// (from JSZip's internalStream or File.stream()) and process them through a
+// stateful chunk parser that finds complete <Record .../> / <Workout .../>
+// elements, processes them, and keeps any tail bytes for the next chunk.
+// =====================================================================
+
+const STREAM_STATE = {
+  buffer: '',
+  recordCount: 0,
+  workoutCount: 0,
+  bytesProcessed: 0,
+  totalBytes: 0,
+  lastYield: 0,
+};
+
+// Match a single self-closed or opening tag for Record/Workout, capturing the attribute string
+const TAG_REGEX = /<(Record|Workout)\s+([^>]*?)\/?>/g;
+
+function processChunk(text){
+  STREAM_STATE.buffer += text;
+  TAG_REGEX.lastIndex = 0;
+  let m;
+  let lastEnd = 0;
+  while((m = TAG_REGEX.exec(STREAM_STATE.buffer)) !== null){
+    const tagName = m[1];
+    const attrStr = m[2];
+    lastEnd = TAG_REGEX.lastIndex;
+    const attrs = parseAttrs(attrStr);
+    if(tagName === 'Record'){
+      if(attrs.type){
+        processRecord(attrs);
+        STREAM_STATE.recordCount++;
+      }
+    } else if(tagName === 'Workout'){
+      if(attrs.workoutActivityType){
+        STATE.workouts.push({
+          type: attrs.workoutActivityType.replace('HKWorkoutActivityType',''),
+          start: attrs.startDate,
+          end: attrs.endDate,
+          duration: parseFloat(attrs.duration) || 0,
+          durationUnit: attrs.durationUnit || 'min',
+          energy: parseFloat(attrs.totalEnergyBurned) || 0,
+          distance: parseFloat(attrs.totalDistance) || 0,
+          source: attrs.sourceName || '',
+        });
+        STREAM_STATE.workoutCount++;
+      }
+    }
+  }
+  // Keep tail (potentially incomplete tag) for next chunk
+  // Find the last '<' after lastEnd to preserve any partial tag
+  if(lastEnd > 0){
+    const tailStart = STREAM_STATE.buffer.lastIndexOf('<', STREAM_STATE.buffer.length);
+    // If there's a '<' after our last complete match, keep from there. Otherwise keep last 1KB as safety.
+    if(tailStart >= lastEnd){
+      STREAM_STATE.buffer = STREAM_STATE.buffer.slice(tailStart);
+    } else {
+      STREAM_STATE.buffer = '';
+    }
+  } else {
+    // No matches at all - keep buffer but cap to avoid runaway growth.
+    // If buffer is huge with no tags, drop everything before the last '<'.
+    if(STREAM_STATE.buffer.length > 200000){
+      const lastLt = STREAM_STATE.buffer.lastIndexOf('<');
+      STREAM_STATE.buffer = lastLt >= 0 ? STREAM_STATE.buffer.slice(lastLt) : '';
+    }
+  }
+}
+
+async function reportProgress(){
+  const pct = STREAM_STATE.totalBytes > 0
+    ? 8 + Math.min(80, (STREAM_STATE.bytesProcessed / STREAM_STATE.totalBytes) * 80)
+    : 50;
+  progressFill.style.width = pct + '%';
+  progressText.textContent = `Verarbeite… ${STREAM_STATE.recordCount.toLocaleString('de')} Datensätze, ${STREAM_STATE.workoutCount.toLocaleString('de')} Workouts`;
+  await new Promise(r => setTimeout(r, 0));
+  STREAM_STATE.lastYield = Date.now();
+}
+
+// Stream a JSZip file entry chunk-by-chunk using internalStream
+function parseXMLStream(zipEntry){
+  return new Promise((resolve, reject) => {
+    STREAM_STATE.buffer = '';
+    STREAM_STATE.recordCount = 0;
+    STREAM_STATE.workoutCount = 0;
+    STREAM_STATE.bytesProcessed = 0;
+    STREAM_STATE.totalBytes = 0; // unknown for compressed stream
+    STREAM_STATE.lastYield = Date.now();
+
+    const decoder = new TextDecoder('utf-8');
+    let chunkCounter = 0;
+
+    const stream = zipEntry.internalStream('uint8array');
+    stream.on('data', (data) => {
+      try {
+        const text = decoder.decode(data, {stream:true});
+        STREAM_STATE.bytesProcessed += data.length;
+        processChunk(text);
+        chunkCounter++;
+        if(chunkCounter % 20 === 0 || Date.now() - STREAM_STATE.lastYield > 200){
+          stream.pause();
+          reportProgress().then(() => stream.resume());
+        }
+      } catch(e){
+        reject(e);
+      }
+    });
+    stream.on('error', (err) => reject(err));
+    stream.on('end', () => {
+      // Flush decoder
+      const tail = decoder.decode();
+      if(tail) processChunk(tail);
+      // Final pass on any remaining buffer
+      processChunk('');
+      resolve();
+    });
+    stream.resume();
+  });
+}
+
+// Stream a plain File via File.stream() (for already-extracted export.xml)
+async function parseFileStream(file){
+  STREAM_STATE.buffer = '';
+  STREAM_STATE.recordCount = 0;
+  STREAM_STATE.workoutCount = 0;
+  STREAM_STATE.bytesProcessed = 0;
+  STREAM_STATE.totalBytes = file.size;
+  STREAM_STATE.lastYield = Date.now();
+
+  const decoder = new TextDecoder('utf-8');
+  const reader = file.stream().getReader();
+  let chunkCounter = 0;
+
+  while(true){
+    const {done, value} = await reader.read();
+    if(done) break;
+    const text = decoder.decode(value, {stream:true});
+    STREAM_STATE.bytesProcessed += value.length;
+    processChunk(text);
+    chunkCounter++;
+    if(chunkCounter % 20 === 0 || Date.now() - STREAM_STATE.lastYield > 200){
+      await reportProgress();
+    }
+  }
+  const tail = decoder.decode();
+  if(tail) processChunk(tail);
+  processChunk('');
+  console.log(`Parsed ${STREAM_STATE.recordCount} records, ${STREAM_STATE.workoutCount} workouts`);
+}
+
+function parseAttrs(str){
+  const attrs = {};
+  const re = /(\w+)="([^"]*)"/g;
+  let m;
+  while((m = re.exec(str)) !== null) attrs[m[1]] = m[2];
+  return attrs;
+}
+
+function processRecord(r){
+  const type = r.type;
+  STATE.types.add(type);
+  if(r.sourceName) STATE.sources.add(r.sourceName);
+
+  // Special handling for sleep (category type, value is the state)
+  if(type === 'HKCategoryTypeIdentifierSleepAnalysis'){
+    if(!r.startDate || !r.endDate) return;
+    const start = new Date(r.startDate);
+    const end = new Date(r.endDate);
+    if(isNaN(start) || isNaN(end)) return;
+    const hours = (end - start) / 3600000;
+    // Asleep states (different iOS versions use different identifiers)
+    const v = r.value || '';
+    const isAsleep = v.includes('Asleep') || v === 'HKCategoryValueSleepAnalysisInBed' || v.includes('REM') || v.includes('Core') || v.includes('Deep');
+    if(!isAsleep && v.includes('InBed')) {/* keep in-bed too */}
+    if(!isAsleep) return;
+    // Assign to the date the sleep "belongs to" (the wake-up date, but we use start date of night = day before noon -> previous day)
+    const sleepDate = new Date(end);
+    if(sleepDate.getHours() < 12) sleepDate.setDate(sleepDate.getDate() - 1);
+    const key = isoDate(sleepDate);
+    addToDaily(key, type, hours, r.sourceName);
+    return;
+  }
+
+  if(!METRICS[type] && !type.startsWith('HKQuantityType')) return;
+
+  const value = parseFloat(r.value);
+  if(isNaN(value)) return;
+  if(!r.startDate) return;
+  const date = new Date(r.startDate);
+  if(isNaN(date)) return;
+  const key = isoDate(date);
+
+  let v = value;
+  const meta = METRICS[type];
+  if(meta && meta.factor) v = v * meta.factor;
+
+  // Unit conversions
+  if(type === 'HKQuantityTypeIdentifierBodyTemperature' && r.unit === 'degF'){
+    v = (v - 32) * 5/9;
+  }
+  if(meta && meta.unit === 'km' && r.unit === 'mi'){
+    v = v * 1.60934;
+  }
+  if(type === 'HKQuantityTypeIdentifierBodyMass' && r.unit === 'lb'){
+    v = v * 0.453592;
+  }
+
+  addToDaily(key, type, v, r.sourceName);
+}
+
+function addToDaily(dateKey, type, value, source){
+  if(!STATE.daily[dateKey]) STATE.daily[dateKey] = {};
+  if(!STATE.daily[dateKey][type]){
+    STATE.daily[dateKey][type] = {sum:0, count:0, min:Infinity, max:-Infinity, last:null, sources:{}};
+  }
+  const bucket = STATE.daily[dateKey][type];
+  const src = source || 'unknown';
+  if(!bucket.sources[src]) bucket.sources[src] = {sum:0, count:0, min:Infinity, max:-Infinity, last:value};
+  const s = bucket.sources[src];
+  s.sum += value;
+  s.count++;
+  s.min = Math.min(s.min, value);
+  s.max = Math.max(s.max, value);
+  s.last = value;
+}
+
+function isoDate(d){
+  const y = d.getFullYear();
+  const m = String(d.getMonth()+1).padStart(2,'0');
+  const day = String(d.getDate()).padStart(2,'0');
+  return `${y}-${m}-${day}`;
+}
+
+// =====================================================================
+// AGGREGATION (with deduplication by source priority)
+// =====================================================================
+function finalizeData(){
+  const dates = Object.keys(STATE.daily).sort();
+  if(dates.length === 0) return;
+  STATE.minDate = dates[0];
+  STATE.maxDate = dates[dates.length-1];
+
+  // For each day/type, pick the best source(s) to avoid double counting
+  for(const date of dates){
+    for(const type in STATE.daily[date]){
+      const bucket = STATE.daily[date][type];
+      const meta = METRICS[type];
+      const agg = meta ? meta.agg : 'sum';
+      const sources = Object.entries(bucket.sources);
+      if(sources.length === 0) continue;
+
+      if(agg === 'sum'){
+        // For cumulative metrics: pick highest-priority source only (avoid Watch+iPhone double count)
+        sources.sort((a,b) => sourceRank(a[0]) - sourceRank(b[0]));
+        const best = sources[0][1];
+        bucket.sum = best.sum;
+        bucket.count = best.count;
+        bucket.value = best.sum;
+      } else if(agg === 'avg'){
+        // Average across all readings from all sources
+        let totalSum = 0, totalCount = 0, mn = Infinity, mx = -Infinity;
+        for(const [_,s] of sources){
+          totalSum += s.sum;
+          totalCount += s.count;
+          mn = Math.min(mn, s.min);
+          mx = Math.max(mx, s.max);
+        }
+        bucket.value = totalCount > 0 ? totalSum/totalCount : 0;
+        bucket.min = mn;
+        bucket.max = mx;
+        bucket.count = totalCount;
+      } else { // 'last'
+        sources.sort((a,b) => sourceRank(a[0]) - sourceRank(b[0]));
+        bucket.value = sources[0][1].last;
+      }
+    }
+  }
+}
+
+// =====================================================================
+// QUERIES
+// =====================================================================
+function getDailySeries(type, startDate, endDate){
+  const out = [];
+  const cur = new Date(startDate);
+  const end = new Date(endDate);
+  while(cur <= end){
+    const key = isoDate(cur);
+    const bucket = STATE.daily[key] && STATE.daily[key][type];
+    out.push({date: new Date(cur), value: bucket ? bucket.value : null, min: bucket?bucket.min:null, max: bucket?bucket.max:null});
+    cur.setDate(cur.getDate()+1);
+  }
+  return out;
+}
+
+function getRangeDates(){
+  const range = document.getElementById('rangeSelect').value;
+  const end = new Date(STATE.maxDate);
+  let start;
+  if(range === 'all'){
+    start = new Date(STATE.minDate);
+  } else {
+    start = new Date(end);
+    start.setDate(start.getDate() - parseInt(range));
+    if(new Date(STATE.minDate) > start) start = new Date(STATE.minDate);
+  }
+  return {start, end};
+}
+
+function groupSeries(series, mode){
+  if(mode === 'day') return series;
+  const groups = {};
+  for(const pt of series){
+    if(pt.value === null) continue;
+    let key;
+    if(mode === 'week'){
+      const d = new Date(pt.date);
+      const day = d.getDay();
+      const diff = d.getDate() - day + (day === 0 ? -6 : 1); // Monday
+      d.setDate(diff);
+      key = isoDate(d);
+    } else { // month
+      key = pt.date.getFullYear() + '-' + String(pt.date.getMonth()+1).padStart(2,'0') + '-01';
+    }
+    if(!groups[key]) groups[key] = {sum:0, count:0, date: new Date(key)};
+    groups[key].sum += pt.value;
+    groups[key].count++;
+  }
+  return Object.values(groups).sort((a,b)=>a.date-b.date);
+}
+
+function aggregateForChart(type, startDate, endDate, groupMode){
+  const series = getDailySeries(type, startDate, endDate);
+  const meta = METRICS[type];
+  const agg = meta ? meta.agg : 'sum';
+  if(groupMode === 'day'){
+    return series.map(p => ({x: p.date, y: p.value}));
+  }
+  const grouped = groupSeries(series, groupMode);
+  return grouped.map(g => ({
+    x: g.date,
+    y: agg === 'sum' ? g.sum : (g.count > 0 ? g.sum/g.count : null)
+  }));
+}
+
+// =====================================================================
+// RENDERING
+// =====================================================================
+Chart.defaults.color = '#8b98a9';
+Chart.defaults.borderColor = '#222b3a';
+Chart.defaults.font.family = '-apple-system, BlinkMacSystemFont, sans-serif';
+
+function renderAll(){
+  populateMetricSelectors();
+  injectPrintButtons();
+  renderKPIs();
+  renderOverviewCharts();
+  renderActivityCharts();
+  renderHeartCharts();
+  renderBodyCharts();
+  renderSleepCharts();
+  renderTypesList();
+  updateDataInfo();
+}
+
+// Inject print buttons into every card that contains a canvas chart.
+// Done once after data load — wraps existing h3+desc into a card-header and adds the button.
+function injectPrintButtons(){
+  const printSVG = '<svg viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>';
+  document.querySelectorAll('.card').forEach(card => {
+    if(card.querySelector('.card-header')) return; // already done
+    const canvas = card.querySelector('canvas');
+    if(!canvas) return;
+    const h3 = card.querySelector('h3');
+    const desc = card.querySelector('.desc');
+    if(!h3) return;
+    const header = document.createElement('div');
+    header.className = 'card-header';
+    const text = document.createElement('div');
+    text.className = 'card-header-text';
+    text.appendChild(h3.cloneNode(true));
+    if(desc) text.appendChild(desc.cloneNode(true));
+    const actions = document.createElement('div');
+    actions.className = 'card-actions';
+    actions.innerHTML = `<button class="icon-btn" onclick="printChart(this)" title="Diagramm drucken">${printSVG}</button>`;
+    header.appendChild(text);
+    header.appendChild(actions);
+    h3.remove();
+    if(desc) desc.remove();
+    card.insertBefore(header, card.firstChild);
+    card.dataset.chartId = canvas.id;
+  });
+}
+
+// Print just one chart by isolating its card with a print-only class
+function printChart(btn){
+  const card = btn.closest('.card');
+  if(!card) return;
+  // Mark target
+  document.querySelectorAll('.print-target').forEach(el => el.classList.remove('print-target'));
+  card.classList.add('print-target');
+  // Add metadata footer (range + generation date)
+  const oldMeta = document.querySelector('.print-meta');
+  if(oldMeta) oldMeta.remove();
+  const meta = document.createElement('div');
+  meta.className = 'print-meta';
+  const range = document.getElementById('rangeSelect');
+  const rangeText = range.options[range.selectedIndex].text;
+  const dataInfo = document.getElementById('dataInfo').textContent;
+  meta.textContent = `Apple Health Dashboard • ${rangeText} • ${dataInfo} • Gedruckt: ${new Date().toLocaleString('de-DE')}`;
+  document.body.appendChild(meta);
+  // Force chart to redraw at new size after print dialog closes
+  document.body.classList.add('printing-chart');
+  // Resize chart for print
+  const chartId = card.dataset.chartId;
+  const chart = STATE.charts[chartId];
+  setTimeout(() => {
+    window.print();
+    setTimeout(() => {
+      document.body.classList.remove('printing-chart');
+      card.classList.remove('print-target');
+      meta.remove();
+      if(chart) chart.resize();
+    }, 100);
+  }, 100);
+}
+
+function updateDataInfo(){
+  const dates = Object.keys(STATE.daily).sort();
+  const fmt = d => new Date(d).toLocaleDateString('de-DE');
+  document.getElementById('dataInfo').textContent =
+    `${dates.length.toLocaleString('de')} Tage • ${STATE.types.size} Metriken • ${fmt(STATE.minDate)} bis ${fmt(STATE.maxDate)}`;
+}
+
+function destroyChart(id){
+  if(STATE.charts[id]){ STATE.charts[id].destroy(); delete STATE.charts[id]; }
+}
+
+function makeLineChart(canvasId, datasets, opts={}){
+  destroyChart(canvasId);
+  const ctx = document.getElementById(canvasId);
+  if(!ctx) return;
+  STATE.charts[canvasId] = new Chart(ctx, {
+    type: opts.type || 'line',
+    data: { datasets },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: {mode:'index', intersect:false},
+      plugins: {
+        legend: {display: datasets.length > 1, position:'top', labels:{boxWidth:12, font:{size:11}}},
+        tooltip: {
+          backgroundColor:'#1a212d',
+          borderColor:'#222b3a',
+          borderWidth:1,
+          padding:12,
+          titleFont:{size:12},
+          bodyFont:{size:12},
+          callbacks: opts.tooltipCallbacks || {}
+        }
+      },
+      scales: {
+        x: {
+          type:'time',
+          time: {tooltipFormat:'dd.MM.yyyy', displayFormats:{day:'dd.MM', week:'dd.MM', month:'MMM yy'}},
+          grid: {color:'rgba(255,255,255,0.04)'},
+          ticks: {font:{size:10}}
+        },
+        y: {
+          grid: {color:'rgba(255,255,255,0.04)'},
+          ticks: {font:{size:10}, callback: opts.yCallback || function(v){return v}},
+          beginAtZero: opts.beginAtZero !== false
+        }
+      }
+    }
+  });
+}
+
+function renderKPIs(){
+  const {start, end} = getRangeDates();
+  const grid = document.getElementById('kpiGrid');
+  grid.innerHTML = '';
+
+  const kpis = [
+    {type:'HKQuantityTypeIdentifierStepCount', label:'Schritte / Tag', cls:'steps', fmt:v=>Math.round(v).toLocaleString('de')},
+    {type:'HKQuantityTypeIdentifierActiveEnergyBurned', label:'Aktive Energie / Tag', cls:'energy', fmt:v=>Math.round(v).toLocaleString('de'), unit:'kcal'},
+    {type:'HKQuantityTypeIdentifierDistanceWalkingRunning', label:'Distanz / Tag', cls:'distance', fmt:v=>v.toFixed(2), unit:'km'},
+    {type:'HKQuantityTypeIdentifierRestingHeartRate', label:'Ø Ruheherzfrequenz', cls:'heart', fmt:v=>Math.round(v), unit:'bpm'},
+    {type:'HKQuantityTypeIdentifierBodyMass', label:'Aktuelles Gewicht', cls:'', fmt:v=>v.toFixed(1), unit:'kg', mode:'last'},
+    {type:'HKCategoryTypeIdentifierSleepAnalysis', label:'Ø Schlaf / Nacht', cls:'sleep', fmt:v=>v.toFixed(1), unit:'h'},
+  ];
+
+  for(const k of kpis){
+    const series = getDailySeries(k.type, start, end).filter(p => p.value !== null);
+    if(series.length === 0) continue;
+
+    let val;
+    if(k.mode === 'last'){
+      val = series[series.length-1].value;
+    } else {
+      val = series.reduce((s,p)=>s+p.value, 0) / series.length;
+    }
+
+    const div = document.createElement('div');
+    div.className = 'kpi ' + k.cls;
+    div.innerHTML = `
+      <div class="kpi-label">${k.label}</div>
+      <div class="kpi-value">${k.fmt(val)}<span class="kpi-unit">${k.unit||''}</span></div>
+      <div class="kpi-sub">${series.length} Tage mit Daten</div>
+    `;
+    grid.appendChild(div);
+  }
+}
+
+function renderOverviewCharts(){
+  const {start, end} = getRangeDates();
+  const grp = document.getElementById('groupSelect').value;
+
+  drawSimple('chartSteps', 'HKQuantityTypeIdentifierStepCount', start, end, grp, 'bar');
+  drawSimple('chartEnergy', 'HKQuantityTypeIdentifierActiveEnergyBurned', start, end, grp, 'bar');
+  drawSimple('chartRHR', 'HKQuantityTypeIdentifierRestingHeartRate', start, end, grp, 'line');
+  drawSimple('chartDistance', 'HKQuantityTypeIdentifierDistanceWalkingRunning', start, end, grp, 'bar');
+}
+
+function drawSimple(canvasId, type, start, end, grp, chartType){
+  const meta = METRICS[type];
+  if(!meta) return;
+  const data = aggregateForChart(type, start, end, grp).filter(p => p.y !== null);
+  if(data.length === 0){
+    destroyChart(canvasId);
+    const el = document.getElementById(canvasId);
+    if(el) el.parentElement.innerHTML = '<div class="empty">Keine Daten für diesen Zeitraum</div>';
+    return;
+  }
+  makeLineChart(canvasId, [{
+    label: meta.label,
+    data,
+    borderColor: meta.color,
+    backgroundColor: chartType === 'bar' ? meta.color + '99' : meta.color + '22',
+    fill: chartType !== 'bar',
+    tension: 0.3,
+    borderWidth: 2,
+    pointRadius: 0,
+    pointHoverRadius: 5,
+  }], {
+    type: chartType,
+    yCallback: v => v.toLocaleString('de') + (meta.unit ? ' ' + meta.unit : '')
+  });
+}
+
+function renderActivityCharts(){
+  const {start, end} = getRangeDates();
+  const grp = document.getElementById('groupSelect').value;
+
+  // Steps with rolling avg
+  const stepsData = aggregateForChart('HKQuantityTypeIdentifierStepCount', start, end, grp).filter(p=>p.y!==null);
+  const rolling = computeRollingAvg(stepsData, 7);
+  makeLineChart('chartStepsDetail', [
+    {label:'Schritte', data: stepsData, backgroundColor:'#30d15899', borderColor:'#30d158', type:'bar'},
+    {label:'7-Tage Mittel', data: rolling, type:'line', borderColor:'#ff9f0a', backgroundColor:'transparent', borderWidth:2, pointRadius:0, tension:0.3}
+  ]);
+
+  drawSimple('chartFlights', 'HKQuantityTypeIdentifierFlightsClimbed', start, end, grp, 'bar');
+
+  // Energy compare
+  const active = aggregateForChart('HKQuantityTypeIdentifierActiveEnergyBurned', start, end, grp).filter(p=>p.y!==null);
+  const basal = aggregateForChart('HKQuantityTypeIdentifierBasalEnergyBurned', start, end, grp).filter(p=>p.y!==null);
+  if(active.length || basal.length){
+    makeLineChart('chartEnergyCompare', [
+      {label:'Aktive Energie', data: active, borderColor:'#ff9f0a', backgroundColor:'#ff9f0a44', fill:true, tension:0.3, borderWidth:2, pointRadius:0},
+      {label:'Grundumsatz', data: basal, borderColor:'#0a84ff', backgroundColor:'#0a84ff22', fill:true, tension:0.3, borderWidth:2, pointRadius:0},
+    ]);
+  }
+
+  renderWorkoutsTable();
+}
+
+function renderWorkoutsTable(){
+  const div = document.getElementById('workoutsTable');
+  if(STATE.workouts.length === 0){ div.innerHTML = '<div class="empty">Keine Workouts gefunden</div>'; return; }
+  const sorted = [...STATE.workouts].sort((a,b)=>new Date(b.start)-new Date(a.start)).slice(0,50);
+  let html = '<table><thead><tr><th>Datum</th><th>Typ</th><th class="num">Dauer</th><th class="num">Energie</th><th class="num">Distanz</th><th>Quelle</th></tr></thead><tbody>';
+  for(const w of sorted){
+    const d = new Date(w.start);
+    html += `<tr>
+      <td>${d.toLocaleDateString('de-DE')} ${d.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})}</td>
+      <td><span class="badge blue">${w.type}</span></td>
+      <td class="num">${w.duration.toFixed(0)} min</td>
+      <td class="num">${w.energy ? w.energy.toFixed(0)+' kcal' : '—'}</td>
+      <td class="num">${w.distance ? w.distance.toFixed(2)+' km' : '—'}</td>
+      <td>${w.source||'—'}</td>
+    </tr>`;
+  }
+  html += '</tbody></table>';
+  if(STATE.workouts.length > 50) html += `<div class="empty" style="padding:12px">Zeige 50 von ${STATE.workouts.length} Workouts</div>`;
+  div.innerHTML = html;
+}
+
+function renderHeartCharts(){
+  const {start, end} = getRangeDates();
+  const grp = document.getElementById('groupSelect').value;
+
+  // HR Range (min/avg/max)
+  const series = getDailySeries('HKQuantityTypeIdentifierHeartRate', start, end);
+  const grouped = grp === 'day' ? series :
+    (function(){
+      const g = {};
+      for(const p of series){
+        if(p.value === null) continue;
+        let key;
+        if(grp==='week'){const d=new Date(p.date);const day=d.getDay();d.setDate(d.getDate()-day+(day===0?-6:1));key=isoDate(d);}
+        else key = p.date.getFullYear()+'-'+String(p.date.getMonth()+1).padStart(2,'0')+'-01';
+        if(!g[key]) g[key] = {date:new Date(key), avgs:[], mins:[], maxs:[]};
+        g[key].avgs.push(p.value);
+        if(p.min !== null && p.min !== Infinity) g[key].mins.push(p.min);
+        if(p.max !== null && p.max !== -Infinity) g[key].maxs.push(p.max);
+      }
+      return Object.values(g).sort((a,b)=>a.date-b.date);
+    })();
+
+  if(grp === 'day'){
+    const avg = series.filter(p=>p.value!==null).map(p=>({x:p.date,y:p.value}));
+    const mn = series.filter(p=>p.min!==null&&p.min!==Infinity).map(p=>({x:p.date,y:p.min}));
+    const mx = series.filter(p=>p.max!==null&&p.max!==-Infinity).map(p=>({x:p.date,y:p.max}));
+    makeLineChart('chartHRRange', [
+      {label:'Max', data:mx, borderColor:'#ff453a', backgroundColor:'transparent', tension:0.3, pointRadius:0, borderWidth:1.5},
+      {label:'Mittel', data:avg, borderColor:'#ff9f0a', backgroundColor:'transparent', tension:0.3, pointRadius:0, borderWidth:2},
+      {label:'Min', data:mn, borderColor:'#30d158', backgroundColor:'transparent', tension:0.3, pointRadius:0, borderWidth:1.5},
+    ], {beginAtZero:false});
+  } else {
+    const avg = grouped.map(g => ({x:g.date, y: g.avgs.length ? g.avgs.reduce((a,b)=>a+b,0)/g.avgs.length : null})).filter(p=>p.y!==null);
+    const mn = grouped.map(g => ({x:g.date, y: g.mins.length ? Math.min(...g.mins) : null})).filter(p=>p.y!==null);
+    const mx = grouped.map(g => ({x:g.date, y: g.maxs.length ? Math.max(...g.maxs) : null})).filter(p=>p.y!==null);
+    makeLineChart('chartHRRange', [
+      {label:'Max', data:mx, borderColor:'#ff453a', backgroundColor:'transparent', tension:0.3, pointRadius:0, borderWidth:1.5},
+      {label:'Mittel', data:avg, borderColor:'#ff9f0a', backgroundColor:'transparent', tension:0.3, pointRadius:0, borderWidth:2},
+      {label:'Min', data:mn, borderColor:'#30d158', backgroundColor:'transparent', tension:0.3, pointRadius:0, borderWidth:1.5},
+    ], {beginAtZero:false});
+  }
+
+  // RHR with 30-day MA
+  const rhr = aggregateForChart('HKQuantityTypeIdentifierRestingHeartRate', start, end, grp).filter(p=>p.y!==null);
+  const rhrMA = computeRollingAvg(rhr, 30);
+  if(rhr.length){
+    makeLineChart('chartRHRTrend', [
+      {label:'Ruheherzfrequenz', data:rhr, borderColor:'#ff453a', backgroundColor:'#ff453a22', fill:true, tension:0.3, pointRadius:0, borderWidth:1.5},
+      {label:'30-Tage Mittel', data:rhrMA, borderColor:'#0a84ff', backgroundColor:'transparent', tension:0.3, pointRadius:0, borderWidth:2},
+    ], {beginAtZero:false});
+  }
+
+  drawSimple('chartHRV', 'HKQuantityTypeIdentifierHeartRateVariabilitySDNN', start, end, grp, 'line');
+  drawSimple('chartVO2', 'HKQuantityTypeIdentifierVO2Max', start, end, grp, 'line');
+
+  // Blood pressure
+  const sys = aggregateForChart('HKQuantityTypeIdentifierBloodPressureSystolic', start, end, grp).filter(p=>p.y!==null);
+  const dia = aggregateForChart('HKQuantityTypeIdentifierBloodPressureDiastolic', start, end, grp).filter(p=>p.y!==null);
+  if(sys.length || dia.length){
+    makeLineChart('chartBP', [
+      {label:'Systolisch', data:sys, borderColor:'#ff3b30', backgroundColor:'transparent', tension:0.3, pointRadius:3, borderWidth:2},
+      {label:'Diastolisch', data:dia, borderColor:'#ff9f0a', backgroundColor:'transparent', tension:0.3, pointRadius:3, borderWidth:2},
+    ], {beginAtZero:false});
+  } else {
+    destroyChart('chartBP');
+    document.getElementById('chartBP').parentElement.innerHTML = '<div class="empty">Keine Blutdruckdaten</div>';
+  }
+}
+
+function renderBodyCharts(){
+  const {start, end} = getRangeDates();
+  const grp = document.getElementById('groupSelect').value;
+  drawSimple('chartWeight', 'HKQuantityTypeIdentifierBodyMass', start, end, grp, 'line');
+  drawSimple('chartBMI', 'HKQuantityTypeIdentifierBodyMassIndex', start, end, grp, 'line');
+  drawSimple('chartBodyFat', 'HKQuantityTypeIdentifierBodyFatPercentage', start, end, grp, 'line');
+  drawSimple('chartLBM', 'HKQuantityTypeIdentifierLeanBodyMass', start, end, grp, 'line');
+}
+
+function renderSleepCharts(){
+  const {start, end} = getRangeDates();
+  const grp = document.getElementById('groupSelect').value;
+  drawSimple('chartSleep', 'HKCategoryTypeIdentifierSleepAnalysis', start, end, 'day', 'bar');
+  drawSimple('chartSleepAvg', 'HKCategoryTypeIdentifierSleepAnalysis', start, end, grp === 'day' ? 'week' : grp, 'line');
+  drawSimple('chartRespRate', 'HKQuantityTypeIdentifierRespiratoryRate', start, end, grp, 'line');
+}
+
+function renderTypesList(){
+  const div = document.getElementById('typesList');
+  const types = [...STATE.types].sort();
+  let html = `<div class="info">Gefunden: ${types.length} Metrik-Typen, ${STATE.sources.size} Datenquellen</div>`;
+  html += '<div class="types-grid"><div><h4 style="margin-bottom:8px;font-size:13px">Metrik-Typen</h4><div class="types-list">';
+  for(const t of types){
+    const known = METRICS[t];
+    const dayCount = Object.values(STATE.daily).filter(d => d[t]).length;
+    html += `<div>${known ? '✓ ' : '○ '}${t.replace('HKQuantityTypeIdentifier','').replace('HKCategoryTypeIdentifier','')} <span style="float:right;color:#64d2ff">${dayCount}d</span></div>`;
+  }
+  html += '</div></div><div><h4 style="margin-bottom:8px;font-size:13px">Datenquellen</h4><div class="types-list">';
+  for(const s of [...STATE.sources].sort()){
+    html += `<div>${s}</div>`;
+  }
+  html += '</div></div></div>';
+  div.innerHTML = html;
+}
+
+// =====================================================================
+// COMPARE & CORRELATION
+// =====================================================================
+function populateMetricSelectors(){
+  const available = [...STATE.types].filter(t => METRICS[t]).map(t => ({id:t, label:METRICS[t].label}));
+  available.sort((a,b)=>a.label.localeCompare(b.label));
+
+  const selects = document.querySelectorAll('.cmp-select');
+  selects.forEach((sel,idx) => {
+    sel.innerHTML = '<option value="">— wählen —</option>';
+    for(const m of available){
+      const opt = document.createElement('option');
+      opt.value = m.id;
+      opt.textContent = m.label;
+      sel.appendChild(opt);
+    }
+    sel.addEventListener('change', () => {
+      if(sel.id.startsWith('cmp')) renderCompareChart();
+      if(sel.id.startsWith('corr')) renderCorrelation();
+    });
+  });
+
+  // Set sensible defaults
+  if(available.find(m=>m.id==='HKQuantityTypeIdentifierStepCount')) document.getElementById('cmp1').value = 'HKQuantityTypeIdentifierStepCount';
+  if(available.find(m=>m.id==='HKQuantityTypeIdentifierActiveEnergyBurned')) document.getElementById('cmp2').value = 'HKQuantityTypeIdentifierActiveEnergyBurned';
+  if(available.find(m=>m.id==='HKQuantityTypeIdentifierRestingHeartRate')) document.getElementById('cmp3').value = 'HKQuantityTypeIdentifierRestingHeartRate';
+
+  if(available.find(m=>m.id==='HKQuantityTypeIdentifierStepCount')) document.getElementById('corrX').value = 'HKQuantityTypeIdentifierStepCount';
+  if(available.find(m=>m.id==='HKQuantityTypeIdentifierRestingHeartRate')) document.getElementById('corrY').value = 'HKQuantityTypeIdentifierRestingHeartRate';
+
+  renderCompareChart();
+  renderCorrelation();
+}
+
+function renderCompareChart(){
+  const {start, end} = getRangeDates();
+  const grp = document.getElementById('groupSelect').value;
+  const ids = ['cmp1','cmp2','cmp3','cmp4'].map(i => document.getElementById(i).value).filter(v=>v);
+  if(ids.length === 0){ destroyChart('chartCompare'); return; }
+
+  const palette = ['#30d158','#ff9f0a','#ff453a','#0a84ff'];
+  const datasets = [];
+  destroyChart('chartCompare');
+  const ctx = document.getElementById('chartCompare');
+
+  // Each metric gets its own y-axis (normalized = false but use multiple axes)
+  const scales = {
+    x: {type:'time', grid:{color:'rgba(255,255,255,0.04)'}, ticks:{font:{size:10}}}
+  };
+
+  ids.forEach((id, i) => {
+    const meta = METRICS[id];
+    const data = aggregateForChart(id, start, end, grp).filter(p=>p.y!==null);
+    const axisId = 'y' + i;
+    datasets.push({
+      label: meta.label + (meta.unit?' ('+meta.unit+')':''),
+      data,
+      borderColor: palette[i],
+      backgroundColor: palette[i] + '22',
+      yAxisID: axisId,
+      tension: 0.3,
+      borderWidth: 2,
+      pointRadius: 0,
+      pointHoverRadius: 4,
+    });
+    scales[axisId] = {
+      position: i % 2 === 0 ? 'left' : 'right',
+      grid: {drawOnChartArea: i === 0, color:'rgba(255,255,255,0.04)'},
+      ticks: {color: palette[i], font:{size:10}},
+      title: {display:true, text: meta.label, color: palette[i], font:{size:11}}
+    };
+  });
+
+  STATE.charts['chartCompare'] = new Chart(ctx, {
+    type:'line',
+    data:{datasets},
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      interaction:{mode:'index',intersect:false},
+      plugins:{legend:{position:'top',labels:{boxWidth:12,font:{size:11}}}},
+      scales
+    }
+  });
+}
+
+function renderCorrelation(){
+  const xId = document.getElementById('corrX').value;
+  const yId = document.getElementById('corrY').value;
+  const result = document.getElementById('corrResult');
+  if(!xId || !yId){ result.innerHTML = ''; destroyChart('chartCorr'); return; }
+
+  const {start, end} = getRangeDates();
+  const xSeries = getDailySeries(xId, start, end);
+  const ySeries = getDailySeries(yId, start, end);
+
+  const points = [];
+  for(let i=0;i<xSeries.length;i++){
+    if(xSeries[i].value !== null && ySeries[i].value !== null){
+      points.push({x:xSeries[i].value, y:ySeries[i].value});
+    }
+  }
+
+  if(points.length < 3){
+    result.innerHTML = '<div class="warning">Nicht genug überlappende Datenpunkte für eine Korrelation</div>';
+    destroyChart('chartCorr');
+    return;
+  }
+
+  const r = pearson(points.map(p=>p.x), points.map(p=>p.y));
+  const strength = Math.abs(r);
+  let label, cls;
+  if(strength > 0.7){label='stark'; cls='green'}
+  else if(strength > 0.4){label='moderat'; cls='blue'}
+  else if(strength > 0.2){label='schwach'; cls='blue'}
+  else {label='kaum vorhanden'; cls='red'}
+  const dir = r > 0 ? 'positiv' : 'negativ';
+
+  result.innerHTML = `Pearson r = <strong>${r.toFixed(3)}</strong> &nbsp; <span class="badge ${cls}">${label} ${dir}</span> &nbsp; <span style="color:var(--muted)">${points.length} Tage</span>`;
+
+  destroyChart('chartCorr');
+  const ctx = document.getElementById('chartCorr');
+
+  // Linear regression for trend line
+  const {slope, intercept} = linreg(points);
+  const xs = points.map(p=>p.x);
+  const minX = Math.min(...xs), maxX = Math.max(...xs);
+  const trendLine = [{x:minX, y:slope*minX+intercept},{x:maxX, y:slope*maxX+intercept}];
+
+  STATE.charts['chartCorr'] = new Chart(ctx, {
+    type:'scatter',
+    data:{datasets:[
+      {label:'Tageswerte', data:points, backgroundColor:'#0a84ff88', borderColor:'#0a84ff', pointRadius:3},
+      {label:'Trend', data:trendLine, type:'line', borderColor:'#ff9f0a', backgroundColor:'transparent', borderWidth:2, pointRadius:0, fill:false}
+    ]},
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{position:'top',labels:{boxWidth:12,font:{size:11}}}},
+      scales:{
+        x:{type:'linear',title:{display:true,text:METRICS[xId].label+' ('+METRICS[xId].unit+')'},grid:{color:'rgba(255,255,255,0.04)'}},
+        y:{type:'linear',title:{display:true,text:METRICS[yId].label+' ('+METRICS[yId].unit+')'},grid:{color:'rgba(255,255,255,0.04)'}}
+      }
+    }
+  });
+}
+
+// =====================================================================
+// MATH HELPERS
+// =====================================================================
+function pearson(xs, ys){
+  const n = xs.length;
+  const mx = xs.reduce((a,b)=>a+b,0)/n;
+  const my = ys.reduce((a,b)=>a+b,0)/n;
+  let num=0, dx=0, dy=0;
+  for(let i=0;i<n;i++){
+    const a = xs[i]-mx, b = ys[i]-my;
+    num += a*b; dx += a*a; dy += b*b;
+  }
+  const den = Math.sqrt(dx*dy);
+  return den === 0 ? 0 : num/den;
+}
+
+function linreg(points){
+  const n = points.length;
+  const sx = points.reduce((s,p)=>s+p.x,0);
+  const sy = points.reduce((s,p)=>s+p.y,0);
+  const sxy = points.reduce((s,p)=>s+p.x*p.y,0);
+  const sxx = points.reduce((s,p)=>s+p.x*p.x,0);
+  const slope = (n*sxy - sx*sy) / (n*sxx - sx*sx || 1);
+  const intercept = (sy - slope*sx) / n;
+  return {slope, intercept};
+}
+
+function computeRollingAvg(data, window){
+  const out = [];
+  for(let i=0;i<data.length;i++){
+    const lo = Math.max(0, i-window+1);
+    const slice = data.slice(lo, i+1);
+    const avg = slice.reduce((s,p)=>s+p.y, 0) / slice.length;
+    out.push({x:data[i].x, y:avg});
+  }
+  return out;
+}
+
+// =====================================================================
+// UI EVENTS
+// =====================================================================
+function switchTab(name){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('tab-'+name).classList.add('active');
+}
+
+document.getElementById('rangeSelect').addEventListener('change', renderAll);
+document.getElementById('groupSelect').addEventListener('change', renderAll);
+
+// =====================================================================
+// EXPORT FOR AI ANALYSIS
+// =====================================================================
+// Produces a compact file (JSON/CSV/Markdown) sized to fit in an LLM
+// context window. The daily detail level for 12 months ~= 100-200 KB,
+// which fits comfortably in Claude/ChatGPT.
+// =====================================================================
+
+function openExportDialog(){
+  document.getElementById('exportModal').style.display = 'flex';
+  updateExportPreview();
+  document.getElementById('exportRange').addEventListener('change', updateExportPreview);
+  document.getElementById('exportFormat').addEventListener('change', updateExportPreview);
+  document.getElementById('exportDetail').addEventListener('change', updateExportPreview);
+}
+
+function closeExportDialog(){
+  document.getElementById('exportModal').style.display = 'none';
+}
+
+function updateExportPreview(){
+  const data = buildExportData();
+  const format = document.getElementById('exportFormat').value;
+  let content;
+  if(format === 'json') content = serializeJSON(data);
+  else if(format === 'csv') content = serializeCSV(data);
+  else content = serializeMarkdown(data);
+  const sizeKB = (new Blob([content]).size / 1024).toFixed(1);
+  const sizeNote = sizeKB < 500 ? 'passt locker in Claude' : sizeKB < 1500 ? 'sollte in Claude passen' : 'eventuell zu groß — kleineren Detailgrad wählen';
+  const color = sizeKB < 500 ? '#30d158' : sizeKB < 1500 ? '#ff9f0a' : '#ff3b30';
+  document.getElementById('exportPreview').innerHTML =
+    `<div><span style="color:var(--muted)">Geschätzte Dateigröße:</span> <strong style="color:${color}">${sizeKB} KB</strong> <span style="color:var(--muted)">(${sizeNote})</span></div>` +
+    `<div style="margin-top:4px"><span style="color:var(--muted)">Metriken:</span> ${data.summary.metricsCount} • <span style="color:var(--muted)">Datenpunkte:</span> ${data.summary.dataPoints.toLocaleString('de')} • <span style="color:var(--muted)">Zeitraum:</span> ${data.summary.days} Tage</div>`;
+}
+
+function buildExportData(){
+  const range = document.getElementById('exportRange').value;
+  const detail = document.getElementById('exportDetail').value;
+
+  const end = new Date(STATE.maxDate);
+  let start;
+  if(range === 'all') start = new Date(STATE.minDate);
+  else {
+    start = new Date(end);
+    start.setDate(start.getDate() - parseInt(range));
+    if(new Date(STATE.minDate) > start) start = new Date(STATE.minDate);
+  }
+
+  // Which metrics have actual data in this range?
+  const metricsWithData = {};
+  for(const type in METRICS){
+    const series = getDailySeries(type, start, end).filter(p => p.value !== null);
+    if(series.length > 0) metricsWithData[type] = series;
+  }
+
+  // Aggregate per detail level
+  const timeSeriesMap = {}; // { 'YYYY-MM-DD' (or week/month key): { metricLabel: value } }
+  let totalPoints = 0;
+
+  for(const [type, series] of Object.entries(metricsWithData)){
+    const meta = METRICS[type];
+    const agg = meta.agg;
+    let aggregated;
+    if(detail === 'daily'){
+      aggregated = series.map(p => ({key: isoDate(p.date), value: p.value}));
+    } else {
+      const groups = {};
+      for(const p of series){
+        let key;
+        if(detail === 'weekly'){
+          const d = new Date(p.date);
+          const day = d.getDay();
+          d.setDate(d.getDate() - day + (day === 0 ? -6 : 1));
+          key = isoDate(d);
+        } else {
+          key = p.date.getFullYear() + '-' + String(p.date.getMonth()+1).padStart(2,'0');
+        }
+        if(!groups[key]) groups[key] = {sum:0, count:0};
+        groups[key].sum += p.value;
+        groups[key].count++;
+      }
+      aggregated = Object.entries(groups).map(([key, g]) => ({
+        key,
+        value: agg === 'sum' ? g.sum : g.sum/g.count
+      }));
+    }
+    for(const pt of aggregated){
+      if(!timeSeriesMap[pt.key]) timeSeriesMap[pt.key] = {};
+      // Round sensibly to reduce size
+      const v = pt.value;
+      timeSeriesMap[pt.key][meta.label] = v >= 100 ? Math.round(v) : Math.round(v*10)/10;
+      totalPoints++;
+    }
+  }
+
+  // Sort chronologically
+  const sortedKeys = Object.keys(timeSeriesMap).sort();
+  const timeSeries = sortedKeys.map(k => ({date:k, ...timeSeriesMap[k]}));
+
+  // Compute summary stats per metric (for context without needing the full series)
+  const summary = {};
+  for(const [type, series] of Object.entries(metricsWithData)){
+    const meta = METRICS[type];
+    const values = series.map(p => p.value);
+    const sum = values.reduce((a,b)=>a+b, 0);
+    const avg = sum / values.length;
+    const sorted = [...values].sort((a,b)=>a-b);
+    summary[meta.label] = {
+      unit: meta.unit || '',
+      aggregation: meta.agg,
+      days: values.length,
+      min: round(sorted[0]),
+      max: round(sorted[sorted.length-1]),
+      mean: round(avg),
+      median: round(sorted[Math.floor(sorted.length/2)]),
+      total: meta.agg === 'sum' ? round(sum) : undefined,
+    };
+  }
+
+  // Workouts in range
+  const workoutsInRange = STATE.workouts.filter(w => {
+    const d = new Date(w.start);
+    return d >= start && d <= end;
+  }).map(w => ({
+    date: w.start.slice(0,10),
+    type: w.type,
+    duration_min: Math.round(w.duration),
+    energy_kcal: w.energy ? Math.round(w.energy) : null,
+    distance_km: w.distance ? Math.round(w.distance*100)/100 : null,
+  }));
+
+  return {
+    meta: {
+      source: 'Apple Health Dashboard export',
+      exported_at: new Date().toISOString(),
+      period: { start: isoDate(start), end: isoDate(end) },
+      detail_level: detail,
+      note: 'Aggregated from Apple Health. Cumulative metrics (steps, distance, energy) are deduplicated by source priority (Watch > iPhone).',
+    },
+    summary: {
+      days: Math.round((end-start)/86400000)+1,
+      metricsCount: Object.keys(metricsWithData).length,
+      dataPoints: totalPoints,
+      workouts: workoutsInRange.length,
+      statistics: summary,
+    },
+    timeseries: timeSeries,
+    workouts: workoutsInRange,
+  };
+}
+
+function round(v){
+  if(v === undefined || v === null || isNaN(v)) return null;
+  return v >= 100 ? Math.round(v) : Math.round(v*100)/100;
+}
+
+function serializeJSON(data){
+  // Compact JSON: no indent for timeseries (saves ~40%), pretty for rest
+  return JSON.stringify(data, null, 1);
+}
+
+function serializeCSV(data){
+  // CSV = the time series table. Metadata goes as comment header.
+  const lines = [];
+  lines.push('# Apple Health Dashboard Export');
+  lines.push(`# Period: ${data.meta.period.start} to ${data.meta.period.end}`);
+  lines.push(`# Detail: ${data.meta.detail_level}`);
+  lines.push(`# Note: ${data.meta.note}`);
+  lines.push('#');
+  lines.push('# Summary statistics:');
+  for(const [label, stats] of Object.entries(data.summary.statistics)){
+    const parts = [`mean=${stats.mean}`, `min=${stats.min}`, `max=${stats.max}`, `days=${stats.days}`];
+    if(stats.total !== undefined) parts.push(`total=${stats.total}`);
+    lines.push(`#   ${label} (${stats.unit}): ${parts.join(', ')}`);
+  }
+  lines.push('');
+
+  // Get all metric columns
+  const cols = new Set();
+  for(const row of data.timeseries) for(const k of Object.keys(row)) if(k !== 'date') cols.add(k);
+  const colArr = [...cols];
+  lines.push(['date', ...colArr].map(csvEscape).join(','));
+  for(const row of data.timeseries){
+    lines.push([row.date, ...colArr.map(c => row[c] ?? '')].map(csvEscape).join(','));
+  }
+
+  if(data.workouts.length){
+    lines.push('');
+    lines.push('# Workouts:');
+    lines.push('date,type,duration_min,energy_kcal,distance_km');
+    for(const w of data.workouts){
+      lines.push([w.date, w.type, w.duration_min, w.energy_kcal ?? '', w.distance_km ?? ''].map(csvEscape).join(','));
+    }
+  }
+  return lines.join('\n');
+}
+
+function csvEscape(v){
+  if(v === null || v === undefined) return '';
+  const s = String(v);
+  if(s.includes(',') || s.includes('"') || s.includes('\n')) return '"' + s.replace(/"/g,'""') + '"';
+  return s;
+}
+
+function serializeMarkdown(data){
+  // Pre-analyzed markdown: trends, extremes, ready for LLM discussion
+  const m = data.meta;
+  const s = data.summary;
+  const lines = [];
+  lines.push(`# Apple Health Report`);
+  lines.push(``);
+  lines.push(`**Zeitraum:** ${m.period.start} bis ${m.period.end} (${s.days} Tage)`);
+  lines.push(`**Erstellt:** ${new Date(m.exported_at).toLocaleString('de-DE')}`);
+  lines.push(`**Detailgrad:** ${m.detail_level}`);
+  lines.push(`**Metriken:** ${s.metricsCount} • **Workouts:** ${s.workouts}`);
+  lines.push(``);
+  lines.push(`> ${m.note}`);
+  lines.push(``);
+  lines.push(`## Zusammenfassung pro Metrik`);
+  lines.push(``);
+  lines.push(`| Metrik | Einheit | Ø | Min | Max | Median | Summe | Tage |`);
+  lines.push(`|---|---|---|---|---|---|---|---|`);
+  for(const [label, st] of Object.entries(s.statistics)){
+    lines.push(`| ${label} | ${st.unit} | ${st.mean} | ${st.min} | ${st.max} | ${st.median} | ${st.total ?? '—'} | ${st.days} |`);
+  }
+  lines.push(``);
+  lines.push(`## Zeitreihe`);
+  lines.push(``);
+  const cols = new Set();
+  for(const row of data.timeseries) for(const k of Object.keys(row)) if(k !== 'date') cols.add(k);
+  const colArr = [...cols];
+  lines.push(`| Datum | ${colArr.join(' | ')} |`);
+  lines.push(`|${'---|'.repeat(colArr.length+1)}`);
+  for(const row of data.timeseries){
+    lines.push(`| ${row.date} | ${colArr.map(c => row[c] ?? '—').join(' | ')} |`);
+  }
+  if(data.workouts.length){
+    lines.push(``);
+    lines.push(`## Workouts`);
+    lines.push(``);
+    lines.push(`| Datum | Typ | Dauer (min) | Energie (kcal) | Distanz (km) |`);
+    lines.push(`|---|---|---|---|---|`);
+    for(const w of data.workouts){
+      lines.push(`| ${w.date} | ${w.type} | ${w.duration_min} | ${w.energy_kcal ?? '—'} | ${w.distance_km ?? '—'} |`);
+    }
+  }
+  lines.push(``);
+  lines.push(`---`);
+  lines.push(`*Analysiere diese Daten: Finde Trends, Auffälligkeiten, Korrelationen zwischen Metriken, und gib mir Empfehlungen.*`);
+  return lines.join('\n');
+}
+
+function doExport(){
+  const data = buildExportData();
+  const format = document.getElementById('exportFormat').value;
+  let content, mime, ext;
+  if(format === 'json'){ content = serializeJSON(data); mime = 'application/json'; ext = 'json'; }
+  else if(format === 'csv'){ content = serializeCSV(data); mime = 'text/csv'; ext = 'csv'; }
+  else { content = serializeMarkdown(data); mime = 'text/markdown'; ext = 'md'; }
+
+  const blob = new Blob([content], {type: mime});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  const datestr = new Date().toISOString().slice(0,10);
+  a.download = `health-export-${datestr}.${ext}`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  closeExportDialog();
+}
+
+function resetAll(){
+  STATE.daily = {}; STATE.workouts = []; STATE.types = new Set(); STATE.sources = new Set();
+  STATE.minDate = null; STATE.maxDate = null;
+  for(const id in STATE.charts){ STATE.charts[id].destroy(); }
+  STATE.charts = {};
+  document.getElementById('importSection').style.display = 'block';
+  document.getElementById('dashboard').style.display = 'none';
+  document.getElementById('headerActions').style.display = 'none';
+  document.getElementById('progress').style.display = 'none';
+  progressFill.style.width = '0%';
+  fileInput.value = '';
+}
+</script>
+<div style="max-width:700px;margin:20px auto;padding:16px 20px;font-size:10px;color:#8e8e93;line-height:1.6;text-align:center">
+  <p><strong>Trademark Notice:</strong> Apple, Apple Health, and HealthKit are trademarks of Apple Inc. This app is not affiliated with or endorsed by Apple Inc.</p>
+  <p><strong>Medical Disclaimer:</strong> This tool is not a medical device. Do not make medical decisions based on this data. Always consult a healthcare professional.</p>
+  <p><strong>Privacy:</strong> All data is processed locally in your browser. No data is transmitted to any server. CDN dependencies (Chart.js, JSZip) are loaded from cdn.jsdelivr.net — your IP address may be disclosed to this CDN provider.</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+.training-modal { width: min(820px, 100%); }
+.training-today-hint { margin: 3px 0 15px !important; font-size: 10px; }
+.training-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: stretch; margin: 12px 0 18px; }
+.training-rpe { color: var(--muted); font-size: 10px; font-weight: 700; }
+.training-rpe select { height: 43px; }
+.training-estimate { display: grid; grid-template-columns: 1fr auto; align-content: center; padding: 10px 13px; border-radius: 11px; color: var(--green); background: var(--green2); }
+.training-estimate span { font-size: 9px; font-weight: 800; }
+.training-estimate strong { font: 600 19px Georgia, serif; }
+.training-estimate small { grid-column: 1 / -1; margin-top: 2px; color: var(--muted); font-size: 8px; }
+.exercise-builder { margin: 4px 0 18px; padding: 18px; border: 1px solid var(--line); border-radius: 15px; background: #f8faf7; }
+.exercise-builder-head { display: flex; justify-content: space-between; align-items: center; gap: 15px; }
+.exercise-builder-head h3 { margin: 3px 0 0; font: 600 18px Georgia, "Songti SC", serif; }
+.exercise-builder-head p { margin: 3px 0 0; color: var(--muted); font-size: 9px; }
+.exercise-presets { display: flex; flex-wrap: wrap; gap: 7px; margin: 14px 0; }
+.exercise-presets button { padding: 6px 10px; border: 1px solid #cfdcd3; border-radius: 20px; color: var(--green); background: #fff; font-size: 9px; font-weight: 800; }
+.exercise-presets button:hover { border-color: var(--green); background: var(--green2); }
+.exercise-rows { display: grid; gap: 9px; }
+.exercise-row { display: grid; grid-template-columns: minmax(150px,1.5fr) repeat(3,minmax(72px,.6fr)) minmax(76px,.55fr) auto; gap: 8px; align-items: end; padding: 11px; border: 1px solid var(--line); border-radius: 12px; background: #fff; }
+.exercise-row label { color: var(--muted); font-size: 8px; font-weight: 800; }
+.exercise-row input, .exercise-row select { margin-top: 4px; padding: 8px; }
+.exercise-row-output { min-width: 76px; padding: 8px 5px; text-align: right; }
+.exercise-row-output span, .exercise-row-output strong { display: block; }
+.exercise-row-output span { color: var(--muted); font-size: 8px; }
+.exercise-row-output strong { color: var(--green); font-size: 11px; }
+.exercise-remove { width: 31px; height: 31px; margin-bottom: 1px; border: 0; border-radius: 9px; color: #a45a49; background: var(--orange2); font-size: 17px; }
+.training-volume { display: grid; grid-template-columns: 1fr auto; align-items: center; margin-top: 12px; padding: 11px 13px; border-radius: 11px; color: var(--green); background: var(--green2); }
+.training-volume span { font-size: 9px; font-weight: 800; }
+.training-volume strong { font: 600 20px Georgia, serif; }
+.training-volume small { grid-column: 1 / -1; color: var(--muted); font-size: 8px; }
+.workout-note { display: block; margin: 0 0 18px; color: var(--muted); font-size: 10px; font-weight: 700; }
+.workout-exercise-summary { display: block; max-width: 410px; color: var(--muted); white-space: normal; line-height: 1.5; }
+.workout-volume { color: var(--green); font-weight: 800; }
+.estimated-badge { display: inline-block; margin-right: 5px; padding: 2px 5px; border-radius: 8px; color: var(--green); background: var(--green2); font-size: 8px; font-weight: 800; }
+.training-stats { grid-template-columns: repeat(4,1fr); }
+
+@media (max-width: 760px) {
+  .training-meta { grid-template-columns: 1fr; }
+  .exercise-builder-head { align-items: flex-start; }
+  .exercise-row { grid-template-columns: 1fr 1fr; }
+  .exercise-row label:first-child { grid-column: 1 / -1; }
+  .exercise-row-output { text-align: left; }
+  .exercise-remove { justify-self: end; }
+  .training-stats { grid-template-columns: repeat(2,1fr); gap: 14px; }
+  .training-stats div:nth-child(3) { border-left: 0; padding-left: 0; }
+}

@@ -1,0 +1,2314 @@
+{
+  "sections": [
+    {
+      "name": "26上身肌肉拉伸",
+      "rows": [
+        {
+          "row": 221,
+          "cells": [
+            {
+              "address": "A221",
+              "value": "注：拉伸图片是Joe Muscolino博士绘制，经授权可用于公众教育。文字是我添加的，作为对图片的原理解释。"
+            }
+          ],
+          "text": "A221 注：拉伸图片是Joe Muscolino博士绘制，经授权可用于公众教育。文字是我添加的，作为对图片的原理解释。",
+          "source": {
+            "sheet": "26上身肌肉拉伸",
+            "cell": "A221:A221"
+          }
+        }
+      ],
+      "images": [
+        {
+          "sheet": "26上身肌肉拉伸",
+          "file": "media/raw/image4.png",
+          "width_px": 2437,
+          "height_px": 1828,
+          "anchor": {
+            "from": {
+              "row": 1,
+              "column": 16,
+              "cell": "P1"
+            },
+            "to": {
+              "row": 43,
+              "column": 31,
+              "cell": "AE43"
+            }
+          },
+          "sha256": "6dcb15f40ddbd5e5938a581207480a55d89f9f85f89ee063ffcd34ca7ca5d2bf"
+        },
+        {
+          "sheet": "26上身肌肉拉伸",
+          "file": "media/raw/image5.png",
+          "width_px": 2437,
+          "height_px": 1828,
+          "anchor": {
+            "from": {
+              "row": 177,
+              "column": 1,
+              "cell": "A177"
+            },
+            "to": {
+              "row": 219,
+              "column": 15,
+              "cell": "O219"
+            }
+          },
+          "sha256": "4d8f54cd6d2ebaaddbaf1938a476b9892785e4312996a9fb7030832644cc8717"
+        },
+        {
+          "sheet": "26上身肌肉拉伸",
+          "file": "media/raw/image6.png",
+          "width_px": 2437,
+          "height_px": 1828,
+          "anchor": {
+            "from": {
+              "row": 45,
+              "column": 17,
+              "cell": "Q45"
+            },
+            "to": {
+              "row": 87,
+              "column": 31,
+              "cell": "AE87"
+            }
+          },
+          "sha256": "cefb90e034db53ad80a532e0920d4ef4e21529913d0b5b08d34f0de53baa68cd"
+        },
+        {
+          "sheet": "26上身肌肉拉伸",
+          "file": "media/raw/image7.png",
+          "width_px": 2437,
+          "height_px": 1828,
+          "anchor": {
+            "from": {
+              "row": 89,
+              "column": 1,
+              "cell": "A89"
+            },
+            "to": {
+              "row": 131,
+              "column": 15,
+              "cell": "O131"
+            }
+          },
+          "sha256": "79c40879419b7c5537345ed4050f9229fb1d5150cbbf706698b84e0840f49691"
+        },
+        {
+          "sheet": "26上身肌肉拉伸",
+          "file": "media/raw/image8.png",
+          "width_px": 2437,
+          "height_px": 1828,
+          "anchor": {
+            "from": {
+              "row": 133,
+              "column": 1,
+              "cell": "A133"
+            },
+            "to": {
+              "row": 175,
+              "column": 15,
+              "cell": "O175"
+            }
+          },
+          "sha256": "98b15388a7e25e4cf29b5c176e3d32cc9041af696e7a9fbdf1ea7961a625fe95"
+        },
+        {
+          "sheet": "26上身肌肉拉伸",
+          "file": "media/raw/image9.png",
+          "width_px": 2437,
+          "height_px": 1828,
+          "anchor": {
+            "from": {
+              "row": 177,
+              "column": 17,
+              "cell": "Q177"
+            },
+            "to": {
+              "row": 219,
+              "column": 31,
+              "cell": "AE219"
+            }
+          },
+          "sha256": "3240344050895ac909f8d4ba8e9660a7a3b8b3d20d29659da0346d4345913ea7"
+        },
+        {
+          "sheet": "26上身肌肉拉伸",
+          "file": "media/raw/image10.png",
+          "width_px": 2437,
+          "height_px": 1828,
+          "anchor": {
+            "from": {
+              "row": 133,
+              "column": 17,
+              "cell": "Q133"
+            },
+            "to": {
+              "row": 175,
+              "column": 31,
+              "cell": "AE175"
+            }
+          },
+          "sha256": "80ec04727bd406c4ce6cf1bb368df7c2e0b2b41e853656d6abd2169648295cb9"
+        },
+        {
+          "sheet": "26上身肌肉拉伸",
+          "file": "media/raw/image6.png",
+          "width_px": 2437,
+          "height_px": 1828,
+          "anchor": {
+            "from": {
+              "row": 45,
+              "column": 17,
+              "cell": "Q45"
+            },
+            "to": {
+              "row": 88,
+              "column": 31,
+              "cell": "AE88"
+            }
+          },
+          "sha256": "cefb90e034db53ad80a532e0920d4ef4e21529913d0b5b08d34f0de53baa68cd"
+        },
+        {
+          "sheet": "26上身肌肉拉伸",
+          "file": "media/raw/image11.jpeg",
+          "width_px": 2400,
+          "height_px": 1800,
+          "anchor": {
+            "from": {
+              "row": 45,
+              "column": 1,
+              "cell": "A45"
+            },
+            "to": {
+              "row": 86,
+              "column": 15,
+              "cell": "O86"
+            }
+          },
+          "sha256": "63a06ee444dd3f66f7adb82397cd8febeaaa5b4fea4d19ba4259093e2c28e9ee"
+        },
+        {
+          "sheet": "26上身肌肉拉伸",
+          "file": "media/raw/image12.jpeg",
+          "width_px": 2400,
+          "height_px": 1800,
+          "anchor": {
+            "from": {
+              "row": 89,
+              "column": 17,
+              "cell": "Q89"
+            },
+            "to": {
+              "row": 129,
+              "column": 31,
+              "cell": "AE129"
+            }
+          },
+          "sha256": "ec65e96e707772ea9e866d46814575509b544002271c51be02c3e4695df9fcd7"
+        },
+        {
+          "sheet": "26上身肌肉拉伸",
+          "file": "media/raw/image13.jpeg",
+          "width_px": 2400,
+          "height_px": 1800,
+          "anchor": {
+            "from": {
+              "row": 1,
+              "column": 1,
+              "cell": "A1"
+            },
+            "to": {
+              "row": 41,
+              "column": 15,
+              "cell": "O41"
+            }
+          },
+          "sha256": "c849ebb17588cdc62dcbc9effacdd6b056f6b11e25aee5e3aaa0e1e964c501e1"
+        }
+      ],
+      "raw_sheet_file": "source/sheets/26-26上身肌肉拉伸.json"
+    },
+    {
+      "name": "27下身肌肉拉伸",
+      "rows": [
+        {
+          "row": 87,
+          "cells": [
+            {
+              "address": "A87",
+              "value": "注：拉伸图片是Joe Muscolino博士绘制，经授权可用于公众教育。文字是我添加的，作为对图片的原理解释。"
+            }
+          ],
+          "text": "A87 注：拉伸图片是Joe Muscolino博士绘制，经授权可用于公众教育。文字是我添加的，作为对图片的原理解释。",
+          "source": {
+            "sheet": "27下身肌肉拉伸",
+            "cell": "A87:A87"
+          }
+        }
+      ],
+      "images": [
+        {
+          "sheet": "27下身肌肉拉伸",
+          "file": "media/raw/image14.png",
+          "width_px": 2428,
+          "height_px": 1814,
+          "anchor": {
+            "from": {
+              "row": 44,
+              "column": 16,
+              "cell": "P44"
+            },
+            "to": {
+              "row": 86,
+              "column": 30,
+              "cell": "AD86"
+            }
+          },
+          "sha256": "ed412bbeb36a4a372e24c4039db20e4104a33fe9c2aba6c6400d1e36b4547d3e"
+        },
+        {
+          "sheet": "27下身肌肉拉伸",
+          "file": "media/raw/image15.png",
+          "width_px": 2428,
+          "height_px": 1814,
+          "anchor": {
+            "from": {
+              "row": 1,
+              "column": 1,
+              "cell": "A1"
+            },
+            "to": {
+              "row": 42,
+              "column": 15,
+              "cell": "O42"
+            }
+          },
+          "sha256": "162c9dc3e4290b6449db87e10031a137bea2793d86f5f22b5660cfaeb82cd5bf"
+        },
+        {
+          "sheet": "27下身肌肉拉伸",
+          "file": "media/raw/image16.png",
+          "width_px": 2428,
+          "height_px": 1814,
+          "anchor": {
+            "from": {
+              "row": 1,
+              "column": 15,
+              "cell": "O1"
+            },
+            "to": {
+              "row": 42,
+              "column": 30,
+              "cell": "AD42"
+            }
+          },
+          "sha256": "dadd001e0be8defe3fa9f4b7f60cb4863e6dd1be6439a3a9f0ab6d2c97639b78"
+        },
+        {
+          "sheet": "27下身肌肉拉伸",
+          "file": "media/raw/image17.jpeg",
+          "width_px": 2418,
+          "height_px": 1814,
+          "anchor": {
+            "from": {
+              "row": 44,
+              "column": 1,
+              "cell": "A44"
+            },
+            "to": {
+              "row": 84,
+              "column": 15,
+              "cell": "O84"
+            }
+          },
+          "sha256": "db3289f201d20d25259091fba7434e04b50fdbf8f8337b07619d29efd141dba9"
+        }
+      ],
+      "raw_sheet_file": "source/sheets/27-27下身肌肉拉伸.json"
+    },
+    {
+      "name": "28健身解剖总结（文字版）",
+      "rows": [
+        {
+          "row": 2,
+          "cells": [
+            {
+              "address": "B2",
+              "value": "健身解剖总结文字版（后面两个sheet是图示版）"
+            }
+          ],
+          "text": "B2 健身解剖总结文字版（后面两个sheet是图示版）",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A2:O2"
+          }
+        },
+        {
+          "row": 4,
+          "cells": [
+            {
+              "address": "B4",
+              "value": "简化总结"
+            },
+            {
+              "address": "D4",
+              "value": "和标准解剖学相比，本表删除了健身动作里很少利用的关节活动（例：各关节的内外旋，髋屈、踝伸），删除了参与关节活动但非健身目标的肌肉（例：肩屈时的喙肱肌）"
+            }
+          ],
+          "text": "B4 简化总结 | D4 和标准解剖学相比，本表删除了健身动作里很少利用的关节活动（例：各关节的内外旋，髋屈、踝伸），删除了参与关节活动但非健身目标的肌肉（例：肩屈时的喙肱肌）",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A4:O4"
+          }
+        },
+        {
+          "row": 5,
+          "cells": [
+            {
+              "address": "B5",
+              "value": "配套视频"
+            },
+            {
+              "address": "D5",
+              "value": "只看文字很难理解，请观看我（好人松松）在B站发的《健身新手的完全解剖手册》7集系列视频来理解https://www.bilibili.com/video/BV1mM6JY6Ei9"
+            }
+          ],
+          "text": "B5 配套视频 | D5 只看文字很难理解，请观看我（好人松松）在B站发的《健身新手的完全解剖手册》7集系列视频来理解https://www.bilibili.com/video/BV1mM6JY6Ei9",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A5:O5"
+          }
+        },
+        {
+          "row": 6,
+          "cells": [
+            {
+              "address": "B6",
+              "value": "解剖软件"
+            },
+            {
+              "address": "D6",
+              "value": "【解剖软件】Complete Anatomy\n【下载办法】①Windows电脑：在Microsoft Store里搜Complete Anatomy（进入后地区必须选中国） ②苹果：在Apple Store里搜Complete Anatomy ③安卓：华为用户在商店搜Complete Anatomy，非华为用户先在本机安装华为应用市场app后，再通过华为应用市场来下载Complete Anatomy\n【试用账号】账号haorensongsong@163.com 密码Haorensongsong163（首字母大写）（尊重开发者版权 仅供学习目的的短期试用 禁止盈利用途）\n【其他账号】①在软件里使用不同邮箱注册账号，每个账号可免费试用3天 ②在微信文章里搜Complete Anatomy，按时间就近排序，不断有大学图书馆公开发出免费激活码 ③在软件内购买学生版权限，年费约300元\n【软件操作】进入后点击“模型”，就会看到人体骨架，接着点击“肌肉”，就会出现肌肉，健身相关的浅表肌肉一般都在第6-7层。其他的神经、血管、内分泌等都不用点。点击具体肌肉，再点击左侧的“单独显示”能孤立显示该肌肉和其起止骨，点击“动作”能看到它参加的关节活动。"
+            }
+          ],
+          "text": "B6 解剖软件 | D6 【解剖软件】Complete Anatomy\n【下载办法】①Windows电脑：在Microsoft Store里搜Complete Anatomy（进入后地区必须选中国） ②苹果：在Apple Store里搜Complete Anatomy ③安卓：华为用户在商店搜Complete Anatomy，非华为用户先在本机安装华为应用市场app后，再通过华为应用市场来下载Complete Anatomy\n【试用账号】账号haorensongsong@163.com 密码Haorensongsong163（首字母大写）（尊重开发者版权 仅供学习目的的短期试用 禁止盈利用途）\n【其他账号】①在软件里使用不同邮箱注册账号，每个账号可免费试用3天 ②在微信文章里搜Complete Anatomy，按时间就近排序，不断有大学图书馆公开发出免费激活码 ③在软件内购买学生版权限，年费约300元\n【软件操作】进入后点击“模型”，就会看到人体骨架，接着点击“肌肉”，就会出现肌肉，健身相关的浅表肌肉一般都在第6-7层。其他的神经、血管、内分泌等都不用点。点击具体肌肉，再点击左侧的“单独显示”能孤立显示该肌肉和其起止骨，点击“动作”能看到它参加的关节活动。",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A6:O6"
+          }
+        },
+        {
+          "row": 12,
+          "cells": [
+            {
+              "address": "A12",
+              "value": "H"
+            },
+            {
+              "address": "K12",
+              "value": "R"
+            }
+          ],
+          "text": "A12 H | K12 R",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A12:O12"
+          }
+        },
+        {
+          "row": 13,
+          "cells": [
+            {
+              "address": "B13",
+              "value": "A表：一个关节活动有哪些肌肉参与？"
+            }
+          ],
+          "text": "B13 A表：一个关节活动有哪些肌肉参与？",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A13:O13"
+          }
+        },
+        {
+          "row": 15,
+          "cells": [
+            {
+              "address": "B15",
+              "value": "关节活动"
+            },
+            {
+              "address": "D15",
+              "value": "通俗描述"
+            },
+            {
+              "address": "E15",
+              "value": "单关节动作举例"
+            },
+            {
+              "address": "F15",
+              "value": "参与肌肉"
+            }
+          ],
+          "text": "B15 关节活动 | D15 通俗描述 | E15 单关节动作举例 | F15 参与肌肉",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A15:O15"
+          }
+        },
+        {
+          "row": 16,
+          "cells": [
+            {
+              "address": "F16",
+              "value": "肌肉1"
+            },
+            {
+              "address": "G16",
+              "value": "肌肉2"
+            },
+            {
+              "address": "H16",
+              "value": "肌肉3"
+            },
+            {
+              "address": "I16",
+              "value": "肌肉4"
+            },
+            {
+              "address": "J16",
+              "value": "肌肉5"
+            }
+          ],
+          "text": "F16 肌肉1 | G16 肌肉2 | H16 肌肉3 | I16 肌肉4 | J16 肌肉5",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A16:O16"
+          }
+        },
+        {
+          "row": 17,
+          "cells": [
+            {
+              "address": "B17",
+              "value": "肩关节"
+            },
+            {
+              "address": "C17",
+              "value": "屈"
+            },
+            {
+              "address": "D17",
+              "value": "大臂：后→前"
+            },
+            {
+              "address": "E17",
+              "value": "前平举"
+            },
+            {
+              "address": "F17",
+              "value": "肩前束"
+            },
+            {
+              "address": "G17",
+              "value": "上胸1"
+            },
+            {
+              "address": "H17",
+              "value": "肱二头肌"
+            }
+          ],
+          "text": "B17 肩关节 | C17 屈 | D17 大臂：后→前 | E17 前平举 | F17 肩前束 | G17 上胸1 | H17 肱二头肌",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A17:O17"
+          }
+        },
+        {
+          "row": 18,
+          "cells": [
+            {
+              "address": "C18",
+              "value": "伸"
+            },
+            {
+              "address": "D18",
+              "value": "大臂：前→后"
+            },
+            {
+              "address": "E18",
+              "value": "直臂下压"
+            },
+            {
+              "address": "F18",
+              "value": "背阔肌"
+            },
+            {
+              "address": "G18",
+              "value": "大圆肌"
+            },
+            {
+              "address": "H18",
+              "value": "肩后束"
+            },
+            {
+              "address": "I18",
+              "value": "肱三头肌长头2"
+            },
+            {
+              "address": "J18",
+              "value": "下胸3"
+            }
+          ],
+          "text": "C18 伸 | D18 大臂：前→后 | E18 直臂下压 | F18 背阔肌 | G18 大圆肌 | H18 肩后束 | I18 肱三头肌长头2 | J18 下胸3",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A18:O18"
+          }
+        },
+        {
+          "row": 19,
+          "cells": [
+            {
+              "address": "C19",
+              "value": "外展"
+            },
+            {
+              "address": "D19",
+              "value": "大臂：内→外"
+            },
+            {
+              "address": "E19",
+              "value": "侧平举"
+            },
+            {
+              "address": "F19",
+              "value": "肩中束"
+            },
+            {
+              "address": "G19",
+              "value": "冈上肌"
+            },
+            {
+              "address": "H19",
+              "value": "肱二头肌长头4"
+            }
+          ],
+          "text": "C19 外展 | D19 大臂：内→外 | E19 侧平举 | F19 肩中束 | G19 冈上肌 | H19 肱二头肌长头4",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A19:O19"
+          }
+        },
+        {
+          "row": 20,
+          "cells": [
+            {
+              "address": "C20",
+              "value": "内收"
+            },
+            {
+              "address": "D20",
+              "value": "大臂：外→内"
+            },
+            {
+              "address": "E20",
+              "value": "龙门架下夹胸"
+            },
+            {
+              "address": "F20",
+              "value": "背阔肌"
+            },
+            {
+              "address": "G20",
+              "value": "大圆肌"
+            },
+            {
+              "address": "H20",
+              "value": "下胸中胸5"
+            }
+          ],
+          "text": "C20 内收 | D20 大臂：外→内 | E20 龙门架下夹胸 | F20 背阔肌 | G20 大圆肌 | H20 下胸中胸5",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A20:O20"
+          }
+        },
+        {
+          "row": 21,
+          "cells": [
+            {
+              "address": "C21",
+              "value": "水平外展"
+            },
+            {
+              "address": "D21",
+              "value": "大臂：在水平面，内→外"
+            },
+            {
+              "address": "E21",
+              "value": "蝴蝶机反向飞鸟"
+            },
+            {
+              "address": "F21",
+              "value": "肩后束"
+            },
+            {
+              "address": "G21",
+              "value": "冈下肌"
+            }
+          ],
+          "text": "C21 水平外展 | D21 大臂：在水平面，内→外 | E21 蝴蝶机反向飞鸟 | F21 肩后束 | G21 冈下肌",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A21:O21"
+          }
+        },
+        {
+          "row": 22,
+          "cells": [
+            {
+              "address": "C22",
+              "value": "水平内收"
+            },
+            {
+              "address": "D22",
+              "value": "大臂：在水平面，外→内"
+            },
+            {
+              "address": "E22",
+              "value": "蝴蝶机夹胸"
+            },
+            {
+              "address": "F22",
+              "value": "上胸中胸"
+            },
+            {
+              "address": "G22",
+              "value": "肩前束"
+            }
+          ],
+          "text": "C22 水平内收 | D22 大臂：在水平面，外→内 | E22 蝴蝶机夹胸 | F22 上胸中胸 | G22 肩前束",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A22:O22"
+          }
+        },
+        {
+          "row": 23,
+          "cells": [
+            {
+              "address": "B23",
+              "value": "肘关节"
+            },
+            {
+              "address": "C23",
+              "value": "屈"
+            },
+            {
+              "address": "D23",
+              "value": "肘关节：打直→折叠"
+            },
+            {
+              "address": "E23",
+              "value": "弯举"
+            },
+            {
+              "address": "F23",
+              "value": "肱二头肌"
+            },
+            {
+              "address": "G23",
+              "value": "肱肌"
+            },
+            {
+              "address": "H23",
+              "value": "肱桡肌"
+            }
+          ],
+          "text": "B23 肘关节 | C23 屈 | D23 肘关节：打直→折叠 | E23 弯举 | F23 肱二头肌 | G23 肱肌 | H23 肱桡肌",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A23:O23"
+          }
+        },
+        {
+          "row": 24,
+          "cells": [
+            {
+              "address": "C24",
+              "value": "伸"
+            },
+            {
+              "address": "D24",
+              "value": "肘关节：折叠→打直"
+            },
+            {
+              "address": "E24",
+              "value": "臂屈伸"
+            },
+            {
+              "address": "F24",
+              "value": "肱三头肌"
+            }
+          ],
+          "text": "C24 伸 | D24 肘关节：折叠→打直 | E24 臂屈伸 | F24 肱三头肌",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A24:O24"
+          }
+        },
+        {
+          "row": 25,
+          "cells": [
+            {
+              "address": "B25",
+              "value": "髋关节"
+            },
+            {
+              "address": "C25",
+              "value": "伸"
+            },
+            {
+              "address": "D25",
+              "value": "髋关节：折叠→打直"
+            },
+            {
+              "address": "E25",
+              "value": "龙门架绳索后踢"
+            },
+            {
+              "address": "F25",
+              "value": "腘绳肌"
+            },
+            {
+              "address": "G25",
+              "value": "臀大肌"
+            }
+          ],
+          "text": "B25 髋关节 | C25 伸 | D25 髋关节：折叠→打直 | E25 龙门架绳索后踢 | F25 腘绳肌 | G25 臀大肌",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A25:O25"
+          }
+        },
+        {
+          "row": 26,
+          "cells": [
+            {
+              "address": "B26",
+              "value": "膝关节"
+            },
+            {
+              "address": "C26",
+              "value": "屈"
+            },
+            {
+              "address": "D26",
+              "value": "膝关节：打直→折叠"
+            },
+            {
+              "address": "E26",
+              "value": "器械腿弯举"
+            },
+            {
+              "address": "F26",
+              "value": "腘绳肌"
+            },
+            {
+              "address": "G26",
+              "value": "腓肠肌"
+            }
+          ],
+          "text": "B26 膝关节 | C26 屈 | D26 膝关节：打直→折叠 | E26 器械腿弯举 | F26 腘绳肌 | G26 腓肠肌",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A26:O26"
+          }
+        },
+        {
+          "row": 27,
+          "cells": [
+            {
+              "address": "C27",
+              "value": "伸"
+            },
+            {
+              "address": "D27",
+              "value": "膝关节：折叠→打直"
+            },
+            {
+              "address": "E27",
+              "value": "器械腿屈伸"
+            },
+            {
+              "address": "F27",
+              "value": "股四头肌"
+            }
+          ],
+          "text": "C27 伸 | D27 膝关节：折叠→打直 | E27 器械腿屈伸 | F27 股四头肌",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A27:O27"
+          }
+        },
+        {
+          "row": 28,
+          "cells": [
+            {
+              "address": "B28",
+              "value": "踝关节"
+            },
+            {
+              "address": "C28",
+              "value": "足跖屈"
+            },
+            {
+              "address": "D28",
+              "value": "足背与小腿：折叠→打直"
+            },
+            {
+              "address": "E28",
+              "value": "提踵"
+            },
+            {
+              "address": "F28",
+              "value": "腓肠肌"
+            },
+            {
+              "address": "G28",
+              "value": "比目鱼肌"
+            }
+          ],
+          "text": "B28 踝关节 | C28 足跖屈 | D28 足背与小腿：折叠→打直 | E28 提踵 | F28 腓肠肌 | G28 比目鱼肌",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A28:O28"
+          }
+        },
+        {
+          "row": 29,
+          "cells": [
+            {
+              "address": "B29",
+              "value": "肩胛骨\n（不用掌握）"
+            },
+            {
+              "address": "C29",
+              "value": "上提"
+            },
+            {
+              "address": "D29",
+              "value": "肩胛骨：耸肩"
+            },
+            {
+              "address": "E29",
+              "value": "肩关节动作都会导致\n肩胛骨发生跟随活动\n但除了两个健身动作外\n①耸肩②后缩肩胛骨划船\n就没有专门为肩胛骨活动而设计的健身动作了\n所以这里就不举例动作了"
+            },
+            {
+              "address": "F29",
+              "value": "上斜方肌"
+            },
+            {
+              "address": "G29",
+              "value": "菱形肌"
+            },
+            {
+              "address": "H29",
+              "value": "肩胛提肌"
+            }
+          ],
+          "text": "B29 肩胛骨\n（不用掌握） | C29 上提 | D29 肩胛骨：耸肩 | E29 肩关节动作都会导致\n肩胛骨发生跟随活动\n但除了两个健身动作外\n①耸肩②后缩肩胛骨划船\n就没有专门为肩胛骨活动而设计的健身动作了\n所以这里就不举例动作了 | F29 上斜方肌 | G29 菱形肌 | H29 肩胛提肌",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A29:O29"
+          }
+        },
+        {
+          "row": 30,
+          "cells": [
+            {
+              "address": "C30",
+              "value": "下沉"
+            },
+            {
+              "address": "D30",
+              "value": "肩胛骨：沉肩"
+            },
+            {
+              "address": "F30",
+              "value": "下斜方肌"
+            },
+            {
+              "address": "G30",
+              "value": "背阔肌"
+            },
+            {
+              "address": "H30",
+              "value": "胸小肌"
+            }
+          ],
+          "text": "C30 下沉 | D30 肩胛骨：沉肩 | F30 下斜方肌 | G30 背阔肌 | H30 胸小肌",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A30:O30"
+          }
+        },
+        {
+          "row": 31,
+          "cells": [
+            {
+              "address": "C31",
+              "value": "外展"
+            },
+            {
+              "address": "D31",
+              "value": "肩胛骨：前引"
+            },
+            {
+              "address": "F31",
+              "value": "前锯肌"
+            },
+            {
+              "address": "G31",
+              "value": "胸小肌"
+            }
+          ],
+          "text": "C31 外展 | D31 肩胛骨：前引 | F31 前锯肌 | G31 胸小肌",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A31:O31"
+          }
+        },
+        {
+          "row": 32,
+          "cells": [
+            {
+              "address": "C32",
+              "value": "内收"
+            },
+            {
+              "address": "D32",
+              "value": "肩胛骨：后缩"
+            },
+            {
+              "address": "F32",
+              "value": "中斜方肌"
+            },
+            {
+              "address": "G32",
+              "value": "下斜方肌"
+            },
+            {
+              "address": "H32",
+              "value": "菱形肌"
+            }
+          ],
+          "text": "C32 内收 | D32 肩胛骨：后缩 | F32 中斜方肌 | G32 下斜方肌 | H32 菱形肌",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A32:O32"
+          }
+        },
+        {
+          "row": 33,
+          "cells": [
+            {
+              "address": "C33",
+              "value": "上旋"
+            },
+            {
+              "address": "D33",
+              "value": "肩胛骨：抬手时向外旋"
+            },
+            {
+              "address": "F33",
+              "value": "上斜方肌"
+            },
+            {
+              "address": "G33",
+              "value": "下斜方肌"
+            },
+            {
+              "address": "H33",
+              "value": "前锯肌"
+            }
+          ],
+          "text": "C33 上旋 | D33 肩胛骨：抬手时向外旋 | F33 上斜方肌 | G33 下斜方肌 | H33 前锯肌",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A33:O33"
+          }
+        },
+        {
+          "row": 34,
+          "cells": [
+            {
+              "address": "C34",
+              "value": "下旋"
+            },
+            {
+              "address": "D34",
+              "value": "肩胛骨：落手时向内旋"
+            },
+            {
+              "address": "F34",
+              "value": "菱形肌"
+            },
+            {
+              "address": "G34",
+              "value": "肩胛提肌"
+            },
+            {
+              "address": "H34",
+              "value": "胸小肌"
+            }
+          ],
+          "text": "C34 下旋 | D34 肩胛骨：落手时向内旋 | F34 菱形肌 | G34 肩胛提肌 | H34 胸小肌",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A34:O34"
+          }
+        },
+        {
+          "row": 35,
+          "cells": [
+            {
+              "address": "B35",
+              "value": "【注1】肩屈时，胸大肌只有上胸参与，越是上胸，肌纤维走向就越竖直，收缩对于肩屈的贡献就越大\n【注2】肩伸时，肱三头肌只有长头参与，外侧头和内侧头是单关节肌（肘关节），因此不会影响肩关节\n【注3】肩伸时，胸大肌只有下胸参与，越是下胸，肌纤维走向就越竖直，收缩对于肩伸的贡献就越大\n【注4】肩外展时，如果大臂在外旋位（手心朝天），肱二头肌（特别是外侧长头）就越在肩关节外展的轨迹上，收缩会对肩关节外展有贡献\n【注5】肩内收时，胸大肌是下胸和中胸参与，在外展约30-180°主要下胸更有利（例：龙门架下夹胸的前中程），在外展约0-30°范围中胸更有利（例：龙门架下夹胸的末端）"
+            }
+          ],
+          "text": "B35 【注1】肩屈时，胸大肌只有上胸参与，越是上胸，肌纤维走向就越竖直，收缩对于肩屈的贡献就越大\n【注2】肩伸时，肱三头肌只有长头参与，外侧头和内侧头是单关节肌（肘关节），因此不会影响肩关节\n【注3】肩伸时，胸大肌只有下胸参与，越是下胸，肌纤维走向就越竖直，收缩对于肩伸的贡献就越大\n【注4】肩外展时，如果大臂在外旋位（手心朝天），肱二头肌（特别是外侧长头）就越在肩关节外展的轨迹上，收缩会对肩关节外展有贡献\n【注5】肩内收时，胸大肌是下胸和中胸参与，在外展约30-180°主要下胸更有利（例：龙门架下夹胸的前中程），在外展约0-30°范围中胸更有利（例：龙门架下夹胸的末端）",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A35:O35"
+          }
+        },
+        {
+          "row": 39,
+          "cells": [
+            {
+              "address": "A39",
+              "value": "S"
+            },
+            {
+              "address": "K39",
+              "value": "S"
+            }
+          ],
+          "text": "A39 S | K39 S",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A39:O39"
+          }
+        },
+        {
+          "row": 40,
+          "cells": [
+            {
+              "address": "B40",
+              "value": "B表：一块肌肉有哪些关节活动？"
+            }
+          ],
+          "text": "B40 B表：一块肌肉有哪些关节活动？",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A40:O40"
+          }
+        },
+        {
+          "row": 42,
+          "cells": [
+            {
+              "address": "B42",
+              "value": "练胸肩：做肩关节活动"
+            }
+          ],
+          "text": "B42 练胸肩：做肩关节活动",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A42:O42"
+          }
+        },
+        {
+          "row": 44,
+          "cells": [
+            {
+              "address": "B44",
+              "value": "关节活动"
+            },
+            {
+              "address": "D44",
+              "value": "通俗描述"
+            },
+            {
+              "address": "E44",
+              "value": "中胸"
+            },
+            {
+              "address": "F44",
+              "value": "上胸"
+            },
+            {
+              "address": "G44",
+              "value": "下胸"
+            },
+            {
+              "address": "H44",
+              "value": "肩前束"
+            },
+            {
+              "address": "I44",
+              "value": "肩中束"
+            },
+            {
+              "address": "J44",
+              "value": "肩后束"
+            }
+          ],
+          "text": "B44 关节活动 | D44 通俗描述 | E44 中胸 | F44 上胸 | G44 下胸 | H44 肩前束 | I44 肩中束 | J44 肩后束",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A44:O44"
+          }
+        },
+        {
+          "row": 45,
+          "cells": [
+            {
+              "address": "B45",
+              "value": "肩关节"
+            },
+            {
+              "address": "C45",
+              "value": "屈"
+            },
+            {
+              "address": "D45",
+              "value": "大臂：后→前"
+            },
+            {
+              "address": "F45",
+              "value": "√ 前平举"
+            },
+            {
+              "address": "H45",
+              "value": "√ 前平举"
+            }
+          ],
+          "text": "B45 肩关节 | C45 屈 | D45 大臂：后→前 | F45 √ 前平举 | H45 √ 前平举",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A45:O45"
+          }
+        },
+        {
+          "row": 46,
+          "cells": [
+            {
+              "address": "C46",
+              "value": "伸"
+            },
+            {
+              "address": "D46",
+              "value": "大臂：前→后"
+            },
+            {
+              "address": "G46",
+              "value": "√2 仰卧直臂上拉"
+            },
+            {
+              "address": "J46",
+              "value": "√ 哑铃划船"
+            }
+          ],
+          "text": "C46 伸 | D46 大臂：前→后 | G46 √2 仰卧直臂上拉 | J46 √ 哑铃划船",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A46:O46"
+          }
+        },
+        {
+          "row": 47,
+          "cells": [
+            {
+              "address": "C47",
+              "value": "外展"
+            },
+            {
+              "address": "D47",
+              "value": "大臂：内→外"
+            },
+            {
+              "address": "I47",
+              "value": "√ 侧平举"
+            }
+          ],
+          "text": "C47 外展 | D47 大臂：内→外 | I47 √ 侧平举",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A47:O47"
+          }
+        },
+        {
+          "row": 48,
+          "cells": [
+            {
+              "address": "C48",
+              "value": "内收"
+            },
+            {
+              "address": "D48",
+              "value": "大臂：外→内"
+            },
+            {
+              "address": "G48",
+              "value": "√1 龙门架下夹胸"
+            }
+          ],
+          "text": "C48 内收 | D48 大臂：外→内 | G48 √1 龙门架下夹胸",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A48:O48"
+          }
+        },
+        {
+          "row": 49,
+          "cells": [
+            {
+              "address": "C49",
+              "value": "水平外展"
+            },
+            {
+              "address": "D49",
+              "value": "大臂：在水平面，内→外"
+            },
+            {
+              "address": "J49",
+              "value": "√ 蝴蝶机反向飞鸟"
+            }
+          ],
+          "text": "C49 水平外展 | D49 大臂：在水平面，内→外 | J49 √ 蝴蝶机反向飞鸟",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A49:O49"
+          }
+        },
+        {
+          "row": 50,
+          "cells": [
+            {
+              "address": "C50",
+              "value": "水平内收"
+            },
+            {
+              "address": "D50",
+              "value": "大臂：在水平面，外→内"
+            },
+            {
+              "address": "E50",
+              "value": "√ 蝴蝶机夹胸"
+            },
+            {
+              "address": "F50",
+              "value": "√ 蝴蝶机夹胸"
+            },
+            {
+              "address": "H50",
+              "value": "√ 蝴蝶机夹胸"
+            }
+          ],
+          "text": "C50 水平内收 | D50 大臂：在水平面，外→内 | E50 √ 蝴蝶机夹胸 | F50 √ 蝴蝶机夹胸 | H50 √ 蝴蝶机夹胸",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A50:O50"
+          }
+        },
+        {
+          "row": 51,
+          "cells": [
+            {
+              "address": "B51",
+              "value": "【注1】胸大肌的肩内收功能，在外展约30-180°主要下胸更有利（例：龙门架下夹胸的前中程），在外展约0-30°范围中胸更有利（例：龙门架下夹胸的末端）\n【注2】胸大肌的肩伸功能，偏竖直向的下胸肌纤维是肩伸肌（例：仰卧直臂上拉、窄握引体、窄握下拉、器械划船、鹦鹉螺下压）"
+            }
+          ],
+          "text": "B51 【注1】胸大肌的肩内收功能，在外展约30-180°主要下胸更有利（例：龙门架下夹胸的前中程），在外展约0-30°范围中胸更有利（例：龙门架下夹胸的末端）\n【注2】胸大肌的肩伸功能，偏竖直向的下胸肌纤维是肩伸肌（例：仰卧直臂上拉、窄握引体、窄握下拉、器械划船、鹦鹉螺下压）",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A51:O51"
+          }
+        },
+        {
+          "row": 53,
+          "cells": [
+            {
+              "address": "B53",
+              "value": "练背：做肩关节活动"
+            }
+          ],
+          "text": "B53 练背：做肩关节活动",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A53:O53"
+          }
+        },
+        {
+          "row": 55,
+          "cells": [
+            {
+              "address": "B55",
+              "value": "关节活动"
+            },
+            {
+              "address": "D55",
+              "value": "通俗描述"
+            },
+            {
+              "address": "E55",
+              "value": "背阔肌"
+            },
+            {
+              "address": "F55",
+              "value": "大圆肌"
+            },
+            {
+              "address": "G55",
+              "value": "冈下肌"
+            },
+            {
+              "address": "H55",
+              "value": "斜方肌（肩胛骨相关 而非与肩关节相关）"
+            }
+          ],
+          "text": "B55 关节活动 | D55 通俗描述 | E55 背阔肌 | F55 大圆肌 | G55 冈下肌 | H55 斜方肌（肩胛骨相关 而非与肩关节相关）",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A55:O55"
+          }
+        },
+        {
+          "row": 56,
+          "cells": [
+            {
+              "address": "B56",
+              "value": "肩关节"
+            },
+            {
+              "address": "C56",
+              "value": "屈"
+            },
+            {
+              "address": "D56",
+              "value": "大臂：后→前"
+            },
+            {
+              "address": "H56",
+              "value": "【上斜方肌】a."
+            },
+            {
+              "address": "I56",
+              "value": "肩胛骨上提（例：哑铃耸肩）"
+            }
+          ],
+          "text": "B56 肩关节 | C56 屈 | D56 大臂：后→前 | H56 【上斜方肌】a. | I56 肩胛骨上提（例：哑铃耸肩）",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A56:O56"
+          }
+        },
+        {
+          "row": 57,
+          "cells": [
+            {
+              "address": "C57",
+              "value": "伸"
+            },
+            {
+              "address": "D57",
+              "value": "大臂：前→后"
+            },
+            {
+              "address": "E57",
+              "value": "√ 窄握引体下拉"
+            },
+            {
+              "address": "F57",
+              "value": "√窄握引体/下拉"
+            },
+            {
+              "address": "H57",
+              "value": "b."
+            },
+            {
+              "address": "I57",
+              "value": "肩胛骨上旋（例：推举、前平举、侧平举等3）"
+            }
+          ],
+          "text": "C57 伸 | D57 大臂：前→后 | E57 √ 窄握引体下拉 | F57 √窄握引体/下拉 | H57 b. | I57 肩胛骨上旋（例：推举、前平举、侧平举等3）",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A57:O57"
+          }
+        },
+        {
+          "row": 58,
+          "cells": [
+            {
+              "address": "C58",
+              "value": "外展"
+            },
+            {
+              "address": "D58",
+              "value": "大臂：内→外"
+            },
+            {
+              "address": "H58",
+              "value": "【中斜方肌】a."
+            },
+            {
+              "address": "I58",
+              "value": "肩胛骨内收（例：后缩肩胛骨的宽握划船）"
+            }
+          ],
+          "text": "C58 外展 | D58 大臂：内→外 | H58 【中斜方肌】a. | I58 肩胛骨内收（例：后缩肩胛骨的宽握划船）",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A58:O58"
+          }
+        },
+        {
+          "row": 59,
+          "cells": [
+            {
+              "address": "C59",
+              "value": "内收"
+            },
+            {
+              "address": "D59",
+              "value": "大臂：外→内"
+            },
+            {
+              "address": "E59",
+              "value": "√ 宽握引体下拉"
+            },
+            {
+              "address": "F59",
+              "value": "√宽握引体/下拉"
+            },
+            {
+              "address": "H59",
+              "value": "【下斜方肌】a."
+            },
+            {
+              "address": "I59",
+              "value": "肩胛骨下沉（例：高位下拉）"
+            }
+          ],
+          "text": "C59 内收 | D59 大臂：外→内 | E59 √ 宽握引体下拉 | F59 √宽握引体/下拉 | H59 【下斜方肌】a. | I59 肩胛骨下沉（例：高位下拉）",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A59:O59"
+          }
+        },
+        {
+          "row": 60,
+          "cells": [
+            {
+              "address": "C60",
+              "value": "水平外展"
+            },
+            {
+              "address": "D60",
+              "value": "大臂：在水平面，内→外"
+            },
+            {
+              "address": "G60",
+              "value": "√ 蝴蝶机反向飞鸟"
+            },
+            {
+              "address": "H60",
+              "value": "b."
+            },
+            {
+              "address": "I60",
+              "value": "肩胛骨内收（例：后缩肩胛骨的宽握划船）"
+            }
+          ],
+          "text": "C60 水平外展 | D60 大臂：在水平面，内→外 | G60 √ 蝴蝶机反向飞鸟 | H60 b. | I60 肩胛骨内收（例：后缩肩胛骨的宽握划船）",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A60:O60"
+          }
+        },
+        {
+          "row": 61,
+          "cells": [
+            {
+              "address": "C61",
+              "value": "水平内收"
+            },
+            {
+              "address": "D61",
+              "value": "大臂：在水平面，外→内"
+            },
+            {
+              "address": "H61",
+              "value": "c."
+            },
+            {
+              "address": "I61",
+              "value": "肩胛骨上旋（例：推举、前平举、侧平举等3）"
+            }
+          ],
+          "text": "C61 水平内收 | D61 大臂：在水平面，外→内 | H61 c. | I61 肩胛骨上旋（例：推举、前平举、侧平举等3）",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A61:O61"
+          }
+        },
+        {
+          "row": 62,
+          "cells": [
+            {
+              "address": "B62",
+              "value": "【注3】上斜方肌、下斜方肌、前锯肌共同在肩胛骨周围形成环状力偶，导致肩胛骨上旋；根据肩肱节律，肩外展/肩屈大约超过30°后会相伴发生肩胛骨上旋（如推举、前平举、侧平举等），但没有单独练肩胛骨上旋的动作"
+            }
+          ],
+          "text": "B62 【注3】上斜方肌、下斜方肌、前锯肌共同在肩胛骨周围形成环状力偶，导致肩胛骨上旋；根据肩肱节律，肩外展/肩屈大约超过30°后会相伴发生肩胛骨上旋（如推举、前平举、侧平举等），但没有单独练肩胛骨上旋的动作",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A62:O62"
+          }
+        },
+        {
+          "row": 63,
+          "cells": [
+            {
+              "address": "B63",
+              "value": "练手臂：做肘关节活动"
+            }
+          ],
+          "text": "B63 练手臂：做肘关节活动",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A63:O63"
+          }
+        },
+        {
+          "row": 65,
+          "cells": [
+            {
+              "address": "B65",
+              "value": "关节活动"
+            },
+            {
+              "address": "D65",
+              "value": "通俗描述"
+            },
+            {
+              "address": "E65",
+              "value": "肱二头肌4"
+            },
+            {
+              "address": "F65",
+              "value": "肱肌"
+            },
+            {
+              "address": "G65",
+              "value": "肱桡肌"
+            },
+            {
+              "address": "H65",
+              "value": "肱三头肌5"
+            }
+          ],
+          "text": "B65 关节活动 | D65 通俗描述 | E65 肱二头肌4 | F65 肱肌 | G65 肱桡肌 | H65 肱三头肌5",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A65:O65"
+          }
+        },
+        {
+          "row": 66,
+          "cells": [
+            {
+              "address": "B66",
+              "value": "肘关节"
+            },
+            {
+              "address": "C66",
+              "value": "屈"
+            },
+            {
+              "address": "D66",
+              "value": "肘关节：打直→折叠"
+            },
+            {
+              "address": "E66",
+              "value": "√ 正手弯举"
+            },
+            {
+              "address": "F66",
+              "value": "√ 反手弯举"
+            },
+            {
+              "address": "G66",
+              "value": "√ 锤式弯举"
+            }
+          ],
+          "text": "B66 肘关节 | C66 屈 | D66 肘关节：打直→折叠 | E66 √ 正手弯举 | F66 √ 反手弯举 | G66 √ 锤式弯举",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A66:O66"
+          }
+        },
+        {
+          "row": 67,
+          "cells": [
+            {
+              "address": "C67",
+              "value": "伸"
+            },
+            {
+              "address": "D67",
+              "value": "肘关节：折叠→打直"
+            },
+            {
+              "address": "H67",
+              "value": "√ 各种臂屈伸"
+            }
+          ],
+          "text": "C67 伸 | D67 肘关节：折叠→打直 | H67 √ 各种臂屈伸",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A67:O67"
+          }
+        },
+        {
+          "row": 68,
+          "cells": [
+            {
+              "address": "B68",
+              "value": "【注4】肱二头肌作为双关节肌（肘关节、肩关节），还有比较次要的肩屈（例：前平举）功能，但为使得表格整齐美观，未在蓝色的肩关节动作里列出\n【注5】肱三头肌长头作为双关节肌（肘关节、肩关节），还有比较次要的肩伸（例：直臂划船等一切肩伸练背动作）、肩内收（例：宽握引体/下拉）功能，但为使得表格整齐美观，未在蓝色的肩关节动作里列出"
+            }
+          ],
+          "text": "B68 【注4】肱二头肌作为双关节肌（肘关节、肩关节），还有比较次要的肩屈（例：前平举）功能，但为使得表格整齐美观，未在蓝色的肩关节动作里列出\n【注5】肱三头肌长头作为双关节肌（肘关节、肩关节），还有比较次要的肩伸（例：直臂划船等一切肩伸练背动作）、肩内收（例：宽握引体/下拉）功能，但为使得表格整齐美观，未在蓝色的肩关节动作里列出",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A68:O68"
+          }
+        },
+        {
+          "row": 70,
+          "cells": [
+            {
+              "address": "B70",
+              "value": "练腿：做髋膝踝关节活动"
+            }
+          ],
+          "text": "B70 练腿：做髋膝踝关节活动",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A70:O70"
+          }
+        },
+        {
+          "row": 72,
+          "cells": [
+            {
+              "address": "B72",
+              "value": "关节活动"
+            },
+            {
+              "address": "D72",
+              "value": "通俗描述"
+            },
+            {
+              "address": "E72",
+              "value": "股四头肌"
+            },
+            {
+              "address": "F72",
+              "value": "腘绳肌"
+            },
+            {
+              "address": "G72",
+              "value": "臀大肌"
+            },
+            {
+              "address": "H72",
+              "value": "腓肠肌"
+            },
+            {
+              "address": "I72",
+              "value": "比目鱼肌"
+            }
+          ],
+          "text": "B72 关节活动 | D72 通俗描述 | E72 股四头肌 | F72 腘绳肌 | G72 臀大肌 | H72 腓肠肌 | I72 比目鱼肌",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A72:O72"
+          }
+        },
+        {
+          "row": 73,
+          "cells": [
+            {
+              "address": "B73",
+              "value": "髋关节"
+            },
+            {
+              "address": "C73",
+              "value": "伸"
+            },
+            {
+              "address": "D73",
+              "value": "髋关节：折叠→打直"
+            },
+            {
+              "address": "F73",
+              "value": "√ 硬拉"
+            },
+            {
+              "address": "G73",
+              "value": "√臀冲"
+            }
+          ],
+          "text": "B73 髋关节 | C73 伸 | D73 髋关节：折叠→打直 | F73 √ 硬拉 | G73 √臀冲",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A73:O73"
+          }
+        },
+        {
+          "row": 74,
+          "cells": [
+            {
+              "address": "B74",
+              "value": "膝关节"
+            },
+            {
+              "address": "C74",
+              "value": "屈"
+            },
+            {
+              "address": "D74",
+              "value": "膝关节：打直→折叠"
+            },
+            {
+              "address": "F74",
+              "value": "√ 器械腿弯举"
+            },
+            {
+              "address": "H74",
+              "value": "√ 器械腿弯举"
+            }
+          ],
+          "text": "B74 膝关节 | C74 屈 | D74 膝关节：打直→折叠 | F74 √ 器械腿弯举 | H74 √ 器械腿弯举",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A74:O74"
+          }
+        },
+        {
+          "row": 75,
+          "cells": [
+            {
+              "address": "C75",
+              "value": "伸"
+            },
+            {
+              "address": "D75",
+              "value": "膝关节：折叠→打直"
+            },
+            {
+              "address": "E75",
+              "value": "√ 器械腿屈伸"
+            }
+          ],
+          "text": "C75 伸 | D75 膝关节：折叠→打直 | E75 √ 器械腿屈伸",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A75:O75"
+          }
+        },
+        {
+          "row": 76,
+          "cells": [
+            {
+              "address": "B76",
+              "value": "踝关节"
+            },
+            {
+              "address": "C76",
+              "value": "足跖屈"
+            },
+            {
+              "address": "D76",
+              "value": "足背与小腿：折叠→打直"
+            },
+            {
+              "address": "H76",
+              "value": "√ 提踵"
+            },
+            {
+              "address": "I76",
+              "value": "√ 提踵"
+            }
+          ],
+          "text": "B76 踝关节 | C76 足跖屈 | D76 足背与小腿：折叠→打直 | H76 √ 提踵 | I76 √ 提踵",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A76:O76"
+          }
+        },
+        {
+          "row": 77,
+          "cells": [
+            {
+              "address": "A77",
+              "value": "H"
+            },
+            {
+              "address": "K77",
+              "value": "R"
+            }
+          ],
+          "text": "A77 H | K77 R",
+          "source": {
+            "sheet": "28健身解剖总结（文字版）",
+            "cell": "A77:O77"
+          }
+        }
+      ],
+      "images": [],
+      "raw_sheet_file": "source/sheets/28-28健身解剖总结-文字版.json"
+    },
+    {
+      "name": "29关节活动的肌肉（图示版）",
+      "rows": [
+        {
+          "row": 1,
+          "cells": [
+            {
+              "address": "A1",
+              "value": "【解剖软件】Complete Anatomy\n\n【下载办法】①Windows电脑：在Microsoft Store里搜Complete Anatomy（进入后地区必须选中国） ②苹果：在Apple Store里搜Complete Anatomy ③安卓：华为用户在商店搜Complete Anatomy，非华为用户先在本机安装华为应用市场app后，再通过华为应用市场来下载Complete Anatomy\n\n【试用账号】账号haorensongsong@163.com 密码Haorensongsong163（首字母大写）（尊重开发者版权 仅供学习目的的短期试用 禁止盈利用途）\n\n【其他账号】①在软件里使用不同邮箱注册账号，每个账号可免费试用3天 ②在微信文章里搜Complete Anatomy，按时间就近排序，不断有大学图书馆公开发出免费激活码 ③在软件内购买学生版权限，年费约300元\n\n【软件操作】进入后点击“模型”，就会看到人体骨架，接着点击“肌肉”，就会出现肌肉，健身相关的浅表肌肉一般都在第6-7层。其他的神经、血管、内分泌等都不用点。点击具体肌肉，再点击左侧的“单独显示”能孤立显示该肌肉和其起止骨，点击“动作”能看到它参加的关节活动。\n\n【解剖配套讲解视频】《健身新手的解剖完全手册》系列视频之第1集关节活动https://www.bilibili.com/video/BV1mM6JY6Ei9"
+            }
+          ],
+          "text": "A1 【解剖软件】Complete Anatomy\n\n【下载办法】①Windows电脑：在Microsoft Store里搜Complete Anatomy（进入后地区必须选中国） ②苹果：在Apple Store里搜Complete Anatomy ③安卓：华为用户在商店搜Complete Anatomy，非华为用户先在本机安装华为应用市场app后，再通过华为应用市场来下载Complete Anatomy\n\n【试用账号】账号haorensongsong@163.com 密码Haorensongsong163（首字母大写）（尊重开发者版权 仅供学习目的的短期试用 禁止盈利用途）\n\n【其他账号】①在软件里使用不同邮箱注册账号，每个账号可免费试用3天 ②在微信文章里搜Complete Anatomy，按时间就近排序，不断有大学图书馆公开发出免费激活码 ③在软件内购买学生版权限，年费约300元\n\n【软件操作】进入后点击“模型”，就会看到人体骨架，接着点击“肌肉”，就会出现肌肉，健身相关的浅表肌肉一般都在第6-7层。其他的神经、血管、内分泌等都不用点。点击具体肌肉，再点击左侧的“单独显示”能孤立显示该肌肉和其起止骨，点击“动作”能看到它参加的关节活动。\n\n【解剖配套讲解视频】《健身新手的解剖完全手册》系列视频之第1集关节活动https://www.bilibili.com/video/BV1mM6JY6Ei9",
+          "source": {
+            "sheet": "29关节活动的肌肉（图示版）",
+            "cell": "A1:G1"
+          }
+        }
+      ],
+      "images": [
+        {
+          "sheet": "29关节活动的肌肉（图示版）",
+          "file": "media/raw/image18.png",
+          "width_px": 2438,
+          "height_px": 1366,
+          "anchor": {
+            "from": {
+              "row": 1,
+              "column": 8,
+              "cell": "H1"
+            },
+            "to": {
+              "row": 32,
+              "column": 22,
+              "cell": "V32"
+            }
+          },
+          "sha256": "fe1b00ac653fb14af2b70704688878e25986c6b8ff12aadfa3812405c847b997"
+        },
+        {
+          "sheet": "29关节活动的肌肉（图示版）",
+          "file": "media/raw/image19.png",
+          "width_px": 3000,
+          "height_px": 3350,
+          "anchor": {
+            "from": {
+              "row": 104,
+              "column": 1,
+              "cell": "A104"
+            },
+            "to": {
+              "row": 167,
+              "column": 15,
+              "cell": "O167"
+            }
+          },
+          "sha256": "2bcd33bb06163641fc5c3484d3e7e4e49c31217198ea07d41d964de881189a62"
+        },
+        {
+          "sheet": "29关节活动的肌肉（图示版）",
+          "file": "media/raw/image20.png",
+          "width_px": 2686,
+          "height_px": 2998,
+          "anchor": {
+            "from": {
+              "row": 37,
+              "column": 1,
+              "cell": "A37"
+            },
+            "to": {
+              "row": 99,
+              "column": 15,
+              "cell": "O99"
+            }
+          },
+          "sha256": "a7eb293b3c4f74e7edee59ac314e76559356ad725d3aaf9786be299527d69232"
+        },
+        {
+          "sheet": "29关节活动的肌肉（图示版）",
+          "file": "media/raw/image21.png",
+          "width_px": 2686,
+          "height_px": 2998,
+          "anchor": {
+            "from": {
+              "row": 171,
+              "column": 1,
+              "cell": "A171"
+            },
+            "to": {
+              "row": 234,
+              "column": 15,
+              "cell": "O234"
+            }
+          },
+          "sha256": "9acee16ad50b11f2ae8095a3853cc06441c00f0d9b8cb0bf635e9d1a606bc2ba"
+        },
+        {
+          "sheet": "29关节活动的肌肉（图示版）",
+          "file": "media/raw/image22.png",
+          "width_px": 2686,
+          "height_px": 2998,
+          "anchor": {
+            "from": {
+              "row": 171,
+              "column": 15,
+              "cell": "O171"
+            },
+            "to": {
+              "row": 234,
+              "column": 30,
+              "cell": "AD234"
+            }
+          },
+          "sha256": "6086d109a105b8e70f35cff4779c529213a5f852b79a52bb1d0597db3c86e1d1"
+        },
+        {
+          "sheet": "29关节活动的肌肉（图示版）",
+          "file": "media/raw/image23.png",
+          "width_px": 2686,
+          "height_px": 2998,
+          "anchor": {
+            "from": {
+              "row": 104,
+              "column": 15,
+              "cell": "O104"
+            },
+            "to": {
+              "row": 167,
+              "column": 30,
+              "cell": "AD167"
+            }
+          },
+          "sha256": "f4d80aa1326097d791edcb886a58015985e3e286e9dc8870634f7434c7c2314a"
+        },
+        {
+          "sheet": "29关节活动的肌肉（图示版）",
+          "file": "media/raw/image24.png",
+          "width_px": 2686,
+          "height_px": 2998,
+          "anchor": {
+            "from": {
+              "row": 239,
+              "column": 1,
+              "cell": "A239"
+            },
+            "to": {
+              "row": 302,
+              "column": 15,
+              "cell": "O302"
+            }
+          },
+          "sha256": "96e9e1342dbb526dcfd830eb2944a55ca63f2ae2838f1c71c8edeef060bb6345"
+        },
+        {
+          "sheet": "29关节活动的肌肉（图示版）",
+          "file": "media/raw/image25.png",
+          "width_px": 2686,
+          "height_px": 2998,
+          "anchor": {
+            "from": {
+              "row": 239,
+              "column": 15,
+              "cell": "O239"
+            },
+            "to": {
+              "row": 302,
+              "column": 30,
+              "cell": "AD302"
+            }
+          },
+          "sha256": "fa5e4227bfab3c93c5f67e9623bc4534feac8a4ba9bfb6512064872840e1e6c4"
+        },
+        {
+          "sheet": "29关节活动的肌肉（图示版）",
+          "file": "media/raw/image26.png",
+          "width_px": 2686,
+          "height_px": 2998,
+          "anchor": {
+            "from": {
+              "row": 306,
+              "column": 1,
+              "cell": "A306"
+            },
+            "to": {
+              "row": 369,
+              "column": 15,
+              "cell": "O369"
+            }
+          },
+          "sha256": "143fe0b99d01efb5500a948209f9f6fad81a318743077404e89027fb2ea2506a"
+        },
+        {
+          "sheet": "29关节活动的肌肉（图示版）",
+          "file": "media/raw/image27.png",
+          "width_px": 2686,
+          "height_px": 2998,
+          "anchor": {
+            "from": {
+              "row": 374,
+              "column": 15,
+              "cell": "O374"
+            },
+            "to": {
+              "row": 438,
+              "column": 30,
+              "cell": "AD438"
+            }
+          },
+          "sha256": "b77246a89dd59509edf7435c93b3dec227944db6890747471d62fe842ac68c9e"
+        },
+        {
+          "sheet": "29关节活动的肌肉（图示版）",
+          "file": "media/raw/image28.png",
+          "width_px": 2686,
+          "height_px": 2998,
+          "anchor": {
+            "from": {
+              "row": 374,
+              "column": 1,
+              "cell": "A374"
+            },
+            "to": {
+              "row": 438,
+              "column": 15,
+              "cell": "O438"
+            }
+          },
+          "sha256": "bbb68104dc253fd8cf3be1d03d853145433263a8d0499c5381504141e5e6bcc0"
+        },
+        {
+          "sheet": "29关节活动的肌肉（图示版）",
+          "file": "media/raw/image29.png",
+          "width_px": 2686,
+          "height_px": 2998,
+          "anchor": {
+            "from": {
+              "row": 306,
+              "column": 15,
+              "cell": "O306"
+            },
+            "to": {
+              "row": 369,
+              "column": 30,
+              "cell": "AD369"
+            }
+          },
+          "sha256": "0f3520a73b212bcc60dd526c6876dc9378d5263090ba12e14934a96422dc1648"
+        },
+        {
+          "sheet": "29关节活动的肌肉（图示版）",
+          "file": "media/raw/image30.png",
+          "width_px": 3000,
+          "height_px": 3350,
+          "anchor": {
+            "from": {
+              "row": 37,
+              "column": 15,
+              "cell": "O37"
+            },
+            "to": {
+              "row": 99,
+              "column": 30,
+              "cell": "AD99"
+            }
+          },
+          "sha256": "a521a04c5e7bf995b84b84f235ef8652aa3ffc7936c398ee598a4d8b68db3de1"
+        }
+      ],
+      "raw_sheet_file": "source/sheets/29-29关节活动的肌肉-图示版.json"
+    },
+    {
+      "name": "30肌肉的关节活动（图示版）",
+      "rows": [
+        {
+          "row": 1,
+          "cells": [
+            {
+              "address": "A1",
+              "value": "【解剖软件】Complete Anatomy\n\n【下载办法】①Windows电脑：在Microsoft Store里搜Complete Anatomy（进入后地区必须选中国） ②苹果：在Apple Store里搜Complete Anatomy ③安卓：华为用户在商店搜Complete Anatomy，非华为用户先在本机安装华为应用市场app后，再通过华为应用市场来下载Complete Anatomy\n\n【试用账号】账号haorensongsong@163.com 密码Haorensongsong163（首字母大写）（尊重开发者版权 仅供学习目的的短期试用 禁止盈利用途）\n\n【其他账号】①在软件里使用不同邮箱注册账号，每个账号可免费试用3天 ②在微信文章里搜Complete Anatomy，按时间就近排序，不断有大学图书馆公开发出免费激活码 ③在软件内购买学生版权限，年费约300元\n\n【软件操作】进入后点击“模型”，就会看到人体骨架，接着点击“肌肉”，就会出现肌肉，健身相关的浅表肌肉一般都在第6-7层。其他的神经、血管、内分泌等都不用点。点击具体肌肉，再点击左侧的“单独显示”能孤立显示该肌肉和其起止骨，点击“动作”能看到它参加的关节活动。\n\n【解剖配套讲解视频】《健身新手的解剖完全手册》系列视频之第1集关节活动https://www.bilibili.com/video/BV1mM6JY6Ei9"
+            }
+          ],
+          "text": "A1 【解剖软件】Complete Anatomy\n\n【下载办法】①Windows电脑：在Microsoft Store里搜Complete Anatomy（进入后地区必须选中国） ②苹果：在Apple Store里搜Complete Anatomy ③安卓：华为用户在商店搜Complete Anatomy，非华为用户先在本机安装华为应用市场app后，再通过华为应用市场来下载Complete Anatomy\n\n【试用账号】账号haorensongsong@163.com 密码Haorensongsong163（首字母大写）（尊重开发者版权 仅供学习目的的短期试用 禁止盈利用途）\n\n【其他账号】①在软件里使用不同邮箱注册账号，每个账号可免费试用3天 ②在微信文章里搜Complete Anatomy，按时间就近排序，不断有大学图书馆公开发出免费激活码 ③在软件内购买学生版权限，年费约300元\n\n【软件操作】进入后点击“模型”，就会看到人体骨架，接着点击“肌肉”，就会出现肌肉，健身相关的浅表肌肉一般都在第6-7层。其他的神经、血管、内分泌等都不用点。点击具体肌肉，再点击左侧的“单独显示”能孤立显示该肌肉和其起止骨，点击“动作”能看到它参加的关节活动。\n\n【解剖配套讲解视频】《健身新手的解剖完全手册》系列视频之第1集关节活动https://www.bilibili.com/video/BV1mM6JY6Ei9",
+          "source": {
+            "sheet": "30肌肉的关节活动（图示版）",
+            "cell": "A1:G1"
+          }
+        }
+      ],
+      "images": [
+        {
+          "sheet": "30肌肉的关节活动（图示版）",
+          "file": "media/raw/image31.png",
+          "width_px": 2424,
+          "height_px": 1316,
+          "anchor": {
+            "from": {
+              "row": 98,
+              "column": 1,
+              "cell": "A98"
+            },
+            "to": {
+              "row": 129,
+              "column": 15,
+              "cell": "O129"
+            }
+          },
+          "sha256": "d2152ff172f88f33892ba599320efa4b93944fc234967dc2230aba86360631cb"
+        },
+        {
+          "sheet": "30肌肉的关节活动（图示版）",
+          "file": "media/raw/image32.png",
+          "width_px": 2424,
+          "height_px": 1316,
+          "anchor": {
+            "from": {
+              "row": 34,
+              "column": 16,
+              "cell": "P34"
+            },
+            "to": {
+              "row": 64,
+              "column": 30,
+              "cell": "AD64"
+            }
+          },
+          "sha256": "9a6be30bfefc1c6a9b67bdcabb090698166435a844faae8af44aa67f71d33d3c"
+        },
+        {
+          "sheet": "30肌肉的关节活动（图示版）",
+          "file": "media/raw/image33.png",
+          "width_px": 2424,
+          "height_px": 1316,
+          "anchor": {
+            "from": {
+              "row": 66,
+              "column": 16,
+              "cell": "P66"
+            },
+            "to": {
+              "row": 96,
+              "column": 30,
+              "cell": "AD96"
+            }
+          },
+          "sha256": "6e4009a59cde84d7dadaf52050011f0bc3ab0921d16958737e6972016543dca9"
+        },
+        {
+          "sheet": "30肌肉的关节活动（图示版）",
+          "file": "media/raw/image34.png",
+          "width_px": 2424,
+          "height_px": 1316,
+          "anchor": {
+            "from": {
+              "row": 66,
+              "column": 1,
+              "cell": "A66"
+            },
+            "to": {
+              "row": 96,
+              "column": 15,
+              "cell": "O96"
+            }
+          },
+          "sha256": "d07ba3c79139e86c2bb1692f8f65cd490e773179b2a9974c02712b0b4987ea76"
+        },
+        {
+          "sheet": "30肌肉的关节活动（图示版）",
+          "file": "media/raw/image35.png",
+          "width_px": 2424,
+          "height_px": 1350,
+          "anchor": {
+            "from": {
+              "row": 1,
+              "column": 8,
+              "cell": "H1"
+            },
+            "to": {
+              "row": 32,
+              "column": 23,
+              "cell": "W32"
+            }
+          },
+          "sha256": "b8820a61ea4735a67ed499e91a0ef7e02db77f5abf8f546c7c49a87c54886adf"
+        },
+        {
+          "sheet": "30肌肉的关节活动（图示版）",
+          "file": "media/raw/image36.png",
+          "width_px": 2424,
+          "height_px": 1354,
+          "anchor": {
+            "from": {
+              "row": 98,
+              "column": 16,
+              "cell": "P98"
+            },
+            "to": {
+              "row": 129,
+              "column": 30,
+              "cell": "AD129"
+            }
+          },
+          "sha256": "52318aa284de8428123c3eb3726f8d566e13967f038dbafc1099529927c9ffa0"
+        },
+        {
+          "sheet": "30肌肉的关节活动（图示版）",
+          "file": "media/raw/image37.png",
+          "width_px": 2424,
+          "height_px": 1354,
+          "anchor": {
+            "from": {
+              "row": 34,
+              "column": 1,
+              "cell": "A34"
+            },
+            "to": {
+              "row": 64,
+              "column": 15,
+              "cell": "O64"
+            }
+          },
+          "sha256": "27cf372e3a4fca1e2dd8d35673a3f129f98a6b8d1c78bfbd00ca57d4e22048a5"
+        }
+      ],
+      "raw_sheet_file": "source/sheets/30-30肌肉的关节活动-图示版.json"
+    }
+  ]
+}

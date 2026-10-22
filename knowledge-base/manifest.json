@@ -1,0 +1,23 @@
+{
+  "name": "Boji Health Fitness Knowledge Base",
+  "schema_version": "1.0.0",
+  "language": "zh-CN",
+  "generated_at": "2026-10-11T19:06:46.012313+08:00",
+  "source": {
+    "file": "【可任意分享】健身Excel超级套表（作者：B站好人松松）26年9月最新版.xlsx",
+    "sha256": "211363d055795fe7c4c4151856c310b849ae008bc3eaac35e6093615f8e065e9"
+  },
+  "coverage": {
+    "worksheets": 31,
+    "nonempty_cells": 8679,
+    "search_chunks": 2283,
+    "mapped_images": 38,
+    "raw_media_files": 37,
+    "semantic_entities": 9
+  },
+  "entrypoints": {
+    "catalog": "catalog.json",
+    "browser_bundle": "browser-bundle.js",
+    "search_chunks": "search/chunks.jsonl"
+  }
+}

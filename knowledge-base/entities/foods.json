@@ -1,0 +1,1545 @@
+{
+  "schema_version": "1.0.0",
+  "source_sheet": "19日常食物营养率",
+  "carbohydrate_foods": [
+    {
+      "category": "米类主食",
+      "food": "生米",
+      "carbohydrate_rate": 0.75,
+      "gi": "高",
+      "notes": "大米、糙米、糯米、小米、紫米、黑米等不分品种碳水率近似，除了黑米外均是高GI",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B5:F5"
+      }
+    },
+    {
+      "category": "米类主食",
+      "food": "米饭（很软）",
+      "carbohydrate_rate": 0.25,
+      "gi": "高",
+      "notes": "只有自己做饭才可能这么软，外食几乎不可能",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B6:F6"
+      }
+    },
+    {
+      "category": "米类主食",
+      "food": "米饭（一般）",
+      "carbohydrate_rate": 0.3,
+      "gi": "高",
+      "notes": "外食的一般米饭，长方形的标准外卖盒一般100-120g碳水/盒",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B7:F7"
+      }
+    },
+    {
+      "category": "米类主食",
+      "food": "米饭（偏硬）",
+      "carbohydrate_rate": 0.35,
+      "gi": "高",
+      "notes": "外食的一般米饭，长方形的标准外卖盒一般100-120g碳水/盒",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B8:F8"
+      }
+    },
+    {
+      "category": "米类主食",
+      "food": "米粥（稀）",
+      "carbohydrate_rate": 0.1,
+      "gi": "高",
+      "notes": "粘稠度类似小米粥的稀饭",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B9:F9"
+      }
+    },
+    {
+      "category": "米类主食",
+      "food": "米粥（一般）",
+      "carbohydrate_rate": 0.13,
+      "gi": "高",
+      "notes": "粘稠度比小米粥要稠的稀饭",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B10:F10"
+      }
+    },
+    {
+      "category": "米类主食",
+      "food": "米线（熟）",
+      "carbohydrate_rate": 0.33,
+      "gi": "高",
+      "notes": "米线饱腹感很低，外食一般不低于100g碳水/份",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B11:F11"
+      }
+    },
+    {
+      "category": "米类主食",
+      "food": "肠粉（熟）",
+      "carbohydrate_rate": 0.2,
+      "gi": "高",
+      "notes": "广东地方主食，一般50-70g碳水/份",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B12:F12"
+      }
+    },
+    {
+      "category": "米类主食",
+      "food": "粽子",
+      "carbohydrate_rate": 0.5,
+      "gi": "高",
+      "notes": "可吃白粽、豆沙粽，不吃肉粽，饱腹感很低，一般40-60g碳水/个",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B13:F13"
+      }
+    },
+    {
+      "category": "麦类主食",
+      "food": "切片面包",
+      "carbohydrate_rate": 0.5,
+      "gi": "高",
+      "notes": "普通切片面包的脂肪率低于8%（性质是碳水食物），花式面包脂肪率高于10%甚至15%（性质是轻度糖油混合物）",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B14:F14"
+      }
+    },
+    {
+      "category": "麦类主食",
+      "food": "馒头/花卷/馍/馕",
+      "carbohydrate_rate": 0.5,
+      "gi": "高",
+      "notes": null,
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B15:F15"
+      }
+    },
+    {
+      "category": "麦类主食",
+      "food": "挂面（生）",
+      "carbohydrate_rate": 0.75,
+      "gi": "中",
+      "notes": "挂面是面条里少有的中等GI碳水，不建议用于练后餐",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B16:F16"
+      }
+    },
+    {
+      "category": "麦类主食",
+      "food": "意面（生）",
+      "carbohydrate_rate": 0.75,
+      "gi": "低",
+      "notes": "意面是面条里少有的低GI碳水，不能用于练后餐",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B17:F17"
+      }
+    },
+    {
+      "category": "麦类主食",
+      "food": "鲜面（生）",
+      "carbohydrate_rate": 0.6,
+      "gi": "高",
+      "notes": "鲜面，指现和现拉的未下锅的面条，含水量高于干面，因此碳水率稍低，外食一般不低于100g碳水/份",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B18:F18"
+      }
+    },
+    {
+      "category": "麦类主食",
+      "food": "凉面（熟）",
+      "carbohydrate_rate": 0.3,
+      "gi": "高",
+      "notes": null,
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B19:F19"
+      }
+    },
+    {
+      "category": "麦类主食",
+      "food": "粗面（熟）",
+      "carbohydrate_rate": 0.3,
+      "gi": "高",
+      "notes": "粗面，指像凉面粗细的面条，吸水率比细面低一些，因此碳水率稍高一些，外食一般不低于100g碳水/份",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B20:F20"
+      }
+    },
+    {
+      "category": "麦类主食",
+      "food": "意面（熟）",
+      "carbohydrate_rate": 0.3,
+      "gi": "低",
+      "notes": "意面是面条里少有的低GI碳水，不能用于练后餐",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B21:F21"
+      }
+    },
+    {
+      "category": "麦类主食",
+      "food": "细面（熟）",
+      "carbohydrate_rate": 0.23,
+      "gi": "高",
+      "notes": "细面，指像挂面粗细的面条，吸水率比粗面高一些，因此碳水率稍低一些，外食一般不低于100g碳水/份",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B22:F22"
+      }
+    },
+    {
+      "category": "麦类主食",
+      "food": "卷饼/烙饼/馕（熟）",
+      "carbohydrate_rate": 0.5,
+      "gi": "高",
+      "notes": "面粉糊烤熟成饼状主食，各地域称呼不同，饱腹感很低，外食一般不低于100g碳水/份",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B23:F23"
+      }
+    },
+    {
+      "category": "其他主食",
+      "food": "红薯（生/蒸煮）",
+      "carbohydrate_rate": 0.18,
+      "gi": "高",
+      "notes": null,
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B24:F24"
+      }
+    },
+    {
+      "category": "其他主食",
+      "food": "红薯（烤）",
+      "carbohydrate_rate": 0.23,
+      "gi": "高",
+      "notes": null,
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B25:F25"
+      }
+    },
+    {
+      "category": "其他主食",
+      "food": "土豆（生/蒸煮）",
+      "carbohydrate_rate": 0.18,
+      "gi": "中",
+      "notes": null,
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B26:F26"
+      }
+    },
+    {
+      "category": "其他主食",
+      "food": "土豆（烤）",
+      "carbohydrate_rate": 0.23,
+      "gi": "高",
+      "notes": null,
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B27:F27"
+      }
+    },
+    {
+      "category": "其他主食",
+      "food": "红薯/土豆粉丝（生）",
+      "carbohydrate_rate": 0.84,
+      "gi": "低",
+      "notes": "晒干制成的粉丝是少有的低GI碳水，例如酸辣粉、红薯粉、土豆粉，但注意米粉米线等新鲜食品不属于此类",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B28:F28"
+      }
+    },
+    {
+      "category": "其他主食",
+      "food": "甜玉米（生/蒸煮）",
+      "carbohydrate_rate": 0.2,
+      "gi": "中",
+      "notes": "甜玉米，指传统玉米，碳水率和GI比糯玉米低不少，不建议用于练后餐，电商关键词“笨玉米”、“老式玉米”",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B29:F29"
+      }
+    },
+    {
+      "category": "其他主食",
+      "food": "糯玉米（生/蒸煮）",
+      "carbohydrate_rate": 0.35,
+      "gi": "高",
+      "notes": "糯玉米，口味软糯，香味很重，碳水率和GI比甜玉米高得多，电商关键词“糯玉米”",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B30:F30"
+      }
+    },
+    {
+      "category": "其他主食",
+      "food": "贝贝南瓜",
+      "carbohydrate_rate": 0.21,
+      "gi": "中",
+      "notes": "注意贝贝南瓜和传统南瓜的碳水率差别极大",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B31:F31"
+      }
+    },
+    {
+      "category": "其他主食",
+      "food": "传统南瓜",
+      "carbohydrate_rate": 0.05,
+      "gi": "中",
+      "notes": "注意贝贝南瓜和传统南瓜的碳水率差别极大",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B32:F32"
+      }
+    },
+    {
+      "category": "其他主食",
+      "food": "山药（生/蒸煮）",
+      "carbohydrate_rate": 0.12,
+      "gi": "中",
+      "notes": null,
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B33:F33"
+      }
+    },
+    {
+      "category": "其他主食",
+      "food": "藕粉（生）",
+      "carbohydrate_rate": 0.9,
+      "gi": "低",
+      "notes": "少有的低GI碳水，不要用于练后碳水，必须用开水冲调，冷却费时",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B34:F34"
+      }
+    },
+    {
+      "category": "其他主食",
+      "food": "燕麦麸皮（生）",
+      "carbohydrate_rate": 0.45,
+      "gi": "低",
+      "notes": "少有的低GI碳水，不要用于练后碳水；饱腹感极强；极高膳食纤维",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B35:F35"
+      }
+    },
+    {
+      "category": "其他主食",
+      "food": "速食燕麦片（生）",
+      "carbohydrate_rate": 0.6,
+      "gi": "高",
+      "notes": "饱腹感极强，一般不用于练后碳水以免太撑；极高膳食纤维",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B36:F36"
+      }
+    },
+    {
+      "category": "其他主食",
+      "food": "速食黑麦片（生）",
+      "carbohydrate_rate": 0.6,
+      "gi": "高",
+      "notes": "饱腹感极强，一般不用于练后碳水以免太撑；脂肪率比燕麦片低不少，是很纯净的碳水；极高膳食纤维",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B37:F37"
+      }
+    },
+    {
+      "category": "方便食品",
+      "food": "五谷道场方便面",
+      "carbohydrate_rate": 0.65,
+      "gi": "中",
+      "notes": "碳水约50g/袋或盒，虽然料包有油，但面饼非油炸，所以是碳水食物；高钠，建议粉包减半",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B38:F38"
+      }
+    },
+    {
+      "category": "方便食品",
+      "food": "辛拉面（普通版）",
+      "carbohydrate_rate": 0.65,
+      "gi": "中",
+      "notes": "碳水约50g/袋或盒，虽然面饼油炸，但调料包无油，所以接近于碳水食物；高钠，建议粉包减半",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B39:F39"
+      }
+    },
+    {
+      "category": "方便食品",
+      "food": "辛拉面（空空面版）",
+      "carbohydrate_rate": 0.65,
+      "gi": "中",
+      "notes": "碳水约50g/袋或盒，调料包无油，面饼非油炸，所以是彻底的碳水食物；高钠，建议粉包减半",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B40:F40"
+      }
+    },
+    {
+      "category": "方便食品",
+      "food": "康力快熟意大利面",
+      "carbohydrate_rate": 0.32,
+      "gi": "低",
+      "notes": "碳水约60g/袋，需另购意大利面酱料，注意意面是少有的低GI碳水，不要用于练后碳水",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B41:F41"
+      }
+    },
+    {
+      "category": "方便食品",
+      "food": "白家陈记酸辣粉丝",
+      "carbohydrate_rate": 0.6,
+      "gi": "低",
+      "notes": "碳水约40g/袋 60g/盒，料包只有几克油，所以是碳水食物；低GI，不用于练后碳水；高钠，建议粉包减半",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B42:F42"
+      }
+    },
+    {
+      "category": "便携碳水",
+      "food": "切片面包、碱水面包",
+      "carbohydrate_rate": 0.5,
+      "gi": "高",
+      "notes": "常规切片面包的脂肪率低于8%（碳水食物），花式面包脂肪率高于15%（轻度的糖油混合物）",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B43:F43"
+      }
+    },
+    {
+      "category": "便携碳水",
+      "food": "旺仔小馒头（46g装）",
+      "carbohydrate_rate": 0.88,
+      "gi": "高",
+      "notes": "碳水37g/袋，便于配餐，但约有1/4是蔗糖，不宜经常作为练后餐（可能导致果糖摄入超标）",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B44:F44"
+      }
+    },
+    {
+      "category": "便携碳水",
+      "food": "旺仔QQ糖",
+      "carbohydrate_rate": 0.72,
+      "gi": "高",
+      "notes": "小包装是20g装，碳水15g/袋；大包装是70g装，碳水50g/袋",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B45:F45"
+      }
+    },
+    {
+      "category": "便携碳水",
+      "food": "南方黑芝麻糊（无蔗糖版）",
+      "carbohydrate_rate": 0.7,
+      "gi": "高",
+      "notes": "碳水35g/袋，脂肪很低，实际上是碳水食物；推荐无蔗糖版，甜味剂是葡萄糖，不产生果糖；已熟化，温水冲泡即可",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B46:F46"
+      }
+    },
+    {
+      "category": "便携碳水",
+      "food": "南方高山玉米糊（无蔗糖版）",
+      "carbohydrate_rate": 0.7,
+      "gi": "高",
+      "notes": "碳水35g/袋，脂肪很低，实际上是碳水食物；推荐无蔗糖版，甜味剂是葡萄糖，不产生果糖；已熟化，温水冲泡即可",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B47:F47"
+      }
+    },
+    {
+      "category": "便携碳水",
+      "food": "营养米粉",
+      "carbohydrate_rate": 0.75,
+      "gi": "高",
+      "notes": "搜索“营养米粉”、“营养米糊”，以区别昂贵的婴儿米粉；已熟化，温水冲泡即可",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B48:F48"
+      }
+    },
+    {
+      "category": "便携碳水",
+      "food": "十月稻田饭团",
+      "carbohydrate_rate": 0.25,
+      "gi": "中",
+      "notes": "搜索“十月稻田糙米饭团”，碳水25g/袋，开袋即食",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B49:F49"
+      }
+    },
+    {
+      "category": "便携碳水",
+      "food": "红螺牌驴打滚",
+      "carbohydrate_rate": 0.86,
+      "gi": "高",
+      "notes": "搜索“红螺驴打滚”，碳水10g/小袋，此品牌甜味剂是用的麦芽糖而非蔗糖/果葡糖浆，不会产生果糖超标问题",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B50:F50"
+      }
+    },
+    {
+      "category": "便携碳水",
+      "food": "山西烤馍",
+      "carbohydrate_rate": 0.7,
+      "gi": "高",
+      "notes": "搜索“山西纯碱烤馍”，大袋装但保质期很长，口味类似葱香饼干",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B51:F51"
+      }
+    },
+    {
+      "category": "便携碳水",
+      "food": "非油炸干脆面",
+      "carbohydrate_rate": 0.75,
+      "gi": "中",
+      "notes": "搜索“豫派非油炸干脆面”，碳水27g/袋，口味类似小浣熊等油炸干脆面",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B52:F52"
+      }
+    },
+    {
+      "category": "便携碳水",
+      "food": "非油炸锅巴",
+      "carbohydrate_rate": 0.65,
+      "gi": "中",
+      "notes": "搜索“萃乐麦锅巴”，碳水65g/袋，口味类似一般的油炸锅巴",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B53:F53"
+      }
+    },
+    {
+      "category": "便携碳水",
+      "food": "BHB熟板栗",
+      "carbohydrate_rate": 0.35,
+      "gi": "中",
+      "notes": "搜索“BHB板栗”，碳水35g/袋",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B54:F54"
+      }
+    },
+    {
+      "category": "便携碳水",
+      "food": "沈大成豆沙青团",
+      "carbohydrate_rate": 0.65,
+      "gi": "高",
+      "notes": "搜索“沈大成豆沙青团”，碳水45g/个，注意只能是豆沙味的，其他口味脂肪太高",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B55:F55"
+      }
+    },
+    {
+      "category": "便携碳水",
+      "food": "云片糕/桃片",
+      "carbohydrate_rate": 0.8,
+      "gi": "高",
+      "notes": "一般是小袋装，自己看包装重量，蔗糖率约10%，不致于导致果糖摄入超标",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B56:F56"
+      }
+    },
+    {
+      "category": "便携碳水",
+      "food": "米花糖",
+      "carbohydrate_rate": 0.85,
+      "gi": "高",
+      "notes": "一般都小袋装，自己看包装重量，蔗糖率约10%，不致于导致果糖摄入超标",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B57:F57"
+      }
+    },
+    {
+      "category": "便携碳水",
+      "food": "娃哈哈八宝粥（木糖醇版）",
+      "carbohydrate_rate": 0.13,
+      "gi": "高",
+      "notes": "搜索“娃哈哈八宝粥”，碳水47g/罐；推荐木糖醇版，不产生果糖",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B58:F58"
+      }
+    },
+    {
+      "category": "便携碳水",
+      "food": "宝矿力运动饮料",
+      "carbohydrate_rate": 0.06,
+      "gi": "中",
+      "notes": "30g蔗糖/瓶，不能作为练后全部碳水，升血糖和胰岛素能力较弱，且可能导致果糖摄入超标",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B59:F59"
+      }
+    },
+    {
+      "category": "便携碳水",
+      "food": "脉动运动饮料",
+      "carbohydrate_rate": 0.05,
+      "gi": "中",
+      "notes": "30g蔗糖/瓶，不能作为练后全部碳水，升血糖和胰岛素能力较弱，且可能导致果糖摄入超标",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B60:F60"
+      }
+    },
+    {
+      "category": "水果",
+      "food": "干枣",
+      "carbohydrate_rate": 0.5,
+      "gi": "中",
+      "notes": "【水果的碳水构成】\n\n水果的碳水绝大部分是果糖+葡萄糖+蔗糖构成。蔗糖继续分解为一半果糖和一半葡萄糖。因此水果的碳水实质是果糖+葡萄糖的混合物，可以简单记忆成两者各半（不同水果比例有所差别）。\n\n\n【碳水率（含糖率）并不直接决定吃糖量】\n\n网上常见说法是说：放心吃“低糖水果”，不要吃“高糖水果”。这是不可靠的。因为我们吃水果时，不可能各种水果是按等重量来吃的，所以“含糖率”数据的实践意义不大。\n\n例如：西瓜是低糖水果（7%），但普通人一次很容易吃1kg以上瓜瓤，吃糖量超过70g是很厉害的；反之，香蕉是高糖水果（22%），但普通人吃香蕉一般只吃一根，只有20-30g糖，比吃西瓜要温和得多。因此，爱吃水果的朋友可以自己计算一下你一次到底会吃多少（买水果时标签会有重量，很好计算），切勿觉得“低糖水果”可以放心吃，“高糖水果”就不能吃。\n\n\n【水果不能作为主要碳水来源】\n\na.水果的碳水里大约有一半是果糖，如果把水果替代淀粉类主食作为主要碳水来源，显然很容易超过果糖的日摄入限量30-50g（长期过量摄入果糖会增加脂肪肝、肥胖症、胰岛素抵抗、痛风等代谢疾病的风险）；\n\nb.水果作为糖水，饱腹感很低，比吃米饭馒头等常规淀粉类主食更容易饥饿，减脂期水果吃得越多越饿；\n\nc.力训的练后餐也不能用水果作为主要碳水来源，等碳水量的水果和米饭馒头等常规淀粉类主食相比，因为水果大约一半碳水是果糖（果糖不刺激胰岛素分泌），所以尽管花费了大量碳水，但胰岛素水平却较低，不利于合成代谢。\n\n\n【水果不是高GI碳水 对血糖胰岛素刺激较弱】\n\na.食物的GI测试是摄入含有50g碳水的食物，记录在2小时内血糖升高的面积与同种方法下摄入50g葡萄糖导致血糖升高面积的比值。在GI测试里，取用50g碳水的水果，实际能分解葡萄糖的碳水大约只有一半，所以测得的GI值较低。而淀粉类主食，取用50g碳水的主食，会全部分解为葡萄糖，所以测得的GI值较高。水果GI较低的根本原因，是因为水果的碳水不会全部分解为葡萄糖，而不是因为水果的碳水分解为葡萄糖的速度较慢。\n\nb.水果里只有西瓜、哈密瓜的GI勉强达到高GI（说明其分解为果糖的比例较低），其他水果都是中低GI碳水。因此力训练后餐确实可以吃水果作为一部分碳水来源，但不能作为主要或全部碳水来源，例如练后100g碳水用4根香蕉来提供是错误的，这样虽然花费了巨大的碳水配额，但胰岛素却较低，且果糖摄入会超标。",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B61:F61"
+      }
+    },
+    {
+      "category": "水果",
+      "food": "鲜枣",
+      "carbohydrate_rate": 0.3,
+      "gi": "中",
+      "notes": null,
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B62:F62"
+      }
+    },
+    {
+      "category": "水果",
+      "food": "椰肉",
+      "carbohydrate_rate": 0.3,
+      "gi": "中",
+      "notes": null,
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B63:F63"
+      }
+    },
+    {
+      "category": "水果",
+      "food": "榴莲",
+      "carbohydrate_rate": 0.28,
+      "gi": "中",
+      "notes": null,
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B64:F64"
+      }
+    },
+    {
+      "category": "水果",
+      "food": "菠萝蜜",
+      "carbohydrate_rate": 0.26,
+      "gi": "中",
+      "notes": null,
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B65:F65"
+      }
+    },
+    {
+      "category": "水果",
+      "food": "香蕉",
+      "carbohydrate_rate": 0.22,
+      "gi": "中",
+      "notes": null,
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B66:F66"
+      }
+    },
+    {
+      "category": "水果",
+      "food": "提子",
+      "carbohydrate_rate": 0.17,
+      "gi": "中",
+      "notes": null,
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B67:F67"
+      }
+    },
+    {
+      "category": "水果",
+      "food": "荔枝",
+      "carbohydrate_rate": 0.17,
+      "gi": "中",
+      "notes": null,
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B68:F68"
+      }
+    },
+    {
+      "category": "水果",
+      "food": "桂圆",
+      "carbohydrate_rate": 0.17,
+      "gi": "中",
+      "notes": null,
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B69:F69"
+      }
+    },
+    {
+      "category": "水果",
+      "food": "猕猴桃",
+      "carbohydrate_rate": 0.15,
+      "gi": "中",
+      "notes": null,
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B70:F70"
+      }
+    },
+    {
+      "category": "水果",
+      "food": "苹果",
+      "carbohydrate_rate": 0.13,
+      "gi": "低",
+      "notes": null,
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B71:F71"
+      }
+    },
+    {
+      "category": "水果",
+      "food": "梨",
+      "carbohydrate_rate": 0.13,
+      "gi": "低",
+      "notes": null,
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B72:F72"
+      }
+    },
+    {
+      "category": "水果",
+      "food": "车厘子",
+      "carbohydrate_rate": 0.13,
+      "gi": "低",
+      "notes": null,
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B73:F73"
+      }
+    },
+    {
+      "category": "水果",
+      "food": "火龙果",
+      "carbohydrate_rate": 0.13,
+      "gi": "中",
+      "notes": null,
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B74:F74"
+      }
+    },
+    {
+      "category": "水果",
+      "food": "芒果",
+      "carbohydrate_rate": 0.13,
+      "gi": "中",
+      "notes": null,
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B75:F75"
+      }
+    },
+    {
+      "category": "水果",
+      "food": "桑葚",
+      "carbohydrate_rate": 0.13,
+      "gi": "低",
+      "notes": null,
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B76:F76"
+      }
+    },
+    {
+      "category": "水果",
+      "food": "葡萄",
+      "carbohydrate_rate": 0.12,
+      "gi": "低",
+      "notes": null,
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B77:F77"
+      }
+    },
+    {
+      "category": "水果",
+      "food": "橘子",
+      "carbohydrate_rate": 0.12,
+      "gi": "低",
+      "notes": null,
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B78:F78"
+      }
+    },
+    {
+      "category": "水果",
+      "food": "橙子",
+      "carbohydrate_rate": 0.11,
+      "gi": "低",
+      "notes": null,
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B79:F79"
+      }
+    },
+    {
+      "category": "水果",
+      "food": "桃",
+      "carbohydrate_rate": 0.1,
+      "gi": "低",
+      "notes": null,
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B80:F80"
+      }
+    },
+    {
+      "category": "水果",
+      "food": "柚子",
+      "carbohydrate_rate": 0.1,
+      "gi": "低",
+      "notes": null,
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B81:F81"
+      }
+    },
+    {
+      "category": "水果",
+      "food": "樱桃",
+      "carbohydrate_rate": 0.1,
+      "gi": "低",
+      "notes": null,
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B82:F82"
+      }
+    },
+    {
+      "category": "水果",
+      "food": "西梅",
+      "carbohydrate_rate": 0.1,
+      "gi": "低",
+      "notes": null,
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B83:F83"
+      }
+    },
+    {
+      "category": "水果",
+      "food": "枇杷",
+      "carbohydrate_rate": 0.09,
+      "gi": "低",
+      "notes": null,
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B84:F84"
+      }
+    },
+    {
+      "category": "水果",
+      "food": "李子",
+      "carbohydrate_rate": 0.09,
+      "gi": "低",
+      "notes": null,
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B85:F85"
+      }
+    },
+    {
+      "category": "水果",
+      "food": "杏",
+      "carbohydrate_rate": 0.09,
+      "gi": "低",
+      "notes": null,
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B86:F86"
+      }
+    },
+    {
+      "category": "水果",
+      "food": "哈密瓜",
+      "carbohydrate_rate": 0.08,
+      "gi": "高",
+      "notes": null,
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B87:F87"
+      }
+    },
+    {
+      "category": "水果",
+      "food": "西瓜",
+      "carbohydrate_rate": 0.07,
+      "gi": "高",
+      "notes": null,
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B88:F88"
+      }
+    },
+    {
+      "category": "水果",
+      "food": "木瓜",
+      "carbohydrate_rate": 0.07,
+      "gi": "中",
+      "notes": null,
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B89:F89"
+      }
+    },
+    {
+      "category": "水果",
+      "food": "圣女果（小番茄）",
+      "carbohydrate_rate": 0.06,
+      "gi": "低",
+      "notes": null,
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B90:F90"
+      }
+    },
+    {
+      "category": "水果",
+      "food": "西红柿（大番茄）",
+      "carbohydrate_rate": 0.03,
+      "gi": "低",
+      "notes": null,
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B91:F91"
+      }
+    }
+  ],
+  "protein_foods": [
+    {
+      "category": "干净蛋白质",
+      "food": "瘦肉（鱼虾生肉）",
+      "protein_rate": 0.15,
+      "positioning": "主要来源",
+      "notes": "一般鱼虾的含水率高于家禽家畜，因此蛋白质率稍低",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B96:F96"
+      }
+    },
+    {
+      "category": "干净蛋白质",
+      "food": "瘦肉（三文鱼/金枪鱼）",
+      "protein_rate": 0.2,
+      "positioning": null,
+      "notes": "三文鱼/金枪鱼本身脂肪率较高，并非瘦肉；但如果是吃中腩或赤身，且是无油生食，姑且也可视为瘦肉",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B97:F97"
+      }
+    },
+    {
+      "category": "干净蛋白质",
+      "food": "瘦肉（家禽家畜生肉）",
+      "protein_rate": 0.2,
+      "positioning": null,
+      "notes": "鸡鸭肉要去皮，猪牛羊肉要没有白色脂肪层，才是瘦肉性质",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B98:F98"
+      }
+    },
+    {
+      "category": "干净蛋白质",
+      "food": "瘦肉（一般的熟肉）",
+      "protein_rate": 0.25,
+      "positioning": null,
+      "notes": "鱼虾和家禽家畜瘦肉均属之，不用区分品种（鱼虾因为含水率更高，熟后脱水率更高，蛋白质率会显著上升）",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B99:F99"
+      }
+    },
+    {
+      "category": "干净蛋白质",
+      "food": "瘦肉（柴感的熟肉）",
+      "protein_rate": 0.3,
+      "positioning": null,
+      "notes": "酱牛肉、干柴的卤肉等，因为脱水率更高，蛋白质率会更高一些",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B100:F100"
+      }
+    },
+    {
+      "category": "干净蛋白质",
+      "food": "瘦肉干",
+      "protein_rate": 0.4,
+      "positioning": null,
+      "notes": "牛肉干、鸡肉干，因为脱水率很高，蛋白质率就很高，注意碳水率（糖率）最好低于10%，否则就成了“糖肉干”",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B101:F101"
+      }
+    },
+    {
+      "category": "干净蛋白质",
+      "food": "蛋白粉",
+      "protein_rate": "70-80%",
+      "positioning": null,
+      "notes": "乳清蛋白粉的一般70-80%，素食者可用酵母蛋白粉或大豆分离蛋白粉（氨基酸谱和吸收率无大碍）",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B102:F102"
+      }
+    },
+    {
+      "category": "干净蛋白质",
+      "food": "蛋白质饮料",
+      "protein_rate": "每瓶20-30g",
+      "positioning": null,
+      "notes": "有酵母、牛奶、蛋清等多种原料制成的饮品，每瓶20-30g蛋白质，详见表20《蛋白质价格比较》",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B103:F103"
+      }
+    },
+    {
+      "category": "干净蛋白质",
+      "food": "【瘦肉只有】a.去皮的鸡鸭肉  b.没有白色脂肪层的猪牛羊肉  c.鱼虾贝等水产  d.内脏的肝肾肚血心",
+      "protein_rate": null,
+      "positioning": null,
+      "notes": null,
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B104:F104"
+      }
+    },
+    {
+      "category": "干净蛋白质",
+      "food": "【不是瘦肉】鸡鸭皮、大排、糖醋里脊、锅包肉、鸡翅、猪蹄、牛腩、牛排、排骨、烤肉、炸肉、午餐肉、肥牛、肥羊、肉肠、肉饼、肉馅、肉丸",
+      "protein_rate": null,
+      "positioning": null,
+      "notes": null,
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B106:F106"
+      }
+    },
+    {
+      "category": "含有蛋白质的混合物",
+      "food": "鸡蛋",
+      "protein_rate": "6g/个",
+      "positioning": "早饭来源",
+      "notes": "蛋清（蛋白质3g 脂肪0g）+蛋黄（蛋白质3g 脂肪5g）=全蛋（蛋白质6g 脂肪5g）",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B109:F109"
+      }
+    },
+    {
+      "category": "含有蛋白质的混合物",
+      "food": "牛奶",
+      "protein_rate": "10g/250ml盒",
+      "positioning": null,
+      "notes": "250ml盒装纯牛奶（碳水12g 蛋白质10g 脂肪9g），可以简单记忆为碳蛋脂都是10g",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B110:F110"
+      }
+    },
+    {
+      "category": "含有蛋白质的混合物",
+      "food": "酸奶",
+      "protein_rate": "10g/200ml盒",
+      "positioning": null,
+      "notes": "代糖酸奶可简单等同于纯牛奶，特殊酸奶（含糖酸奶会多10g+糖，希腊酸奶近乎零脂）可参照营养表来计算",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B111:F111"
+      }
+    },
+    {
+      "category": "含有蛋白质的混合物",
+      "food": "干黄豆",
+      "protein_rate": 0.35,
+      "positioning": "碰到了可吃",
+      "notes": "碳水34% 蛋白质35% 脂肪16%，碰到了可以吃一些，但不能替代瘦肉，因为氨基酸比例较差，且附带过多脂肪",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B112:F112"
+      }
+    },
+    {
+      "category": "含有蛋白质的混合物",
+      "food": "鲜黄豆/毛豆/青豆",
+      "protein_rate": 0.13,
+      "positioning": null,
+      "notes": "碳水11% 蛋白质13% 脂肪5%，碰到了可以吃一些，但不能替代瘦肉，因为氨基酸比例较差，且附带过多脂肪",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B113:F113"
+      }
+    },
+    {
+      "category": "含有蛋白质的混合物",
+      "food": "豆皮/千张",
+      "protein_rate": 0.35,
+      "positioning": null,
+      "notes": "碳水20% 蛋白质35% 脂肪20%，碰到了可以吃一些，但不能替代瘦肉，因为氨基酸比例较差，且附带过多脂肪",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B114:F114"
+      }
+    },
+    {
+      "category": "含有蛋白质的混合物",
+      "food": "豆腐",
+      "protein_rate": 0.07,
+      "positioning": null,
+      "notes": "碳水3% 蛋白质7% 脂肪5%，碰到了可以吃一些，但不能替代瘦肉，因为氨基酸比例较差，且附带过多脂肪",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B115:F115"
+      }
+    },
+    {
+      "category": "含有蛋白质的混合物",
+      "food": "豆浆",
+      "protein_rate": 0.03,
+      "positioning": "可忽略不计",
+      "notes": "碳水1% 蛋白质3% 脂肪2%，主要是水，热量很低可忽略不计，但肯麦的高甜豆浆约放了20g糖，其实是一杯糖水",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B116:F116"
+      }
+    }
+  ],
+  "fat_and_selection_guidance": [
+    {
+      "row": 118,
+      "cells": [
+        {
+          "address": "B118",
+          "value": "脂肪"
+        }
+      ],
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B118:F118"
+      }
+    },
+    {
+      "row": 120,
+      "cells": [
+        {
+          "address": "B120",
+          "value": "脂肪不计算"
+        },
+        {
+          "address": "C120",
+          "value": "鸡蛋牛奶+菜肴带油，同时排除高脂肉和糖油混合物，脂肪摄入就合适，不用搜集食物的脂肪率数据来计算脂肪量"
+        }
+      ],
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B120:F120"
+      }
+    },
+    {
+      "row": 122,
+      "cells": [
+        {
+          "address": "B122",
+          "value": "解释\n“菜肴带油”"
+        },
+        {
+          "address": "C122",
+          "value": "菜肴必须是瘦肉菜的前提下，还应注意：\na.排除煎炒鸡蛋（例如番茄鸡蛋、韭菜鸡蛋）\nb.排除油烧茄子（例如鱼香茄子）\nc.减少干煸菜肴（例如干煸豆角菜花、干煸鸡肉）\nd.重油菜（例如水煮牛肉、口水鸡等），可以在盘边刮一刮或简单过水，让附着的油量减少，但肉必须是瘦肉"
+        }
+      ],
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B122:F122"
+      }
+    },
+    {
+      "row": 127,
+      "cells": [
+        {
+          "address": "B127",
+          "value": "解释\n“排除高脂肉”"
+        },
+        {
+          "address": "C127",
+          "value": "瘦肉只有：a.去皮的鸡鸭肉  b.没有白色脂肪层的猪牛羊肉  c.鱼虾贝等水产  d.内脏的肝肾肚血心\n\n不是瘦肉：鸡鸭皮、大排、糖醋里脊、锅包肉、鸡翅、猪蹄、牛腩、牛排、排骨、烤肉、炸肉、午餐肉、肥牛、肥羊、肉肠、肉饼、肉馅、肉丸"
+        }
+      ],
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B127:F127"
+      }
+    },
+    {
+      "row": 132,
+      "cells": [
+        {
+          "address": "B132",
+          "value": "解释\n“排除糖油混合物”"
+        },
+        {
+          "address": "C132",
+          "value": "饼干、蛋糕、点心、糕点、甜品、油条、煎饼、花式面包、膨化食品等，在营养率上表现为碳水和脂肪的比例低于3比1，以此作为碳水来源会让脂肪摄入超标，减脂期只能作为极偶尔的食物，增肌期可以稍宽松点"
+        }
+      ],
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B132:F132"
+      }
+    }
+  ],
+  "application_foods": [
+    {
+      "name": "馒头 / 花卷",
+      "kcal": 223,
+      "carb": 47,
+      "protein": 7,
+      "fat": 1,
+      "unit": "g",
+      "reference_note": "参考表碳水率约 50%",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "D15"
+      },
+      "nutrient_values_note": "碳水或蛋白比例参考原表；总热量及原表未提供的营养素为产品层估算，包装营养表优先。"
+    },
+    {
+      "name": "米饭（一般）",
+      "kcal": 116,
+      "carb": 26,
+      "protein": 2.6,
+      "fat": 0.3,
+      "unit": "g",
+      "reference_note": "参考表碳水率约 30%",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "D7"
+      },
+      "nutrient_values_note": "碳水或蛋白比例参考原表；总热量及原表未提供的营养素为产品层估算，包装营养表优先。"
+    },
+    {
+      "name": "米饭（偏硬）",
+      "kcal": 135,
+      "carb": 30,
+      "protein": 2.8,
+      "fat": 0.3,
+      "unit": "g",
+      "reference_note": "参考表碳水率约 35%",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "D8"
+      },
+      "nutrient_values_note": "碳水或蛋白比例参考原表；总热量及原表未提供的营养素为产品层估算，包装营养表优先。"
+    },
+    {
+      "name": "红薯（蒸煮）",
+      "kcal": 86,
+      "carb": 20,
+      "protein": 1.6,
+      "fat": 0.1,
+      "unit": "g",
+      "reference_note": "参考表碳水率约 18%",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "D24"
+      },
+      "nutrient_values_note": "碳水或蛋白比例参考原表；总热量及原表未提供的营养素为产品层估算，包装营养表优先。"
+    },
+    {
+      "name": "土豆（蒸煮）",
+      "kcal": 77,
+      "carb": 17,
+      "protein": 2,
+      "fat": 0.1,
+      "unit": "g",
+      "reference_note": "参考表碳水率约 18%",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "D26"
+      },
+      "nutrient_values_note": "碳水或蛋白比例参考原表；总热量及原表未提供的营养素为产品层估算，包装营养表优先。"
+    },
+    {
+      "name": "全麦切片面包",
+      "kcal": 247,
+      "carb": 41,
+      "protein": 13,
+      "fat": 4.2,
+      "unit": "g",
+      "reference_note": "参考表切片面包碳水率约 50%，品牌营养表优先",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "D14"
+      },
+      "nutrient_values_note": "碳水或蛋白比例参考原表；总热量及原表未提供的营养素为产品层估算，包装营养表优先。"
+    },
+    {
+      "name": "燕麦片（生）",
+      "kcal": 379,
+      "carb": 60,
+      "protein": 13.2,
+      "fat": 6.5,
+      "unit": "g",
+      "reference_note": "参考表碳水率约 60%",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "D36"
+      },
+      "nutrient_values_note": "碳水或蛋白比例参考原表；总热量及原表未提供的营养素为产品层估算，包装营养表优先。"
+    },
+    {
+      "name": "熟面条",
+      "kcal": 138,
+      "carb": 25,
+      "protein": 4.5,
+      "fat": 2,
+      "unit": "g",
+      "reference_note": "参考表细面碳水率约 23%",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "D22"
+      },
+      "nutrient_values_note": "碳水或蛋白比例参考原表；总热量及原表未提供的营养素为产品层估算，包装营养表优先。"
+    },
+    {
+      "name": "鸡胸肉（熟）",
+      "kcal": 165,
+      "carb": 0,
+      "protein": 31,
+      "fat": 3.6,
+      "unit": "g",
+      "reference_note": "参考表熟瘦肉蛋白率约 25–30%",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "D99"
+      },
+      "nutrient_values_note": "碳水或蛋白比例参考原表；总热量及原表未提供的营养素为产品层估算，包装营养表优先。"
+    },
+    {
+      "name": "鱼虾（生）",
+      "kcal": 100,
+      "carb": 0,
+      "protein": 18,
+      "fat": 2,
+      "unit": "g",
+      "reference_note": "参考表鱼虾蛋白率约 15%",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "D96"
+      },
+      "nutrient_values_note": "碳水或蛋白比例参考原表；总热量及原表未提供的营养素为产品层估算，包装营养表优先。"
+    },
+    {
+      "name": "瘦牛肉（熟）",
+      "kcal": 200,
+      "carb": 0,
+      "protein": 27,
+      "fat": 9,
+      "unit": "g",
+      "reference_note": "参考表一般熟瘦肉蛋白率约 25%",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "D99"
+      },
+      "nutrient_values_note": "碳水或蛋白比例参考原表；总热量及原表未提供的营养素为产品层估算，包装营养表优先。"
+    },
+    {
+      "name": "鸡蛋",
+      "kcal": 72,
+      "carb": 0.4,
+      "protein": 6,
+      "fat": 5,
+      "unit": "serving",
+      "grams": 50,
+      "reference_note": "每个蛋白质 6g、脂肪 5g",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "D109"
+      },
+      "nutrient_values_note": "碳水或蛋白比例参考原表；总热量及原表未提供的营养素为产品层估算，包装营养表优先。"
+    },
+    {
+      "name": "纯牛奶 250ml",
+      "kcal": 150,
+      "carb": 12,
+      "protein": 10,
+      "fat": 9,
+      "unit": "serving",
+      "grams": 250,
+      "reference_note": "每盒 250ml",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "D110"
+      },
+      "nutrient_values_note": "碳水或蛋白比例参考原表；总热量及原表未提供的营养素为产品层估算，包装营养表优先。"
+    },
+    {
+      "name": "无糖酸奶 200ml",
+      "kcal": 120,
+      "carb": 10,
+      "protein": 10,
+      "fat": 5,
+      "unit": "serving",
+      "grams": 200,
+      "reference_note": "以包装营养表为准",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "D111"
+      },
+      "nutrient_values_note": "碳水或蛋白比例参考原表；总热量及原表未提供的营养素为产品层估算，包装营养表优先。"
+    },
+    {
+      "name": "豆腐",
+      "kcal": 81,
+      "carb": 3,
+      "protein": 8,
+      "fat": 4.5,
+      "unit": "g",
+      "reference_note": "参考表蛋白率约 7%",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "D115"
+      },
+      "nutrient_values_note": "碳水或蛋白比例参考原表；总热量及原表未提供的营养素为产品层估算，包装营养表优先。"
+    },
+    {
+      "name": "毛豆",
+      "kcal": 131,
+      "carb": 11,
+      "protein": 13,
+      "fat": 5,
+      "unit": "g",
+      "reference_note": "参考表蛋白率约 13%",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "D113"
+      },
+      "nutrient_values_note": "碳水或蛋白比例参考原表；总热量及原表未提供的营养素为产品层估算，包装营养表优先。"
+    },
+    {
+      "name": "苹果",
+      "kcal": 52,
+      "carb": 14,
+      "protein": 0.3,
+      "fat": 0.2,
+      "unit": "g",
+      "reference_note": "水果应计入碳水",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "C50"
+      },
+      "nutrient_values_note": "碳水或蛋白比例参考原表；总热量及原表未提供的营养素为产品层估算，包装营养表优先。"
+    },
+    {
+      "name": "香蕉",
+      "kcal": 89,
+      "carb": 23,
+      "protein": 1.1,
+      "fat": 0.3,
+      "unit": "g",
+      "reference_note": "水果应计入碳水",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "C50"
+      },
+      "nutrient_values_note": "碳水或蛋白比例参考原表；总热量及原表未提供的营养素为产品层估算，包装营养表优先。"
+    },
+    {
+      "name": "西兰花",
+      "kcal": 34,
+      "carb": 6.6,
+      "protein": 2.8,
+      "fat": 0.4,
+      "unit": "g",
+      "reference_note": "蔬菜无需过度精算",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "B120"
+      },
+      "nutrient_values_note": "碳水或蛋白比例参考原表；总热量及原表未提供的营养素为产品层估算，包装营养表优先。"
+    },
+    {
+      "name": "坚果",
+      "kcal": 607,
+      "carb": 21,
+      "protein": 20,
+      "fat": 54,
+      "unit": "g",
+      "reference_note": "高脂食物，建议称重",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "C120"
+      },
+      "nutrient_values_note": "碳水或蛋白比例参考原表；总热量及原表未提供的营养素为产品层估算，包装营养表优先。"
+    },
+    {
+      "name": "乳清蛋白粉",
+      "kcal": 390,
+      "carb": 8,
+      "protein": 75,
+      "fat": 6,
+      "unit": "g",
+      "reference_note": "参考表蛋白率约 70–80%",
+      "source": {
+        "sheet": "19日常食物营养率",
+        "cell": "D102"
+      },
+      "nutrient_values_note": "碳水或蛋白比例参考原表；总热量及原表未提供的营养素为产品层估算，包装营养表优先。"
+    }
+  ]
+}

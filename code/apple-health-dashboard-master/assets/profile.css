@@ -1,0 +1,70 @@
+.profile-modal { width: min(700px, 100%); padding: 0; overflow: hidden auto; }
+.profile-modal > .modal-close { z-index: 2; background: rgba(255,255,255,.78); }
+.profile-account-head {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  align-items: center;
+  gap: 15px;
+  padding: 28px 58px 24px 30px;
+  background: linear-gradient(135deg, #edf5ef, #f9f5ee);
+  border-bottom: 1px solid var(--line);
+}
+.profile-avatar-large {
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  border-radius: 20px;
+  background: var(--green);
+  color: #fff;
+  font: 700 28px Georgia, serif;
+  box-shadow: 0 10px 28px rgba(31,107,82,.18);
+}
+.profile-account-head h2 { margin: 3px 0 1px; }
+.profile-account-head p { margin: 0; color: var(--muted); font-size: 10px; }
+.profile-account-head p strong { color: var(--ink); }
+.profile-logout {
+  padding: 8px 11px;
+  border: 1px solid #e3c9bf;
+  border-radius: 9px;
+  color: #a34e3b;
+  background: rgba(255,255,255,.76);
+  font-size: 10px;
+  font-weight: 800;
+}
+.profile-logout:hover { background: #fff; border-color: #cc9b8d; }
+.profile-section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin: 24px 30px -8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+.profile-section-title span { font: 600 16px Georgia, "Songti SC", serif; }
+.profile-section-title small { color: var(--muted); font-size: 9px; }
+.profile-modal > .form-grid { margin: 20px 30px; }
+.profile-modal > .calc-preview { margin: 18px 30px; }
+.profile-form-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 22px;
+  padding: 18px 30px 26px;
+  border-top: 1px solid var(--line);
+  background: #fbfbf8;
+}
+.profile-form-footer p { max-width: 430px; margin: 0; color: var(--muted); font-size: 9px; line-height: 1.55; }
+.profile-form-footer .primary-btn { white-space: nowrap; }
+
+@media (max-width: 700px) {
+  .profile-account-head { grid-template-columns: 52px 1fr; padding: 24px 48px 20px 20px; }
+  .profile-avatar-large { width: 52px; height: 52px; border-radius: 16px; font-size: 23px; }
+  .profile-logout { grid-column: 1 / -1; width: 100%; }
+  .profile-section-title { display: block; margin: 22px 20px -8px; }
+  .profile-section-title small { display: block; margin-top: 3px; }
+  .profile-modal > .form-grid, .profile-modal > .calc-preview { margin-left: 20px; margin-right: 20px; }
+  .profile-form-footer { display: grid; padding: 17px 20px 22px; }
+  .profile-form-footer .primary-btn { width: 100%; }
+}

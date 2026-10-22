@@ -1,0 +1,20 @@
+# Local accounts, health records, exports, backups, and secrets
+/data/
+/reference/
+/.env
+/.env.*
+!/.env.example
+
+# Source workbook extracts and media are local build artifacts.
+/knowledge-base/source/
+/knowledge-base/search/
+/knowledge-base/media/
+/code/apple-health-dashboard-master/.github/
+
+# Python and editor artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+.vscode/
+.idea/
