@@ -1,8 +1,12 @@
-# BojiTracker｜个人饮食、力量训练与花销追踪
+# BojiTracker  OS ｜个人饮食、力量训练与花销追踪
 
 BojiTracker 是可在本机运行的个人数据助手。它把饮食、力量训练和日常花销保存在 SQLite 中，按账户隔离记录；提供营养估算、7/30 天指标分析和可选的 DeepSeek 对话 Agent。项目使用 Python 标准库提供前后端服务，无需另装 Python 包。
 
 > 这是个人记录与分析工具，不是医疗设备。营养目标、训练消耗及 AI 回答均可能是估算，不能代替专业诊疗。
+
+## 界面原型介绍
+## <img width="2179" height="1155" alt="Bo跟踪助手主界面" src="https://github.com/user-attachments/assets/bfb2ae28-7699-4c2f-a4cc-29edbcb87857" />
+<img width="2217" height="1166" alt="Bo跟踪助手智能助理" src="https://github.com/user-attachments/assets/761a8c68-8c0a-411e-999d-b51b6758ab48" />
 
 ## 快速启动
 
